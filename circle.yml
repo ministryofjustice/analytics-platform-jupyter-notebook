@@ -1,0 +1,27 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  cache_directories:
+    - "~/docker"
+
+  override:
+    - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
+    - docker build --rm=false -t quay.io/mojanalytics/jupyter .
+    - mkdir -p ~/docker; docker save quay.io/mojanalytics/jupyter > ~/docker/image.tar
+
+test:
+  override:
+    - echo "test"
+
+deployment:
+  production:
+    branch: master
+    commands:
+       - docker login -u ${QUAY_USERNAME} -p ${QUAY_PASSWORD} -e ${QUAY_EMAIL} quay.io
+       - docker pull quay.io/mojanalytics/jupyter:latest
+       - docker build -t quay.io/mojanalytics/jupyter:${CIRCLE_SHA1} .
+       - docker tag -f quay.io/mojanalytics/jupyter:${CIRCLE_SHA1} quay.io/mojanalytics/jupyter:latest
+       - docker push quay.io/mojanalytics/jupyter:${CIRCLE_SHA1}
+       - docker push quay.io/mojanalytics/jupyter:latest
