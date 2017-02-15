@@ -7,3 +7,12 @@ RUN conda install anaconda
 RUN pip install jupyter_dashboards
 RUN jupyter dashboards quick-setup --sys-prefix
 RUN jupyter nbextension enable jupyter_dashboards --py --sys-prefix
+
+COPY start.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/start.sh
+
+EXPOSE 8888
+
+USER root
+
+CMD ["/usr/local/bin/start.sh"]
