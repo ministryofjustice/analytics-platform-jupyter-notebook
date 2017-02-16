@@ -8,11 +8,10 @@ RUN pip install jupyter_dashboards
 RUN jupyter dashboards quick-setup --sys-prefix
 RUN jupyter nbextension enable jupyter_dashboards --py --sys-prefix
 
-COPY start.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/start.sh
+USER root
+COPY container-start.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/container-start.sh
 
 EXPOSE 8888
 
-USER root
-
-CMD ["/usr/local/bin/start.sh"]
+CMD ["/usr/local/bin/container-start.sh"]
