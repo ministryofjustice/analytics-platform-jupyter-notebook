@@ -1,4 +1,4 @@
-FROM jupyter/datascience-notebook:65f1c4bea0b2
+FROM jupyter/datascience-notebook:b7f28609e908
 
 LABEL maintainer=analytics-platform-tech@digital.justice.gov.uk
 
