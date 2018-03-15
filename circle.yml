@@ -2,7 +2,7 @@ machine:
   services:
     - docker
   environment:
-    DOCKER_IMAGE_NAME: quay.io/mojanalytics/jupyter
+    DOCKER_IMAGE_NAME: quay.io/mojanalytics/datascience-notebook
     DOCKER_IMAGE_TAG: $(echo $CIRCLE_SHA1 | cut -c -8)
 
 test:
