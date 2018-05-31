@@ -17,7 +17,7 @@ It adds Anaconda and Jupyter dashboard.
 ### Disabling authentication
 In order to disable the authentication you can run this container as follows:
 
-    $ docker run -d -p 8888:8888 jupyter/datascience-notebook start-notebook.sh --NotebookApp.token=''
+    $ docker container run -d --rm -p 8888:8888 jupyter/datascience-notebook start-notebook.sh --NotebookApp.token=''
     
 ### Known issues
  - This image is a work in progress, you'll currently get a "Dead kernel" error in Jupyter notebook ([this issue may be related](https://github.com/jupyter/docker-stacks/issues/337))
