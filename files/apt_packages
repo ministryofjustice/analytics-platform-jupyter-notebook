@@ -1,1 +1,4 @@
+ca-certificates-java
+openjdk-8-jdk
 openssh-client
+software-properties-common
