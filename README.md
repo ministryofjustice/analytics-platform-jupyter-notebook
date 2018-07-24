@@ -28,7 +28,13 @@ In order to disable the authentication, we append `--NotebookApp.token=''` as an
 ```
 docker container run -d --rm -p 8888:8888 jupyter/datascience-notebook start.sh jupyter lab --NotebookApp.token=''
 ```
- 
+
+__*Grant `sudo` with disabled authentication*__
+
+```
+docker container run -d --rm -p 8888:8888 -e GRANT_SUDO=yes jupyter/datascience-notebook start.sh jupyter lab --NotebookApp.token=''
+```
+
 ### Known issues
  - This image is a work in progress, you'll currently get a "Dead kernel" error in Jupyter notebook ([this issue may be related](https://github.com/jupyter/docker-stacks/issues/337))
  - The image creates a 'jovyan' user with UID 1000, we'll need to figure it out how this will work with the NFS home (rename/change user UID?)
