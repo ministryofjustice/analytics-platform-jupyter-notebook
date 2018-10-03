@@ -3,3 +3,4 @@ openjdk-8-jdk
 openssh-client
 software-properties-common
 gdal-bin
+libspatialindex-dev
