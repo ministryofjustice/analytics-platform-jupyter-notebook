@@ -7,6 +7,8 @@ USER root
 ENV PATH=$PATH:$HOME/.local/bin
 ENV NB_UID=1001
 
+ENV PYSPARK_SUBMIT_ARGS="--packages com.amazonaws:aws-java-sdk:1.7.4,org.apache.hadoop:hadoop-aws:2.7.1 pyspark-shell"
+
 COPY ./files/* /tmp/
 RUN conda install boto3 \
     && python /tmp/pyspark-s3.py \
