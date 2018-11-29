@@ -6,8 +6,6 @@ USER root
 
 ENV PATH=$PATH:$HOME/.local/bin
 
-ENV NB_UID=1001
-
 COPY ./files/apt_packages /tmp/
 
 RUN conda install boto3 \
