@@ -12,3 +12,6 @@ COPY ./files/apt_packages /tmp/
 
 RUN conda install boto3 \
     && apt-get update && apt-get install -y $(cat /tmp/apt_packages)
+
+# Fix conda install for NB_UID
+RUN chown -R $NB_UID /opt/conda
