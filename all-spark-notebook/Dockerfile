@@ -18,3 +18,5 @@ RUN conda install boto3 \
     && pip install git+https://github.com/moj-analytical-services/gluejobutils/#egg=gluejobutils \
     && mv /tmp/hdfs-site.xml /usr/local/spark/conf \
     && apt-get update && apt-get install -y $(cat /tmp/apt_packages)
+
+RUN chown -R $NB_UID /opt/conda
