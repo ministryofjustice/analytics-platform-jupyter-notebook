@@ -11,7 +11,10 @@ ENV CHOWN_HOME=no
 COPY ./files/apt_packages /tmp/
 
 RUN conda install boto3 \
-    && apt-get update && apt-get install -y $(cat /tmp/apt_packages)
+    && apt-get update \
+    && apt-get install -y $(cat /tmp/apt_packages) \
+    && rm -rf /var/lib/apt/lists/*
 
 # Fix conda install for NB_UID
-RUN chown -R $NB_UID /opt/conda
+RUN chown -R $NB_UID /opt/conda \
+ &&usermod -u $NB_UID $NB_USER
