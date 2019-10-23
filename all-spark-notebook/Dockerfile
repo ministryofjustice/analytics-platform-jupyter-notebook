@@ -1,4 +1,4 @@
-FROM jupyter/all-spark-notebook:1145fb1198b2
+FROM jupyter/all-spark-notebook@sha256:1c10f355f0272b4e398bba1d8012907d02084f12ed78054458075d3990a2ecb1
 
 LABEL maintainer=analytics-platform-tech@digital.justice.gov.uk
 
@@ -13,12 +13,11 @@ ENV PYSPARK_SUBMIT_ARGS="--packages com.amazonaws:aws-java-sdk:1.7.4,org.apache.
 COPY ./files/* /tmp/
 RUN conda install boto3 \
     && python /tmp/pyspark-s3.py \
-    && pip install git+https://github.com/moj-analytical-services/etl_manager.git#egg=etl_manager \
-    && pip install git+https://github.com/moj-analytical-services/dataengineeringutils.git \
-    && pip install git+https://github.com/moj-analytical-services/gluejobutils/#egg=gluejobutils \
     && mv /tmp/hdfs-site.xml /usr/local/spark/conf \
     && apt-get update && apt-get install -y $(cat /tmp/apt_packages) \
     && rm -rf  /var/lib/apt/lists/*
 
 RUN chown -R $NB_UID /opt/conda \
   && usermod -u $NB_UID $NB_USER
+
+
