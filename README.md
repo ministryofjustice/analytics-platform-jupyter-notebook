@@ -1,3 +1,5 @@
+[![Docker Repository on Quay](https://quay.io/repository/mojanalytics/datascience-notebook/status "Docker Repository on Quay")](https://quay.io/repository/mojanalytics/datascience-notebook)
+
 # analytics-platform-jupyter-notebook
 Jupyter Notebook Docker image for Analytics Platform
 
