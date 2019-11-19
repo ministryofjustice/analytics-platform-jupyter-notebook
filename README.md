@@ -1,10 +1,8 @@
-[![Docker Repository on Quay](https://quay.io/repository/mojanalytics/datascience-notebook/status "Docker Repository on Quay")](https://quay.io/repository/mojanalytics/datascience-notebook)
-
 # analytics-platform-jupyter-notebook
 Jupyter Notebook Docker image for Analytics Platform
 
-[Datascience-Notebook](https://quay.io/repository/mojanalytics/datascience-notebook)
-[Allspark-Notebook](https://quay.io/repository/mojanalytics/all-spark)
+- [Datascience-Notebook](https://quay.io/repository/mojanalytics/datascience-notebook) [![Docker Repository on Quay](https://quay.io/repository/mojanalytics/datascience-notebook/status "Docker Repository on Quay")](https://quay.io/repository/mojanalytics/datascience-notebook)
+- [Allspark-Notebook](https://quay.io/repository/mojanalytics/all-spark) [![Docker Repository on Quay](https://quay.io/repository/mojanalytics/all-spark/status "Docker Repository on Quay")](https://quay.io/repository/mojanalytics/all-spark)
 
 ### About Jupyter Notebook
 From [Jupter](http://jupyter.org):
