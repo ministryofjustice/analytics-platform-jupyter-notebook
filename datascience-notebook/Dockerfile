@@ -1,4 +1,4 @@
-FROM jupyter/datascience-notebook:14fdfbf9cfc1
+FROM jupyter/datascience-notebook:ad3574d3c5c7
 
 LABEL maintainer=analytics-platform-tech@digital.justice.gov.uk
 
@@ -10,15 +10,14 @@ ENV CHOWN_HOME=no
 
 COPY ./files/apt_packages /tmp/
 
-RUN conda install boto3 black flake8 jupyterlab_code_formatter \
+RUN conda install boto3 black \
     && apt-get update \
     && apt-get install -y $(cat /tmp/apt_packages) \
     && rm -rf /var/lib/apt/lists/*
 
-RUN npm install jupyterlab-flake8 \
-    && jupyter labextension install jupyterlab-flake8 \
-    && jupyter labextension install @ryantam626/jupyterlab_code_formatter \
-    && jupyter serverextension enable --py jupyterlab_code_formatter
+RUN jupyter labextension install @ryantam626/jupyterlab_code_formatter 
+RUN conda install -c conda-forge jupyterlab_code_formatter
+RUN jupyter serverextension enable --py jupyterlab_code_formatter
 
 # Fix conda install for NB_UID
 RUN chown -R $NB_UID /opt/conda \
