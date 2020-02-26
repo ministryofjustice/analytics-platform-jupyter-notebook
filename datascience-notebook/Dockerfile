@@ -23,3 +23,6 @@ RUN npm install jupyterlab-flake8 \
 # Fix conda install for NB_UID
 RUN chown -R $NB_UID /opt/conda \
  &&usermod -u $NB_UID $NB_USER
+
+# install nbstripout pip
+RUN pip install --upgrade nbstripout 
