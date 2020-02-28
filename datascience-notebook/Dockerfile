@@ -18,7 +18,7 @@ RUN conda install boto3 black flake8 jupyterlab_code_formatter \
 RUN npm install jupyterlab-flake8 \
     && jupyter labextension install jupyterlab-flake8 \
     && jupyter labextension install @ryantam626/jupyterlab_code_formatter \
-    && jupyter serverextension enable --py jupyterlab_code_formatter
+    && jupyter serverextension enable --py jupyterlab_code_formatter \
     && pip install --upgrade nbstripout 
 
 # Fix conda install for NB_UID
