@@ -23,4 +23,3 @@ RUN conda install boto3 \
 
 RUN chown -R $NB_UID /opt/conda \
   && usermod -u $NB_UID $NB_USER
-  
