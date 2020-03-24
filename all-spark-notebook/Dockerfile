@@ -1,4 +1,4 @@
-FROM jupyter/all-spark-notebook@sha256:ae9cc8bfa83b41162369cd40fde65afa315ef7777f29c1e8bc8535d1396b621a
+FROM jupyter/all-spark-notebook@sha256:1e31465c2dccb82ae249a31ba5412cf25388a12a9b949c76381842dd76b46efd
 
 LABEL maintainer=analytics-platform-tech@digital.justice.gov.uk
 
@@ -18,4 +18,4 @@ RUN conda install boto3 \
     && rm -rf  /var/lib/apt/lists/*
 
 RUN chown -R $NB_UID /opt/conda \
-  && usermod -u $NB_UID $NB_USER
+    && usermod -u $NB_UID $NB_USER
