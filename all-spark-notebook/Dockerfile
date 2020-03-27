@@ -17,5 +17,16 @@ RUN conda install boto3 \
     && apt-get update && apt-get install -y $(cat /tmp/apt_packages) \
     && rm -rf  /var/lib/apt/lists/*
 
+
+RUN git clone -b jlab2 https://github.com/consideRatio/qgrid.git 
+
+RUN jupyter labextension install qgrid/js/
+
+RUN /opt/conda/bin/pip install qgrid/  
+
+
+
+
 RUN chown -R $NB_UID /opt/conda \
     && usermod -u $NB_UID $NB_USER
+
