@@ -18,7 +18,8 @@ RUN conda install boto3 \
     && pip install git+https://github.com/moj-analytical-services/gluejobutils/#egg=gluejobutils \
     && mv /tmp/hdfs-site.xml /usr/local/spark/conf \
     && apt-get update && apt-get install -y $(cat /tmp/apt_packages) \
-    && rm -rf  /var/lib/apt/lists/*
+    && pip install --upgrade nbstripout \
+    && rm -rf  /var/lib/apt/lists/* 
 
 RUN chown -R $NB_UID /opt/conda \
   && usermod -u $NB_UID $NB_USER
