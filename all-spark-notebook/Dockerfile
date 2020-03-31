@@ -15,6 +15,7 @@ RUN conda install boto3 \
     && python /tmp/pyspark-s3.py \
     && mv /tmp/hdfs-site.xml /usr/local/spark/conf \
     && apt-get update && apt-get install -y $(cat /tmp/apt_packages) \
+    && pip install --upgrade nbstripout \
     && rm -rf  /var/lib/apt/lists/* 
 
 
@@ -22,7 +23,7 @@ RUN git clone -b jlab2 https://github.com/consideRatio/qgrid.git
 
 RUN jupyter labextension install qgrid/js/
 
-RUN /opt/conda/bin/pip install qgrid/  
+RUN /opt/conda/bin/pip install qgrid/ 
 
 
 
