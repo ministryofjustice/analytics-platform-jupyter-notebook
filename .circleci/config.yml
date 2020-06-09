@@ -1,0 +1,25 @@
+version: 2.1
+jobs:
+  build:
+    machine:
+      image: ubuntu-1604:202004-01
+    environment:
+      DOCKER_IMAGE_NAME: quay.io/mojanalytics/datascience-notebook
+      DOCKER_IMAGE_TAG: $(echo $CIRCLE_SHA1 | cut -c -8)
+    steps:
+      - checkout
+      - run: |
+          docker login -u $QUAY_USERNAME -p $QUAY_PASSWORD -e $QUAY_EMAIL quay.io
+          docker build -t $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG .
+          docker tag -f $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG $DOCKER_IMAGE_NAME:latest
+          docker push $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+          docker push $DOCKER_IMAGE_NAME:latest
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
