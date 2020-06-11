@@ -4,4 +4,3 @@ openssh-client
 software-properties-common
 gdal-bin
 libspatialindex-dev
-libaio1
