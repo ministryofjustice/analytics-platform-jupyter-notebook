@@ -5,6 +5,7 @@ Jupyter Notebook Docker image for Analytics Platform
 Contents:
 
 - [Datascience-Notebook](https://quay.io/repository/mojanalytics/datascience-notebook) [![Docker Repository on Quay](https://quay.io/repository/mojanalytics/datascience-notebook/status "Docker Repository on Quay")](https://quay.io/repository/mojanalytics/datascience-notebook)
+- [Oracle-Datascience-Notebook](https://quay.io/repository/mojanalytics/oracle-datascience-notebook) [![Docker Repository on Quay](https://quay.io/repository/mojanalytics/oracle-datascience-notebook/status "Docker Repository on Quay")](https://quay.io/repository/mojanalytics/oracle-datascience-notebook)
 - [Allspark-Notebook](https://quay.io/repository/mojanalytics/all-spark) [![Docker Repository on Quay](https://quay.io/repository/mojanalytics/all-spark/status "Docker Repository on Quay")](https://quay.io/repository/mojanalytics/all-spark)
 
 CI/CD:
@@ -16,6 +17,7 @@ CI/CD:
 ## About Jupyter Notebook
 
 From [Jupter](http://jupyter.org):
+
 > The Jupyter Notebook is a web application that allows you to create and share documents that contain live code, equations,
 > visualizations and explanatory text. Uses include: data cleaning and transformation, numerical simulation, statistical
 > modeling, machine learning and much more."
@@ -32,6 +34,7 @@ From the root of this repository
 
 ```bash
 docker image build --no-cache -t jupyter/datascience-notebook -f datascience-notebook/Dockerfile .
+docker image build --no-cache -t jupyter/oracle-datascience-notebook -f oracle-datascience-notebook/Dockerfile .
 docker image build --no-cache -t jupyter/all-spark -f all-spark-notebook/Dockerfile .
 ```
 
