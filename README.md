@@ -11,7 +11,7 @@ Contents:
 CI/CD:
 
 - CI: Quay.io is configured to build each of these docker images - see links above.
-- Helm chart: https://github.com/ministryofjustice/analytics-platform-helm-charts/tree/master/charts/jupyter-lab
+- Helm chart: <https://github.com/ministryofjustice/analytics-platform-helm-charts/tree/master/charts/jupyter-lab>
 - Deployment: Done by control panel when a user requests for themselves a Jupyter pod. Deploys using helm.
 
 ## About Jupyter Notebook
@@ -38,7 +38,7 @@ docker image build --no-cache -t jupyter/oracle-datascience-notebook -f oracle-d
 docker image build --no-cache -t jupyter/all-spark -f all-spark-notebook/Dockerfile .
 ```
 
-__*Disabling authentication*__
+## Disabling authentication
 
 In order to disable the authentication, we append `--NotebookApp.token=''` as an argument
 
@@ -46,7 +46,7 @@ In order to disable the authentication, we append `--NotebookApp.token=''` as an
 docker container run -d --rm -p 8888:8888 jupyter/datascience-notebook start.sh jupyter lab --NotebookApp.token=''
 ```
 
-__*Grant `sudo` with disabled authentication*__
+## Grant `sudo` with disabled authentication
 
 ```bash
 docker container run -d --rm -p 8888:8888 -e GRANT_SUDO=yes jupyter/datascience-notebook start.sh jupyter lab --NotebookApp.token=''
