@@ -1,9 +1,9 @@
 title 'Working Pip'
 
-control 'CoPipnda available' do
+control 'Pip available' do
   impact 1
   title 'Pip should be available to use'
-  desc 'The Pip is preferred.'
+  desc 'Pip is the preferred installer for python packages.'
   tag 'installer'
   tag 'pip'
 
@@ -16,7 +16,9 @@ end
 control 'osmnx' do
   impact 1
   title 'Install osmnx'
-  desc 'Data scientists should be able top use osmnx'
+  desc 'Data scientists should be able top use osmnx' \
+  ' OSMX is often installed, but difficult to install with system pacakges' \
+  ' and rtree needing installing, which often break without lots of debugging.'
   tag 'installer'
   tag 'pip'
 
