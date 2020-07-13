@@ -1,26 +1,26 @@
-FROM jupyter/datascience-notebook:14fdfbf9cfc1
-
-LABEL maintainer=analytics-platform-tech@digital.justice.gov.uk
+FROM jupyter/datascience-notebook:229c7fea9d60
 
 USER root
+RUN apt-get update \
+        && apt-get install -y \
+        ca-certificates-java \
+        openjdk-8-jdk \
+        openssh-client \
+        software-properties-common \
+        gdal-bin \
+        libspatialindex-dev \
+        && rm -rf /var/lib/apt/lists/*
 
-ENV PATH=$PATH:$HOME/.local/bin
-ENV NB_UID=1001
-ENV CHOWN_HOME=no
+USER $NB_USER
+RUN pip install --upgrade \
+        boto3 \
+        black \
+        flake8 \
+        jupyterlab_code_formatter \
+        nbstripout \
+        rtree
 
-COPY ./files/apt_packages /tmp/
-
-RUN conda install boto3 black flake8 jupyterlab_code_formatter \
-    && apt-get update \
-    && apt-get install -y $(cat /tmp/apt_packages) \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN npm install jupyterlab-flake8 \
-    && jupyter labextension install jupyterlab-flake8 \
-    && jupyter labextension install @ryantam626/jupyterlab_code_formatter \
-    && jupyter serverextension enable --py jupyterlab_code_formatter \
-    && pip install --upgrade nbstripout 
-
-# Fix conda install for NB_UID
-RUN chown -R $NB_UID /opt/conda \
-    && usermod -u $NB_UID $NB_USER
+RUN npm install jupyterlab-flake8
+RUN jupyter labextension install jupyterlab-flake8 \
+        && jupyter labextension install @ryantam626/jupyterlab_code_formatter \
+        && jupyter serverextension enable --py jupyterlab_code_formatter
