@@ -18,7 +18,13 @@ RUN conda install boto3 \
     && pip install git+https://github.com/moj-analytical-services/gluejobutils/#egg=gluejobutils \
     && pip install --upgrade nbstripout \
     && mv /tmp/hdfs-site.xml /usr/local/spark/conf \
-    && apt-get update && apt-get install -y $(cat /tmp/apt_packages) \
+    && apt-get update && apt-get install -y \
+    ca-certificates-java \
+    openjdk-8-jdk \
+    openssh-client \
+    software-properties-common \
+    gdal-bin \
+    libspatialindex-dev \
     && rm -rf  /var/lib/apt/lists/*
 
 RUN chown -R $NB_UID /opt/conda \

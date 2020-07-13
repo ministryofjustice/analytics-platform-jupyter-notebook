@@ -1,0 +1,27 @@
+---
+name: Allspark Build & Test
+
+"on":
+  pull_request:
+    paths: ["allspark-notebook/**"]
+  push:
+    branches: [master]
+    paths: ["allspark-notebook/**"]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./allspark-notebook
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        run: make build
+        working-directory: ${{env.working-directory}}
+      - name: Install Inspec
+        uses: actionshub/chef-install@1.1.0
+        with: { project: inspec }
+      - name: Test
+        run: make test
+        working-directory: ${{env.working-directory}}
+        env: { CHEF_LICENSE: accept-no-persist }
