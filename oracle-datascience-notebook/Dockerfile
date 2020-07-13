@@ -8,12 +8,17 @@ ENV PATH=$PATH:$HOME/.local/bin
 ENV NB_UID=1001
 ENV CHOWN_HOME=no
 
-COPY ./files/apt_packages /tmp/
-
 RUN conda update conda \
     && conda install boto3 black flake8 jupyterlab_code_formatter \
     && apt-get update \
-    && apt-get install -y $(cat /tmp/apt_packages) libaio1 \
+    && apt-get install -y \
+    ca-certificates-java \
+    openjdk-8-jdk \
+    openssh-client \
+    software-properties-common \
+    gdal-bin \
+    libspatialindex-dev \
+    libaio1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Oracle Instant Client
@@ -35,7 +40,7 @@ RUN npm install jupyterlab-flake8 \
     && jupyter labextension install jupyterlab-flake8 \
     && jupyter labextension install @ryantam626/jupyterlab_code_formatter \
     && jupyter serverextension enable --py jupyterlab_code_formatter \
-    && pip install --upgrade nbstripout 
+    && pip install --upgrade nbstripout
 
 # Fix conda install for NB_UID
 RUN chown -R $NB_UID /opt/conda \
