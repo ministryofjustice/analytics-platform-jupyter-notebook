@@ -18,7 +18,8 @@ RUN pip install --upgrade \
         flake8 \
         jupyterlab_code_formatter \
         nbstripout \
-        rtree
+        rtree \
+        s3fs
 
 RUN npm install jupyterlab-flake8
 RUN jupyter labextension install jupyterlab-flake8 \
