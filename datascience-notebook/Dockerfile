@@ -22,6 +22,14 @@ RUN pip install --upgrade \
         s3fs
 
 RUN npm install jupyterlab-flake8
-RUN jupyter labextension install jupyterlab-flake8 \
-        && jupyter labextension install @ryantam626/jupyterlab_code_formatter \
-        && jupyter serverextension enable --py jupyterlab_code_formatter
+
+ENV JUPYTERLAB_DIR="/home/jovyan/.jupyter"
+RUN jupyter labextension install \
+        jupyterlab-flake8 \
+        @jupyter-widgets/jupyterlab-manager \
+        @jupyterlab/github \
+        @jupyterlab/git \
+        @ryantam626/jupyterlab_code_formatter
+
+RUN jupyter serverextension enable --py \
+        jupyterlab_code_formatter
