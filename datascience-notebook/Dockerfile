@@ -11,6 +11,9 @@ RUN apt-get update \
         libspatialindex-dev \
         && rm -rf /var/lib/apt/lists/*
 
+# Set nano as default editor
+RUN update-alternatives --set editor /bin/nano
+
 USER $NB_USER
 RUN pip install --upgrade \
         boto3 \
