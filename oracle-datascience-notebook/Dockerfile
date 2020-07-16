@@ -21,13 +21,15 @@ RUN conda update conda \
     libaio1 \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Oracle Instant Client
+# Install Oracle Instant Client and SQL*Plus
 # See: https://www.oracle.com/uk/database/technologies/instant-client/linux-x86-64-downloads.html#ic_x64_inst
 RUN mkdir /opt/oracle \
     && cd /opt/oracle \
     && curl -sO https://download.oracle.com/otn_software/linux/instantclient/19600/instantclient-basiclite-linux.x64-19.6.0.0.0dbru.zip \
+    && curl -sO https://download.oracle.com/otn_software/linux/instantclient/19600/instantclient-sqlplus-linux.x64-19.6.0.0.0dbru.zip \
     && unzip instantclient-basiclite-linux.x64-19.6.0.0.0dbru.zip \
-    && rm instantclient-basiclite-linux.x64-19.6.0.0.0dbru.zip
+    && unzip instantclient-sqlplus-linux.x64-19.6.0.0.0dbru.zip \
+    && rm instantclient-basiclite-linux.x64-19.6.0.0.0dbru.zip instantclient-sqlplus-linux.x64-19.6.0.0.0dbru.zip
 
 RUN sh -c "echo /opt/oracle/instantclient_19_6 > /etc/ld.so.conf.d/oracle-instantclient.conf" \
     && ldconfig
