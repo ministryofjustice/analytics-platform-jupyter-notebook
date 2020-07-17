@@ -12,7 +12,7 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     env:
-      working-directory: ./oracle-datascience-notebook
+      working-directory: ./datascience-notebook
     steps:
       - uses: actions/checkout@v2
       - name: Build
