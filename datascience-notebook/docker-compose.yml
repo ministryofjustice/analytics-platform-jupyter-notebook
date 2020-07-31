@@ -3,12 +3,15 @@ version: "3.7"
 
 services:
   test:
-    image: mojanalytics/datascience-notebook:latest
-    # image: quay.io/mojanalytics/datascience-notebook:v0.6.9
+    image: mojanalytics/datascience-notebook:${BUILD_TAG:-latest}
     command:
       - "/usr/local/bin/start-notebook.sh"
       - "--NotebookApp.token=''"
-    ports:
-      - 8888:8888
-    environment:
-      - JUPYTER_ENABLE_LAB=true
+    ports: [8888:8888]
+    environment: [JUPYTER_ENABLE_LAB=true]
+  inspec:
+    image: chef/inspec:current
+    environment: [CHEF_LICENSE=accept-no-persist]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./tests:/share/tests
