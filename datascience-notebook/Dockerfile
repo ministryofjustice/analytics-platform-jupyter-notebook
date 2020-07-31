@@ -11,8 +11,8 @@ RUN apt-get update \
         libspatialindex-dev \
         && rm -rf /var/lib/apt/lists/*
 
-# Set nano as default editor
-RUN update-alternatives --set editor /bin/nano
+RUN update-alternatives --set editor /bin/nano \
+        && usermod -a -G "staff,users" "${NB_USER}"
 
 USER $NB_USER
 RUN pip install --upgrade \
