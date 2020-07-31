@@ -12,4 +12,3 @@ control 'Conda available' do
     its('stdout') { should match /conda/ }
   end
 end
-
