@@ -7,8 +7,10 @@ USER root
 ENV PATH=$PATH:$HOME/.local/bin
 ENV NB_UID=1001
 ENV CHOWN_HOME=no
-
 ENV PYSPARK_SUBMIT_ARGS="--packages com.amazonaws:aws-java-sdk:1.7.4,org.apache.hadoop:hadoop-aws:2.7.1 pyspark-shell"
+
+RUN update-alternatives --set editor /bin/nano \
+    && usermod -a -G "staff,users" "${NB_USER}"
 
 COPY ./files/* /tmp/
 RUN conda install boto3 \
@@ -27,8 +29,8 @@ RUN conda install boto3 \
     libspatialindex-dev \
     && rm -rf  /var/lib/apt/lists/*
 
-RUN chown -R $NB_UID /opt/conda \
-    && usermod -u $NB_UID $NB_USER
+RUN chown -R "${NB_UID}" /opt/conda \
+    && usermod -u "${NB_UID}" "${NB_USER}"
 
-# Set nano as default editor
-RUN update-alternatives --set editor /bin/nano
+RUN usermod -a -G "staff,users" "${NB_USER}" \
+    && update-alternatives --set editor /bin/nano

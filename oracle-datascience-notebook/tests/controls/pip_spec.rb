@@ -1,7 +1,7 @@
 title 'Working Pip'
 
 control 'Pip available' do
-  impact 1
+  impact 'high'
   title 'Pip should be available to use'
   desc 'Pip is the preferred installer for python packages.'
   tag 'installer'
@@ -14,7 +14,7 @@ control 'Pip available' do
 end
 
 control 'osmnx' do
-  impact 1
+  impact 'high'
   title 'Install osmnx'
   desc 'Data scientists should be able top use osmnx' \
   ' OSMX is often installed, but difficult to install with system pacakges' \
