@@ -11,7 +11,7 @@ RUN apt-get update \
         libspatialindex-dev \
         && rm -rf /var/lib/apt/lists/*
 
-# Set nano as default editor
+RUN usermod -a -G "staff,users" "${NB_USER}"
 RUN update-alternatives --set editor /bin/nano
 
 USER $NB_USER
