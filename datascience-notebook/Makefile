@@ -11,7 +11,7 @@ build:
 test:
 	docker-compose --project-name ${PROJECT_NAME} down
 	docker-compose --project-name ${PROJECT_NAME} up -d
-	inspec exec tests -t docker://${PROJECT_NAME}_test_1
+	docker-compose run --rm inspec exec tests -t docker://${PROJECT_NAME}_test_1
 	docker-compose stop
 
 enter:

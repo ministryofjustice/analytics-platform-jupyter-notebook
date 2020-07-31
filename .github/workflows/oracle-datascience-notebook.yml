@@ -18,9 +18,6 @@ jobs:
       - name: Build
         run: make build
         working-directory: ${{env.working-directory}}
-      - name: Install Inspec
-        uses: actionshub/chef-install@1.1.0
-        with: { project: inspec }
       - name: Test
         run: make test
         working-directory: ${{env.working-directory}}
