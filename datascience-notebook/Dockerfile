@@ -1,5 +1,7 @@
 FROM jupyter/datascience-notebook:229c7fea9d60
 USER root
+
+# Use a different UID for joyvan to match the created use in the RStudio Image
 ENV NB_UID="1001"
 
 RUN apt-get update \
@@ -12,6 +14,8 @@ RUN apt-get update \
         libspatialindex-dev \
         && rm -rf /var/lib/apt/lists/*
 
+# As we now use a different user for joyvan (rather than standard 1000) we need to
+# modify permissionsfor conda, and amend the groups for the new user.
 RUN update-alternatives --set editor /bin/nano \
         && usermod -u "${NB_UID}" "${NB_USER}" \
         && usermod -a -G "staff,users" "${NB_USER}"
