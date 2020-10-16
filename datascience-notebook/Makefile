@@ -6,7 +6,7 @@ export PROJECT_NAME=datascience-notebook
 .PHONY: build test
 
 build:
-	docker build -t mojanalytics/${PROJECT_NAME}:${BUILD_TAG} .
+	docker build -t 593291632749.dkr.ecr.eu-west-1.amazonaws.com/${PROJECT_NAME}:${BUILD_TAG} .
 
 test:
 	docker-compose --project-name ${PROJECT_NAME} up -d test
