@@ -22,7 +22,7 @@ RUN update-alternatives --set editor /bin/nano \
 RUN chown -R ${NB_UID} /opt/conda
 
 USER $NB_USER
-RUN pip install --upgrade \
+RUN pip install --upgrade --default-timeout=100 \
         boto3 \
         black \
         flake8 \
