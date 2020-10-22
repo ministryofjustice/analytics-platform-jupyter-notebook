@@ -21,7 +21,7 @@ RUN update-alternatives --set editor /bin/nano \
         && usermod -a -G "staff,users" "${NB_USER}"
 RUN chown -R ${NB_UID} /opt/conda
 
-USER $NB_USER
+#USER $NB_USER
 RUN pip install --upgrade --default-timeout=100 \
         boto3 \
         black \
