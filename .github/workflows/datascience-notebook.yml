@@ -5,28 +5,34 @@ name: Datascience Build & Test
   pull_request:
     paths: ["datascience-notebook/**"]
   push:
-    branches: [master]
+    branches: [main]
     paths: ["datascience-notebook/**"]
 
 jobs:
-  docker:
+  yamllint:
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./datascience-notebook
     steps:
-      - uses: actions/checkout@v2
-      - name: Build
-        run: make build
-        working-directory: ${{env.working-directory}}
-      - name: Test
-        run: make test
-        working-directory: ${{env.working-directory}}
-        env: { CHEF_LICENSE: accept-no-persist }
+      - name: Check out code
+        uses: actions/checkout@main
+      - name: Run yaml Lint
+        uses: actionshub/yamllint@main
 
-  ecr:
+  mdl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@main
+      - name: Run Markdown Lint
+        uses: actionshub/markdownlint@master
+
+  docker:
     runs-on: [self-hosted]
     env:
       working-directory: ./datascience-notebook
+      IMAGE_TAG: ${{ github.sha }}
+      REPOSITORY: datascience-notebook
+      ECR_REPOSITORY: datascience-notebook
+    needs: [mdl, yamllint]
     steps:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -36,19 +42,29 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
         with:
-          registries: "593291632749"
+          registries: ${{ steps.login-ecr.outputs.registry }}
       - name: Check out code
-        uses: actions/checkout@master
-      - name: test
-        run: |
-          ls
-          docker run -v ${PWD}:/share -e CHEF_LICENSE=accept-no-persist --entrypoint "ls" --rm chef/inspec:current /
-      - name: Push image to Amazon ECR
+        uses: actions/checkout@v2
+      - name: Build image
+        run: make build
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: datascience-notebook
-          IMAGE_TAG: ${{ github.sha }}
-        run: |
-          docker build --network=host -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        working-directory: ${{env.working-directory}}
+          NETWORK: host
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+      - name: Install InSpec
+        uses: actionshub/chef-install@master
+        with:
+          channel: current
+          project: inspec
+      - name: Test
+        run: make test
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+      - name: Push image
+        run: make push
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+      - name: Cleanup
+        if: ${{ always() }}
+        run: make clean
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
