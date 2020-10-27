@@ -42,7 +42,7 @@ jobs:
       - name: test
         run: |
           ls
-          docker run -v ${PWD}:/share -e CHEF_LICENSE=accept-no-persist --entrypoint "ls" --rm chef/inspec:current /share
+          docker run -v ${PWD}:/share -e CHEF_LICENSE=accept-no-persist --entrypoint "ls" --rm chef/inspec:current /
       - name: Push image to Amazon ECR
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
