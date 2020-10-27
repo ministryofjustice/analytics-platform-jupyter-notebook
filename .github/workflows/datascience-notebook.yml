@@ -39,6 +39,10 @@ jobs:
           registries: "593291632749"
       - name: Check out code
         uses: actions/checkout@master
+      - name: test
+        run: |
+          ls
+          docker run -v ${PWD}:/share -e CHEF_LICENSE=accept-no-persist --entrypoint "ls" --rm chef/inspec:current /share
       - name: Push image to Amazon ECR
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
