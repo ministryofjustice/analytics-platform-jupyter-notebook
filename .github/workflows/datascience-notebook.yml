@@ -50,6 +50,7 @@ jobs:
         env:
           NETWORK: host
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          working-directory: ./datascience-notebook
       - name: Install InSpec
         uses: actionshub/chef-install@master
         with:
@@ -59,6 +60,7 @@ jobs:
         run: make test
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          working-directory: ./datascience-notebook
       - name: Push image
         run: make push
         env:
