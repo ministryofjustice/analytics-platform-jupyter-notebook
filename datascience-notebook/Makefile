@@ -24,8 +24,8 @@ test: clean up
 	docker-compose --project-name ${REPOSITORY} run --rm inspec exec tests -t docker://${REPOSITORY}_test_1
 
 clean:
-	docker-compose down
-	docker-compose --project-name ${REPOSITORY} down
+	docker-compose down --volumes --remove-orphans
+	docker-compose --project-name ${REPOSITORY} down --volumes
 	# docker volume rm rstudio_tests
 
 up:
