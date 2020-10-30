@@ -71,6 +71,7 @@ jobs:
         env:
           NETWORK: host
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ steps.prep.outputs.tag }}
           working-directory: ./datascience-notebook
       - name: Install InSpec
         uses: actionshub/chef-install@master
@@ -83,6 +84,7 @@ jobs:
           make test
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ steps.prep.outputs.tag }}
           working-directory: ./datascience-notebook
       - name: Push image
         run: |
@@ -90,6 +92,7 @@ jobs:
           make push
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ steps.prep.outputs.tag }}
       - name: Cleanup
         if: ${{ always() }}
         run: |
@@ -97,3 +100,4 @@ jobs:
           make clean
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ steps.prep.outputs.tag }}
