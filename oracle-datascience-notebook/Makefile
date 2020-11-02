@@ -1,20 +1,32 @@
 SHELL = '/bin/bash'
+export IMAGE_TAG ?= local
 export BUILD_TAG ?= latest
 export DOCKER_BUILDKIT=1
-export PROJECT_NAME=oracle-datascience-notebook
+export REPOSITORY=oracle-datascience-notebook
+export REGISTRY?=mojanalytics
+export NETWORK?=default
+export CHEF_LICENSE=accept-no-persist
 
-.PHONY: build test
+.PHONY: build test pull push inspec up clean
+
+pull:
+	docker pull ${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}
 
 build:
-	docker build -t mojanalytics/${PROJECT_NAME}:${BUILD_TAG} .
+	docker-compose build tests
+	docker build --network=${NETWORK} -t ${REGISTRY}/${REPOSITORY}:${IMAGE_TAG} .
 
-test:
-	docker-compose --project-name ${PROJECT_NAME} down
-	docker-compose --project-name ${PROJECT_NAME} up -d
-	docker-compose run --rm inspec exec tests -t docker://${PROJECT_NAME}_test_1
-	docker-compose stop
+push:
+	docker push ${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}
 
-enter:
-	docker-compose down
-	docker-compose --project-name ${PROJECT_NAME} up -d
-	docker-compose --project-name ${PROJECT_NAME} run --rm test bash
+test: clean up
+	echo Testing Container Version: ${IMAGE_TAG}
+	docker-compose --project-name ${REPOSITORY} run --rm inspec exec tests -t docker://${REPOSITORY}_test_1
+
+clean:
+	docker-compose down --volumes --remove-orphans
+	docker-compose --project-name ${REPOSITORY} down --volumes
+	# docker volume rm rstudio_tests
+
+up:
+	docker-compose --project-name ${REPOSITORY} up -d tests test
