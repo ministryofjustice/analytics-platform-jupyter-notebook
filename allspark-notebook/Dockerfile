@@ -13,12 +13,12 @@ RUN update-alternatives --set editor /bin/nano \
     && usermod -a -G "staff,users" "${NB_USER}"
 
 COPY ./files/* /tmp/
-RUN conda install boto3 \
-    && python /tmp/pyspark-s3.py \
+
+RUN python /tmp/pyspark-s3.py \
+    && pip install --upgrade nbstripout boto3 pip\
     && pip install git+https://github.com/moj-analytical-services/etl_manager.git#egg=etl_manager \
     && pip install git+https://github.com/moj-analytical-services/dataengineeringutils.git \
     && pip install git+https://github.com/moj-analytical-services/gluejobutils/#egg=gluejobutils \
-    && pip install --upgrade nbstripout \
     && mv /tmp/hdfs-site.xml /usr/local/spark/conf \
     && apt-get update && apt-get install -y \
     ca-certificates-java \
