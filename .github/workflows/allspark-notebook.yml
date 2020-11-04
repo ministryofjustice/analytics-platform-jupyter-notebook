@@ -3,7 +3,7 @@ name: Allspark Build & Test
 
 "on":
   pull_request:
-    paths: ["allspark-notebook/**"]
+    paths: ["allspark-notebook/**", ".github/workflows/allspark-notebook.yml"]
   push:
     branches: [master]
     paths: ["allspark-notebook/**"]
