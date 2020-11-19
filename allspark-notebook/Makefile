@@ -26,7 +26,6 @@ test: clean up
 clean:
 	docker-compose down --volumes --remove-orphans
 	docker-compose --project-name ${REPOSITORY} down --remove-orphans
-	# docker volume rm rstudio_tests
 
 up:
 	docker-compose --project-name ${REPOSITORY} up -d tests test
