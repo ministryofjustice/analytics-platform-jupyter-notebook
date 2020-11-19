@@ -30,7 +30,7 @@ jobs:
         uses: actionshub/markdownlint@master
 
   docker:
-    runs-on: [self-hosted]
+    runs-on: [self-hosted, ministryofjustice]
     env:
       REPOSITORY: oracle-datascience-notebook
       ECR_REPOSITORY: oracle-datascience-notebook
