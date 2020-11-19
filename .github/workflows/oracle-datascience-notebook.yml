@@ -1,7 +1,7 @@
 ---
 name: Oracle Datascience Build & Test
 
-"on":
+on:
   pull_request:
     paths: ["oracle-datascience-notebook/**"]
   push:

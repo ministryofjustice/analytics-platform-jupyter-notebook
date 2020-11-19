@@ -1,7 +1,7 @@
 ---
 name: Datascience Build & Test
 
-"on":
+on:
   pull_request:
     paths: ["datascience-notebook/**"]
   push:
