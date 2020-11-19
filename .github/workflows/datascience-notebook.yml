@@ -31,7 +31,7 @@ jobs:
         uses: actionshub/markdownlint@master
 
   docker:
-    runs-on: [self-hosted, ecr]
+    runs-on: [self-hosted]
     env:
       REPOSITORY: datascience-notebook
       ECR_REPOSITORY: datascience-notebook
