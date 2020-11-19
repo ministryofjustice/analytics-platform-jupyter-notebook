@@ -45,6 +45,8 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
         with:
           registries: ${{ steps.login-ecr.outputs.registry }}
+      - name: Check out code
+        uses: actions/checkout@v2          
       - name: Prep Tags
         id: prep
         run: |
@@ -66,8 +68,6 @@ jobs:
           echo ::set-output name=tag::${TAG}
           echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
 
-      - name: Check out code
-        uses: actions/checkout@v2
       - name: Build image
         run: make build
         env:
