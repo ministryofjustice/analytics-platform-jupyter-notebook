@@ -4,13 +4,12 @@ Jupyter Notebook Docker image for Analytics Platform
 
 Contents:
 
-- [Datascience-Notebook](https://quay.io/repository/mojanalytics/datascience-notebook) [![Docker Repository on Quay](https://quay.io/repository/mojanalytics/datascience-notebook/status "Docker Repository on Quay")](https://quay.io/repository/mojanalytics/datascience-notebook)
-- [Oracle-Datascience-Notebook](https://quay.io/repository/mojanalytics/oracle-datascience-notebook) [![Docker Repository on Quay](https://quay.io/repository/mojanalytics/oracle-datascience-notebook/status "Docker Repository on Quay")](https://quay.io/repository/mojanalytics/oracle-datascience-notebook)
-- [Allspark-Notebook](https://quay.io/repository/mojanalytics/all-spark) [![Docker Repository on Quay](https://quay.io/repository/mojanalytics/all-spark/status "Docker Repository on Quay")](https://quay.io/repository/mojanalytics/all-spark)
-
+- [Datascience-Notebook]
+- [Oracle-Datascience-Notebook]
+- [Allspark-Notebook]
 CI/CD:
 
-- CI: Quay.io is configured to build each of these docker images - see links above.
+- CI: Github Actions is configured to build each of these docker images 
 - Helm chart: <https://github.com/ministryofjustice/analytics-platform-helm-charts/tree/master/charts/jupyter-lab>
 - Deployment: Done by control panel when a user requests for themselves a Jupyter pod. Deploys using helm.
 
@@ -30,12 +29,10 @@ These images are derived from [jupyter/docker-stacks](https://github.com/jupyter
 
 ### Build and Run
 
-From the root of this repository
+From the sub-directory for the image you want to build
 
 ```bash
-docker image build --no-cache -t jupyter/datascience-notebook -f datascience-notebook/Dockerfile .
-docker image build --no-cache -t jupyter/oracle-datascience-notebook -f oracle-datascience-notebook/Dockerfile .
-docker image build --no-cache -t jupyter/all-spark -f all-spark-notebook/Dockerfile .
+make build
 ```
 
 ## Disabling authentication
