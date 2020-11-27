@@ -19,6 +19,7 @@ RUN apt-get update \
 RUN update-alternatives --set editor /bin/nano \
         && usermod -u "${NB_UID}" "${NB_USER}" \
         && usermod -a -G "staff,users" "${NB_USER}"
+        
 RUN chown -R ${NB_UID} /opt/conda
 
 USER $NB_USER
