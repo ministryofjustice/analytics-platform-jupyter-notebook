@@ -7,7 +7,7 @@ name: Datascience Build & Test
   push:
     branches: [main]
     paths: ["datascience-notebook/**"]
-    tags:
+    tags: '*'
 
 defaults:
   run:
