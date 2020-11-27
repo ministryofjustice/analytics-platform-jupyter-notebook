@@ -5,8 +5,9 @@ name: Oracle Datascience Build & Test
   pull_request:
     paths: ["oracle-datascience-notebook/**"]
   push:
-    branches: [master]
+    branches: [main]
     paths: ["oracle-datascience-notebook/**"]
+    tags: '*'
 
 defaults:
   run:
