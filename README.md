@@ -10,7 +10,7 @@ Contents:
 
 CI/CD:
 
-- CI: Github Actions is configured to build each of these docker images 
+- CI: Github Actions is configured to build each of these docker images
 - Helm chart: <https://github.com/ministryofjustice/analytics-platform-helm-charts/tree/master/charts/jupyter-lab>
 - Deployment: Done by control panel when a user requests for themselves a Jupyter pod. Deploys using helm.
 
