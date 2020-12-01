@@ -1,16 +1,14 @@
 ---
 name: Allspark Build & Test
 
-"on":
+on:
   pull_request:
+  push:
+    branches: [main]
     paths:
       - "allspark-notebook/**"
       - ".github/workflows/allspark-notebook.yml"
-
-  push:
-    branches: [main]
-    paths: ["allspark-notebook/**"]
-    tags: '*'
+    tags: "*"
 
 defaults:
   run:

@@ -5,8 +5,10 @@ on:
   pull_request:
   push:
     branches: [main]
-    paths: ["datascience-notebook/**"]
-    tags: '*'
+    paths:
+      - "datascience-notebook/**"
+      - ".github/workflows/datascience-notebook.yml"
+    tags: "*"
 
 defaults:
   run:

@@ -3,11 +3,12 @@ name: Oracle Datascience Build & Test
 
 on:
   pull_request:
-    paths: ["oracle-datascience-notebook/**"]
   push:
     branches: [main]
-    paths: ["oracle-datascience-notebook/**"]
-    tags: '*'
+    paths:
+      - "oracle-datascience-notebook/**"
+      - ".github/workflows/oracle-datascience-notebook.yml"
+    tags: "*"
 
 defaults:
   run:
