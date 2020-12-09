@@ -88,6 +88,7 @@ jobs:
         working-directory: "./${{ matrix.flavour }}"
         run: make test
         env:
+          NETWORK: host
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ steps.prep.outputs.tag }}
       - name: Push image
