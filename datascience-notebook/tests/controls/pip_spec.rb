@@ -24,6 +24,7 @@ control 'osmnx' do
 
   describe command('pip install osmnx') do
     its('exit_status') { should eq 0 }
+    its('stderr') { should eq "" }
     its('stdout') { should match /Successfully installed/ }
   end
 end

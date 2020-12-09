@@ -1,17 +1,11 @@
 ---
-name: Allspark Build & Test
+name: JupyterLab - test and build
 
-"on":
+on:
   pull_request:
-    paths: ["allspark-notebook/**"]
   push:
     branches: [main]
-    paths: ["allspark-notebook/**"]
-    tags: '*'
-
-defaults:
-  run:
-    working-directory: ./allspark-notebook
+    tags: "*"
 
 jobs:
   yamllint:
@@ -31,10 +25,18 @@ jobs:
         uses: actionshub/markdownlint@master
 
   docker:
-    runs-on: [self-hosted, ecr]
+    runs-on: [self-hosted, ministryofjustice, ecr]
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        flavour:
+          - "datascience-notebook"
+          - "allspark-notebook"
+          - "oracle-datascience-notebook"
     env:
-      REPOSITORY: allspark-notebook
-      ECR_REPOSITORY: allspark-notebook
+      REPOSITORY: ${{ matrix.flavour }}
+      ECR_REPOSITORY: ${{ matrix.flavour }}
     needs: [mdl, yamllint]
     steps:
       - name: Configure AWS credentials
@@ -52,7 +54,6 @@ jobs:
         id: prep
         run: |
           TAG=noop
-
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             TAG=${GITHUB_REF#refs/tags/}
           elif [[ $GITHUB_REF == refs/heads/* ]]; then
@@ -66,10 +67,13 @@ jobs:
             TAG="sha-${GITHUB_SHA::8}"
           fi
 
+          echo "Docker image tag = '$TAG'"
+
           echo ::set-output name=tag::${TAG}
           echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
 
       - name: Build image
+        working-directory: "./${{ matrix.flavour }}"
         run: make build
         env:
           NETWORK: host
@@ -81,17 +85,21 @@ jobs:
           channel: current
           project: inspec
       - name: Test
+        working-directory: "./${{ matrix.flavour }}"
         run: make test
         env:
+          NETWORK: host
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ steps.prep.outputs.tag }}
       - name: Push image
+        working-directory: "./${{ matrix.flavour }}"
         run: make push
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ steps.prep.outputs.tag }}
       - name: Cleanup
         if: ${{ always() }}
+        working-directory: "./${{ matrix.flavour }}"
         run: make clean
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
