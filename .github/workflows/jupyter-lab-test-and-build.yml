@@ -22,7 +22,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@main
       - name: Run Markdown Lint
-        uses: actionshub/markdownlint@master
+        uses: actionshub/markdownlint@main
 
   docker:
     runs-on: [self-hosted, ministryofjustice, ecr]
