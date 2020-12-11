@@ -29,4 +29,4 @@ RUN chown -R "${NB_UID}" /opt/conda \
     && usermod -u "${NB_UID}" "${NB_USER}"
 
 RUN usermod -a -G "staff,users" "${NB_USER}" \
-    && update-alternatives --set editor /bin/nano
+    && update-alternatives --set editor /bin/nano-tiny
