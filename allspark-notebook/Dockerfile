@@ -11,8 +11,8 @@ ENV PYSPARK_SUBMIT_ARGS="--packages com.amazonaws:aws-java-sdk:1.7.4,org.apache.
 
 COPY ./files/* /tmp/
 
-RUN python /tmp/pyspark-s3.py \
-    && pip install --upgrade nbstripout boto3 pip\
+RUN pip install --upgrade pip boto3 pyspark nbstripout \
+    && python /tmp/pyspark-s3.py \
     && pip install etl-manager==7.3.0 \
     && pip install gluejobutils==3.1.1 \
     && mv /tmp/hdfs-site.xml /usr/local/spark/conf \
