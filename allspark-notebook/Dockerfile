@@ -1,4 +1,4 @@
-FROM jupyter/all-spark-notebook:1145fb1198b2
+FROM jupyter/all-spark-notebook:399cbb986c6b
 
 LABEL maintainer=analytics-platform-tech@digital.justice.gov.uk
 
