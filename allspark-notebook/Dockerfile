@@ -9,9 +9,6 @@ ENV NB_UID=1001
 ENV CHOWN_HOME=no
 ENV PYSPARK_SUBMIT_ARGS="--packages com.amazonaws:aws-java-sdk:1.7.4,org.apache.hadoop:hadoop-aws:2.7.1 pyspark-shell"
 
-RUN update-alternatives --set editor /bin/nano \
-    && usermod -a -G "staff,users" "${NB_USER}"
-
 COPY ./files/* /tmp/
 
 RUN python /tmp/pyspark-s3.py \
