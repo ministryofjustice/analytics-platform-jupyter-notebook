@@ -1,4 +1,4 @@
-FROM jupyter/all-spark-notebook:1145fb1198b2
+FROM jupyter/all-spark-notebook:399cbb986c6b
 
 LABEL maintainer=analytics-platform-tech@digital.justice.gov.uk
 
@@ -9,13 +9,10 @@ ENV NB_UID=1001
 ENV CHOWN_HOME=no
 ENV PYSPARK_SUBMIT_ARGS="--packages com.amazonaws:aws-java-sdk:1.7.4,org.apache.hadoop:hadoop-aws:2.7.1 pyspark-shell"
 
-RUN update-alternatives --set editor /bin/nano \
-    && usermod -a -G "staff,users" "${NB_USER}"
-
 COPY ./files/* /tmp/
 
-RUN python /tmp/pyspark-s3.py \
-    && pip install --upgrade nbstripout boto3 pip\
+RUN pip install --upgrade pip boto3 pyspark nbstripout \
+    && python /tmp/pyspark-s3.py \
     && pip install etl-manager==7.3.0 \
     && pip install gluejobutils==3.1.1 \
     && mv /tmp/hdfs-site.xml /usr/local/spark/conf \
@@ -32,4 +29,4 @@ RUN chown -R "${NB_UID}" /opt/conda \
     && usermod -u "${NB_UID}" "${NB_USER}"
 
 RUN usermod -a -G "staff,users" "${NB_USER}" \
-    && update-alternatives --set editor /bin/nano
+    && update-alternatives --set editor /bin/nano-tiny
