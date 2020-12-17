@@ -7,11 +7,13 @@ USER root
 ENV PATH=$PATH:$HOME/.local/bin
 ENV NB_UID=1001
 ENV CHOWN_HOME=no
-ENV PYSPARK_SUBMIT_ARGS="--packages com.amazonaws:aws-java-sdk:1.7.4,org.apache.hadoop:hadoop-aws:2.7.1 pyspark-shell"
+# `org.apache.hadoop:hadoop-aws` version must match `pyspark`
+# version
+ENV PYSPARK_SUBMIT_ARGS="--packages com.amazonaws:aws-java-sdk:1.11.918,org.apache.hadoop:hadoop-aws:3.0.1 pyspark-shell"
 
 COPY ./files/* /tmp/
 
-RUN pip install --upgrade pip boto3 pyspark nbstripout \
+RUN pip install --upgrade pip boto3 pyspark==3.0.1 nbstripout \
     && python /tmp/pyspark-s3.py \
     && pip install etl-manager==7.3.0 \
     && pip install gluejobutils==3.1.1 \
