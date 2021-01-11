@@ -29,3 +29,6 @@ clean:
 
 up:
 	docker-compose --project-name ${REPOSITORY} up -d tests test
+
+enter:
+	docker-compose --project-name ${REPOSITORY} run test bash

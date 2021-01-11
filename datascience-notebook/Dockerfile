@@ -1,4 +1,6 @@
 FROM jupyter/datascience-notebook:229c7fea9d60
+LABEL maintainer=analytics-platform-tech@digital.justice.gov.uk
+
 USER root
 
 RUN apt-get update \
@@ -11,8 +13,6 @@ RUN apt-get update \
   libspatialindex-dev \
   && rm -rf /var/lib/apt/lists/*
 
-# As we now use a different user for joyvan (rather than standard 1000) we need to
-# modify permissionsfor conda, and amend the groups for the new user.
 RUN update-alternatives --set editor /bin/nano \
   && usermod -a -G "staff,users" "${NB_USER}"
 
@@ -20,20 +20,21 @@ USER $NB_USER
 RUN pip install --upgrade \
   boto3 \
   black \
-  flake8 \
-  jupyterlab_code_formatter \
   nbstripout \
   rtree \
   s3fs
 
-RUN npm install jupyterlab-flake8
+# RUN npm install jupyterlab-flake8
 
 ENV JUPYTERLAB_DIR="/home/jovyan/.jupyter"
 RUN jupyter labextension install \
-  jupyterlab-flake8 \
   @jupyter-widgets/jupyterlab-manager \
   @jupyterlab/github \
-  @jupyterlab/git \
-  @ryantam626/jupyterlab_code_formatter
-RUN jupyter serverextension enable --py \
-  jupyterlab_code_formatter
+  @jupyterlab/git
+
+RUN pip install flake8 \
+  && jupyter labextension install jupyterlab-flake8
+
+RUN pip install jupyterlab_code_formatter==1.3.8 \
+  && jupyter labextension install @ryantam626/jupyterlab_code_formatter@v1.3.8 \
+  && jupyter serverextension enable --user --py jupyterlab_code_formatter

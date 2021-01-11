@@ -1,5 +1,4 @@
 FROM jupyter/all-spark-notebook:399cbb986c6b
-
 LABEL maintainer=analytics-platform-tech@digital.justice.gov.uk
 
 USER root
