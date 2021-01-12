@@ -24,8 +24,6 @@ RUN pip install --upgrade \
   rtree \
   s3fs
 
-# RUN npm install jupyterlab-flake8
-
 ENV JUPYTERLAB_DIR="/home/jovyan/.jupyter"
 RUN jupyter labextension install \
   @jupyter-widgets/jupyterlab-manager \
