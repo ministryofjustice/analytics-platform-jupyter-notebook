@@ -9,7 +9,7 @@ control 'Common Users' do
 
   describe user('jovyan') do
     it { should exist }
-    its('uid') { should eq 1001 }
+    its('uid') { should eq 1000 }
   end
 end
 
