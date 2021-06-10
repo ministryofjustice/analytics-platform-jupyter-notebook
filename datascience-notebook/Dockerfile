@@ -19,7 +19,7 @@ RUN apt-get update \
 RUN update-alternatives --set editor /bin/nano \
         && usermod -u "${NB_UID}" "${NB_USER}" \
         && usermod -a -G "staff,users" "${NB_USER}"
-        
+
 RUN chown -R ${NB_UID} /opt/conda
 
 USER $NB_USER
@@ -35,6 +35,9 @@ RUN pip install --upgrade \
 RUN npm install jupyterlab-flake8
 
 ENV JUPYTERLAB_DIR="/home/jovyan/.jupyter"
+ENV AWS_ROLE_ARN=arn:aws:iam::525294151996:role/dev_user_andylightfoot
+AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/token
+
 RUN jupyter labextension install \
         jupyterlab-flake8 \
         @jupyter-widgets/jupyterlab-manager \
