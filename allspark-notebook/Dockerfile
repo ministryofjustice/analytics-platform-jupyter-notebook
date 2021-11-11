@@ -35,6 +35,9 @@ RUN apt-get update && \
 # I'm not sure this has any affect
 COPY files/hdfs-site.xml /usr/local/spark/conf/hdfs-site.xml
 
+# add-user-to-group.sh add the $NB_USER to group 50 (staff) used by RStudio
+COPY files/add-user-to-group.sh /usr/local/bin/before-notebook.d/
+
 # Install pythong packages
 # - pip - python package manager
 # - boto3 - python AWS library
@@ -46,9 +49,6 @@ RUN pip install --upgrade \
   nbstripout \
   dataengineeringutils3==1.3.0 \
   etl-manager==7.4.0
-
-# Add user to groups used by RStudio
-RUN usermod -a -G "staff,users" "${NB_USER}"
 
 # Vi just doesn't cut it for some people
 RUN update-alternatives --set editor /bin/nano-tiny
