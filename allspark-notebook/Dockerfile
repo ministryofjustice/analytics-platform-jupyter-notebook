@@ -1,33 +1,54 @@
-FROM jupyter/all-spark-notebook:399cbb986c6b
+FROM jupyter/all-spark-notebook:spark-3.1.1@sha256:b73dad39ad5c469a92764e38d7cc4321040d3fedddcad7fcebc4ddc7f9c15ff2
+
 LABEL maintainer=analytics-platform-tech@digital.justice.gov.uk
 
+ENV PATH=$PATH:$HOME/.local/bin
+
+# To match RStudio
+ENV NB_UID=1001
+
+# Home directory contents is already owned by UID 1001
+ENV CHOWN_HOME=no
+
+# NB these are sensible defaults but may need to be changed programatically for
+# non local spark (ie. EMR etc.)
+ENV PYSPARK_SUBMIT_ARGS="--packages com.amazonaws:aws-java-sdk:1.11.918,org.apache.hadoop:hadoop-aws:3.0.1 pyspark-shell"
+
+# Container must be run as root to use NB_UID
 USER root
 
-ENV PATH=$PATH:$HOME/.local/bin \
-  CHOWN_HOME=no \
-  PYSPARK_SUBMIT_ARGS="--packages com.amazonaws:aws-java-sdk:1.11.918,org.apache.hadoop:hadoop-aws:3.0.1 pyspark-shell"
-# `org.apache.hadoop:hadoop-aws` version must match `pyspark` version
-
-RUN apt-get update && apt-get install -y \
-  ca-certificates-java \
-  openjdk-8-jdk \
-  openssh-client \
-  software-properties-common \
+# Install OS pacakges
+#
+# The reason we have installed these has been lost. Including just in case.
+#
+# - gdal-bin
+# - libspatialindex-dev
+# - openssh-client
+#
+RUN apt-get update && \
+  apt-get install -y \
   gdal-bin \
   libspatialindex-dev \
-  && rm -rf /var/lib/apt/lists/*
+  openssh-client && \
+  rm -rf /var/lib/apt/lists/*
 
-COPY files/pyspark-s3.py /tmp/pyspark-s3.py
+# I'm not sure this has any affect
 COPY files/hdfs-site.xml /usr/local/spark/conf/hdfs-site.xml
 
-RUN usermod -a -G "staff,users" "${NB_USER}" \
-  && update-alternatives --set editor /bin/nano-tiny
+# add-user-to-group.sh add the $NB_USER to group 50 (staff) used by RStudio
+COPY files/add-user-to-group.sh /usr/local/bin/before-notebook.d/
 
-USER $NB_USER
+# Install pythong packages
+# - pip - python package manager
+# - boto3 - python AWS library
+# - nbstripout - tool for stripping sensitive data out of notebooks
+# 
 RUN pip install --upgrade \
   pip \
   boto3 \
-  pyspark==3.0.1 \
   nbstripout \
-  etl-manager==7.3.0 \
-  gluejobutils==3.1.1
+  dataengineeringutils3==1.3.0 \
+  etl-manager==7.4.0
+
+# Vi just doesn't cut it for some people
+RUN update-alternatives --set editor /bin/nano-tiny
