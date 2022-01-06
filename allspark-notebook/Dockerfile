@@ -4,10 +4,7 @@ LABEL maintainer=analytics-platform-tech@digital.justice.gov.uk
 
 ENV PATH=$PATH:$HOME/.local/bin
 
-# To match RStudio
-ENV NB_UID=1001
-
-# Home directory contents is already owned by UID 1001
+# Home directory contents is already owned by UID 1000
 ENV CHOWN_HOME=no
 
 # NB these are sensible defaults but may need to be changed programatically for
