@@ -9,7 +9,7 @@ ENV CHOWN_HOME=no
 
 # NB these are sensible defaults but may need to be changed programatically for
 # non local spark (ie. EMR etc.)
-ENV PYSPARK_SUBMIT_ARGS="--packages com.amazonaws:aws-java-sdk:1.11.918,org.apache.hadoop:hadoop-aws:3.0.1 pyspark-shell"
+ENV PYSPARK_SUBMIT_ARGS="--packages com.amazonaws:aws-java-sdk:1.12.134,org.apache.hadoop:hadoop-aws:3.0.1 pyspark-shell"
 
 # Container must be run as root to use NB_UID
 USER root
