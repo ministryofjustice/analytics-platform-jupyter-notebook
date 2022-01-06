@@ -4,10 +4,7 @@ LABEL maintainer=analytics-platform-tech@digital.justice.gov.uk
 
 ENV PATH=$PATH:$HOME/.local/bin
 
-# To match RStudio
-ENV NB_UID=1001
-
-# Home directory contents is already owned by UID 1001
+# Home directory contents is already owned by UID 1000
 ENV CHOWN_HOME=no
 
 # NB these are sensible defaults but may need to be changed programatically for
@@ -32,13 +29,13 @@ RUN apt-get update && \
   openssh-client && \
   rm -rf /var/lib/apt/lists/*
 
-# I'm not sure this has any affect
+# I'm not sure this has any effect
 COPY files/hdfs-site.xml /usr/local/spark/conf/hdfs-site.xml
 
-# add-user-to-group.sh add the $NB_USER to group 50 (staff) used by RStudio
+# add-user-to-group.sh adds the $NB_USER to group 50 (staff) used by RStudio
 COPY files/add-user-to-group.sh /usr/local/bin/before-notebook.d/
 
-# Install pythong packages
+# Install python packages
 # - pip - python package manager
 # - boto3 - python AWS library
 # - nbstripout - tool for stripping sensitive data out of notebooks

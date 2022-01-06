@@ -3,13 +3,13 @@ title 'Jovyan User'
 control 'Common Users' do
   impact 'high'
   title 'The jovyan user should exist'
-  desc 'The joyvan user should exist This makes sure that it has the same UID & GID as the rstudio images'
+  desc 'The joyvan user should exist and should have a UID of 1000'
   tag 'user'
   tag 'group'
 
   describe user('jovyan') do
     it { should exist }
-    its('uid') { should eq 1001 }
+    its('uid') { should eq 1000 }
   end
 end
 
