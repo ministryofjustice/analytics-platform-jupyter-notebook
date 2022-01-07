@@ -44,6 +44,7 @@ RUN pip install --upgrade \
   pip \
   boto3 \
   nbstripout \
+  "s3fs<=0.4" \
   dataengineeringutils3==1.3.0 \
   etl-manager==7.4.0
 
