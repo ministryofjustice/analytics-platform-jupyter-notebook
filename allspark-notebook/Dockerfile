@@ -43,6 +43,7 @@ COPY files/add-user-to-group.sh /usr/local/bin/before-notebook.d/
 RUN pip install --upgrade \
   pip \
   boto3 \
+  s3fs<=0.4 \
   nbstripout \
   dataengineeringutils3==1.3.0 \
   etl-manager==7.4.0
