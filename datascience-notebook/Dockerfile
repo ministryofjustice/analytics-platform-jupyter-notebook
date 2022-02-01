@@ -17,7 +17,7 @@ RUN update-alternatives --set editor /bin/nano \
   && usermod -a -G "staff,users" "${NB_USER}"
 
 USER $NB_USER
-RUN mamba install --quiet --yes \
+RUN conda install --quiet --yes \
     'nbstripout'
 RUN pip install --upgrade \
   boto3 \
