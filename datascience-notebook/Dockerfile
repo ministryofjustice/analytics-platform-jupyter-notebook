@@ -24,6 +24,11 @@ RUN pip install --upgrade \
   rtree \
   s3fs
 
+RUN conda install --yes \
+    'nbstripout' 
+
+RUN conda list 
+
 ENV JUPYTERLAB_DIR="/home/jovyan/.jupyter"
 RUN jupyter labextension install \
   @jupyter-widgets/jupyterlab-manager \
