@@ -36,3 +36,12 @@ RUN pip install flake8 \
 RUN pip install jupyterlab_code_formatter==1.3.8 \
   && jupyter labextension install @ryantam626/jupyterlab_code_formatter@v1.3.8 \
   && jupyter serverextension enable --user --py jupyterlab_code_formatter
+
+# Configure environment
+ENV CONDA_DIR=/opt/conda 
+ENV PATH="${CONDA_DIR}/bin:${PATH}" 
+
+RUN conda install --quiet --yes \
+    'nbstripout' && \
+    conda clean --all -f -y  && \
+    fix-permissions "${CONDA_DIR}"
