@@ -24,6 +24,7 @@ RUN pip install --upgrade \
   rtree \
   s3fs
 
+
 ENV JUPYTERLAB_DIR="/home/jovyan/.jupyter"
 RUN jupyter labextension install \
   @jupyter-widgets/jupyterlab-manager \
