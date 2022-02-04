@@ -1,4 +1,4 @@
-FROM jupyter/datascience-notebook:lab-3.1.1
+FROM jupyter/datascience-notebook:lab-3.1.11
 LABEL maintainer=analytics-platform-tech@digital.justice.gov.uk
 
 USER root
