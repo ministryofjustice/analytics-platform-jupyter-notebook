@@ -48,5 +48,10 @@ RUN pip install --upgrade \
   dataengineeringutils3==1.3.0 \
   etl-manager==7.4.0
 
+RUN conda install --yes \
+    'nbstripout' 
+
+RUN conda list 
+
 # Vi just doesn't cut it for some people
 RUN update-alternatives --set editor /bin/nano-tiny
