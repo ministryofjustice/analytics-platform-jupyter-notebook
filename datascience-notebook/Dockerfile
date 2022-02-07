@@ -31,11 +31,11 @@ RUN pip install --upgrade \
   rtree \
   "s3fs<=0.4"
 
-#ENV JUPYTERLAB_DIR="/home/jovyan/.jupyter"
-#RUN jupyter labextension install \
-#  @jupyter-widgets/jupyterlab-manager \
-#  @jupyterlab/github \
-#  @jupyterlab/git
+ENV JUPYTERLAB_DIR="/home/jovyan/.jupyter"
+RUN jupyter labextension install \
+  @jupyter-widgets/jupyterlab-manager \
+  @jupyterlab/github \
+  @jupyterlab/git
 
 #RUN pip install flake8 \
 #  && jupyter labextension install jupyterlab-flake8
