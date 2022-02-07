@@ -21,9 +21,9 @@ RUN apt-get update \
 
 # RUN update-alternatives --set editor /bin/nano \
 RUN update-alternatives --set editor /bin/nano-tiny
-RUN usermod -a -G "staff,users" "${NB_USER}"
+#RUN usermod -a -G "staff,users" "${NB_USER}"
 
-USER $NB_USER
+#USER $NB_USER
 RUN pip install --upgrade \
   boto3 \
   black \
@@ -31,7 +31,7 @@ RUN pip install --upgrade \
   rtree \
   "s3fs<=0.4"
 
-ENV JUPYTERLAB_DIR="/home/jovyan/.jupyter"
+#ENV JUPYTERLAB_DIR="/home/jovyan/.jupyter"
 #RUN jupyter labextension install \
 #  @jupyter-widgets/jupyterlab-manager \
 #  @jupyterlab/github \
