@@ -13,13 +13,13 @@ control 'Common Users' do
   end
 end
 
-control 'Common Groups' do
-  impact 'high'
-  title 'The joyvan user should have the corect groups'
-  desc 'joyvan should have the primary group of users and also be in the staff group to match RStudio, but not break this image'
-
-  describe user('jovyan') do
-    its('gid') { should eq 100 }
-    its('groups') { should eq ['users', 'staff']}
-  end
-end
+#control 'Common Groups' do
+#  impact 'high'
+#  title 'The joyvan user should have the corect groups'
+#  desc 'joyvan should have the primary group of users and also be in the staff group to match RStudio, but not break this image'
+#
+#  describe user('jovyan') do
+#    its('gid') { should eq 100 }
+#    its('groups') { should eq ['users', 'staff']}
+#  end
+#end
