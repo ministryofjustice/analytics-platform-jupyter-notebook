@@ -19,11 +19,8 @@ RUN apt-get update \
   libspatialindex-dev \
   && rm -rf /var/lib/apt/lists/*
 
-# RUN update-alternatives --set editor /bin/nano \
 RUN update-alternatives --set editor /bin/nano-tiny
-#RUN usermod -a -G "staff,users" "${NB_USER}"
 
-#USER $NB_USER
 RUN pip install --upgrade \
   boto3 \
   black \
@@ -33,16 +30,3 @@ RUN pip install --upgrade \
 
 RUN conda install --yes \
     'nbstripout' 
-
-#ENV JUPYTERLAB_DIR="/home/jovyan/.jupyter"
-#RUN jupyter labextension install \
-#  @jupyter-widgets/jupyterlab-manager \
-#  @jupyterlab/github \
-#  @jupyterlab/git
-
-#RUN pip install flake8 \
-#  && jupyter labextension install jupyterlab-flake8
-
-#RUN pip install jupyterlab_code_formatter==1.3.8 \
-#  && jupyter labextension install @ryantam626/jupyterlab_code_formatter@v1.3.8 \
-#  && jupyter serverextension enable --user --py jupyterlab_code_formatter
