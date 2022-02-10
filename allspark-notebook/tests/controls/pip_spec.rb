@@ -9,7 +9,7 @@ control 'Pip available' do
 
   describe command('pip  --version') do
     its('exit_status') { should eq 0 }
-    its('stdout') { should match /pip 22.0.3/ }
+    its('stdout') { should match /pip 21/ }
   end
 end
 
