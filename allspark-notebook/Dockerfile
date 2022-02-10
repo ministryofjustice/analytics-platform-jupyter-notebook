@@ -50,6 +50,8 @@ RUN pip install --upgrade \
 
 RUN conda install --yes \
     'nbstripout' 
+
+RUN nbstripout --install --system
     
 # Vi just doesn't cut it for some people
 RUN update-alternatives --set editor /bin/nano-tiny

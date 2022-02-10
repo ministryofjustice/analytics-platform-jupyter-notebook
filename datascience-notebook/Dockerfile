@@ -30,3 +30,5 @@ RUN pip install --upgrade \
 
 RUN conda install --yes \
     'nbstripout' 
+
+RUN nbstripout --install --system
