@@ -8,6 +8,6 @@ control 'JupyerLab version' do
 
   describe command('jupyter-lab --version') do
     its('exit_status') { should eq 0 }
-    its('stdout') { should match /3.4.7/ }
+    its('stdout') { should match /3.1.11/ }
   end
 end
