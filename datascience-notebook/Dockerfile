@@ -28,6 +28,8 @@ RUN pip install --upgrade \
   rtree \
   "s3fs<=0.4"
 
+RUN pip install --upgrade jupyterlab jupyterlab-git
+
 RUN conda install --yes \
     'nbstripout' 
 
