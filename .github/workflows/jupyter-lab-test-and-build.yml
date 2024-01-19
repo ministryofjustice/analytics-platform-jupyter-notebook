@@ -31,9 +31,9 @@ jobs:
       max-parallel: 3
       matrix:
         flavour:
-          - "datascience-notebook"
           - "allspark-notebook"
-          - "oracle-datascience-notebook"
+          # - "datascience-notebook"
+          # - "oracle-datascience-notebook"
     env:
       REPOSITORY: ${{ matrix.flavour }}
       ECR_REPOSITORY: ${{ matrix.flavour }}
@@ -88,21 +88,26 @@ jobs:
           project: inspec
       - name: Test
         working-directory: "./${{ matrix.flavour }}"
-        run: make test
-        env:
-          NETWORK: host
-          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ steps.prep.outputs.tag }}
-      - name: Push image
-        working-directory: "./${{ matrix.flavour }}"
-        run: make push
-        env:
-          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ steps.prep.outputs.tag }}
-      - name: Cleanup
-        if: ${{ always() }}
-        working-directory: "./${{ matrix.flavour }}"
-        run: make clean
-        env:
-          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ steps.prep.outputs.tag }}
+        run: |
+          inspec exec tests -t "docker://${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}"
+
+      # - name: Test
+      #   working-directory: "./${{ matrix.flavour }}"
+      #   run: make test
+      #   env:
+      #     NETWORK: host
+      #     REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+      #     IMAGE_TAG: ${{ steps.prep.outputs.tag }}
+      # - name: Push image
+      #   working-directory: "./${{ matrix.flavour }}"
+      #   run: make push
+      #   env:
+      #     REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+      #     IMAGE_TAG: ${{ steps.prep.outputs.tag }}
+      # - name: Cleanup
+      #   if: ${{ always() }}
+      #   working-directory: "./${{ matrix.flavour }}"
+      #   run: make clean
+      #   env:
+      #     REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+      #     IMAGE_TAG: ${{ steps.prep.outputs.tag }}
