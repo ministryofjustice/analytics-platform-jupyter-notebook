@@ -13,7 +13,7 @@ pull:
 	docker pull ${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}
 
 build:
-	docker compose build tests
+	docker-compose build tests
 	docker build --network=${NETWORK} -t ${REGISTRY}/${REPOSITORY}:${IMAGE_TAG} .
 
 push:
@@ -21,11 +21,11 @@ push:
 
 test: clean up
 	echo Testing Container Version: ${IMAGE_TAG}
-	docker compose --project-name ${REPOSITORY} run --rm inspec exec tests -t "docker://${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}"
+	docker-compose --project-name ${REPOSITORY} run --rm inspec exec tests -t "docker://${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}"
 
 clean:
-	docker compose down --volumes --remove-orphans
-	docker compose --project-name ${REPOSITORY} down --remove-orphans
+	docker-compose down --volumes --remove-orphans
+	docker-compose --project-name ${REPOSITORY} down --remove-orphans
 
 up:
-	docker compose --project-name ${REPOSITORY} up -d tests test
+	docker-compose --project-name ${REPOSITORY} up -d tests test
