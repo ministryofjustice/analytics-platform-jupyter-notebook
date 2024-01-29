@@ -54,7 +54,7 @@ jobs:
       matrix:
         flavour:
           - "allspark-notebook"
-          # - "datascience-notebook"
+          - "datascience-notebook"
           # - "oracle-datascience-notebook"
     steps:
       - name: Checkout

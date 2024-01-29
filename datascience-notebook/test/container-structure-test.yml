@@ -1,0 +1,46 @@
+---
+schemaVersion: 2.0.0
+
+containerRunOptions:
+  user: "jovyan"
+
+commandTests:
+  - name: "whoami"
+    command: "whoami"
+    expectedOutput: ["jovyan"]
+
+  - name: "user"
+    command: "id"
+    args: ["--user", "jovyan"]
+    expectedOutput: ["1000"]
+
+  - name: "groups"
+    command: "id"
+    args: ["--groups", "jovyan"]
+    expectedOutput: ["100"]
+
+  - name: "conda"
+    command: "conda"
+    args: ["info"]
+    expectedOutput: [".*active environment.*"]
+
+  - name: "juptyer-lab"
+    command: "jupyter-lab"
+    args: ["--version"]
+    expectedOutput: ["4.0.11"]
+
+  - name: "nano"
+    command: "nano"
+    args: ["--version"]
+    expectedOutput: ["GNU nano.*"]
+
+  - name: "pip"
+    command: "pip"
+    args: ["--version"]
+    expectedOutput: ["pip.*"]
+
+  - name: "install osmnx"
+    command: "pip"
+    args: ["install", "osmnx"]
+    exitCode: 0
+    expectedOutput: ["Successfully installed.*"]

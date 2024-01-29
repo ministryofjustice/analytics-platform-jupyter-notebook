@@ -3,9 +3,7 @@ FROM quay.io/jupyter/all-spark-notebook@sha256:a5bf7857fdfb439c21152f58f54b7c1fc
 
 LABEL org.opencontainers.image.vendor="Ministry of Justice" \
       org.opencontainers.image.authors="Analytical Platform" \
-      org.opencontainers.image.title="Jupyter All Spark" \
-      org.opencontainers.image.description="Extended version of Microsoft's image" \
-      org.opencontainers.image.url="https://github.com/ministryofjustice/data-platform/tree/main/containers/actions-runner" \
+      org.opencontainers.image.title="Jupyter All Spark Notebook" \
       maintainer="analytics-platform-tech@digital.justice.gov.uk"
 
 ENV PATH="${PATH}:${HOME}/.local/bin" \
@@ -20,9 +18,8 @@ RUN apt-get update --yes \
          libspatialindex-dev \
          openssh-client \
     && apt-get clean --yes \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN pip install --no-cache-dir --upgrade \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip install --no-cache-dir --upgrade \
       pip \
       boto3 \
       nbstripout \
