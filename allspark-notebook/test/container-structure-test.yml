@@ -34,7 +34,8 @@ commandTests:
     args: ["--version"]
     expectedOutput: ["pip.*"]
 
-  - name: "osmnx"
+  - name: "install osmnx"
     command: "pip"
     args: ["install", "osmnx"]
-    expectedOutput: ["Successfully installed osmnx.*"]
+    exitCode: 0
+    expectedOutput: ["Successfully installed.*"]

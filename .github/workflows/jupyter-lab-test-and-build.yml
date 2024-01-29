@@ -67,7 +67,6 @@ jobs:
         run: |
           bash scripts/build-and-test.sh "${{ matrix.flavour }}"
 
-
   # docker:
   #   runs-on: [self-hosted, management-ecr]
   #   strategy:
