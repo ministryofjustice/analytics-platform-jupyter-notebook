@@ -1,31 +1,53 @@
 ---
-name: JupyterLab - test and build
+name: JupyterLab - Test and Build
 
 on:
   pull_request:
+    branches:
+      - main
   push:
-    branches: [main]
-    tags: "*"
+    branches:
+      - main
+    tags:
+      - "*"
+
+permissions: {}
 
 jobs:
   yamllint:
+    name: YAML Lint
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - name: Check out code
-        uses: actions/checkout@main
-      - name: Run yaml Lint
-        uses: actionshub/yamllint@main
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-  mdl:
+      - name: Run yamllint
+        id: run_yamllint
+        uses: actionshub/yamllint@b772a30c3ba90c5f5aadfe94d8f3599e3a7099c8 # v1.8.2
+
+  markdownlint:
+    name: Markdown Lint
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - name: Check out code
-        uses: actions/checkout@main
-      - name: Run Markdown Lint
-        uses: actionshub/markdownlint@main
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-  docker:
-    runs-on: [self-hosted, management-ecr]
+      - name: Run mdl
+        id: run_mdl
+        uses: actionshub/markdownlint@6c82ff529253530dfbf75c37570876c52692835f # v3.1.4
+
+  build-and-test:
+    if: ${{ github.base_ref != 'main' }}
+    name: Build and Test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       fail-fast: false
       max-parallel: 3
@@ -34,85 +56,112 @@ jobs:
           - "allspark-notebook"
           # - "datascience-notebook"
           # - "oracle-datascience-notebook"
-    env:
-      REPOSITORY: ${{ matrix.flavour }}
-      ECR_REPOSITORY: ${{ matrix.flavour }}
-    needs: [mdl, yamllint]
     steps:
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-region: eu-west-1
-          role-to-assume: arn:aws:iam::593291632749:role/github-actions-management-ecr
-          role-duration-seconds: 1200
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-        with:
-          registries: 593291632749
-      - name: Check out code
-        uses: actions/checkout@v2
-      - name: Prep Tags
-        id: prep
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Build and Test
+        id: build_and_test
+        shell: bash
         run: |
-          TAG=noop
-          if [[ $GITHUB_REF == refs/tags/* ]]; then
-            TAG=${GITHUB_REF#refs/tags/}
-          elif [[ $GITHUB_REF == refs/heads/* ]]; then
-            TAG=$(echo ${GITHUB_REF#refs/heads/} | sed -r 's#/+#-#g')
-            if [ "${{ github.event.repository.default_branch }}" = "$TAG" ]; then
-              TAG=edge
-            fi
-          elif [[ $GITHUB_REF == refs/pull/* ]]; then
-            TAG=pr-${{ github.event.number }}
-          elif [ "${{ github.event_name }}" = "push" ]; then
-            TAG="sha-${GITHUB_SHA::8}"
-          fi
+          bash scripts/build-and-test.sh "${{ matrix.flavour }}"
 
-          echo "Docker image tag = '$TAG'"
 
-          echo ::set-output name=tag::${TAG}
-          echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+  # docker:
+  #   runs-on: [self-hosted, management-ecr]
+  #   strategy:
+  #     fail-fast: false
+  #     max-parallel: 3
+  #     matrix:
+  #       flavour:
+  #         - "allspark-notebook"
+  #         # - "datascience-notebook"
+  #         # - "oracle-datascience-notebook"
+  #   env:
+  #     REPOSITORY: ${{ matrix.flavour }}
+  #     ECR_REPOSITORY: ${{ matrix.flavour }}
+  #   needs: [mdl, yamllint]
+  #   steps:
+  #     - name: Configure AWS credentials
+  #       uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-region: eu-west-1
+  #         role-to-assume: arn:aws:iam::593291632749:role/github-actions-management-ecr
+  #         role-duration-seconds: 1200
 
-      - name: Build image
-        working-directory: "./${{ matrix.flavour }}"
-        run: make build
-        env:
-          NETWORK: host
-          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ steps.prep.outputs.tag }}
-      - name: Install InSpec
-        uses: actionshub/chef-install@main
-        with:
-          channel: current
-          project: inspec
-          version: 4.3.2
-      - name: Test
-        working-directory: "./${{ matrix.flavour }}"
-        env:
-          CHEF_LICENSE: accept
-          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ steps.prep.outputs.tag }}
-        run: |
-          inspec exec --chef-license=accept tests -t "docker://${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}"
+  #     - name: Login to Amazon ECR
+  #       id: login-ecr
+  #       uses: aws-actions/amazon-ecr-login@v1
+  #       with:
+  #         registries: 593291632749
 
-      # - name: Test
-      #   working-directory: "./${{ matrix.flavour }}"
-      #   run: make test
-      #   env:
-      #     NETWORK: host
-      #     REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-      #     IMAGE_TAG: ${{ steps.prep.outputs.tag }}
-      # - name: Push image
-      #   working-directory: "./${{ matrix.flavour }}"
-      #   run: make push
-      #   env:
-      #     REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-      #     IMAGE_TAG: ${{ steps.prep.outputs.tag }}
-      # - name: Cleanup
-      #   if: ${{ always() }}
-      #   working-directory: "./${{ matrix.flavour }}"
-      #   run: make clean
-      #   env:
-      #     REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-      #     IMAGE_TAG: ${{ steps.prep.outputs.tag }}
+  #     - name: Check out code
+  #       uses: actions/checkout@v2
+
+  #     - name: Prep Tags
+  #       id: prep
+  #       run: |
+  #         TAG=noop
+  #         if [[ $GITHUB_REF == refs/tags/* ]]; then
+  #           TAG=${GITHUB_REF#refs/tags/}
+  #         elif [[ $GITHUB_REF == refs/heads/* ]]; then
+  #           TAG=$(echo ${GITHUB_REF#refs/heads/} | sed -r 's#/+#-#g')
+  #           if [ "${{ github.event.repository.default_branch }}" = "$TAG" ]; then
+  #             TAG=edge
+  #           fi
+  #         elif [[ $GITHUB_REF == refs/pull/* ]]; then
+  #           TAG=pr-${{ github.event.number }}
+  #         elif [ "${{ github.event_name }}" = "push" ]; then
+  #           TAG="sha-${GITHUB_SHA::8}"
+  #         fi
+
+  #         echo "Docker image tag = '$TAG'"
+
+  #         echo ::set-output name=tag::${TAG}
+  #         echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+
+  #     - name: Build image
+  #       working-directory: "./${{ matrix.flavour }}"
+  #       run: make build
+  #       env:
+  #         NETWORK: host
+  #         REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+  #         IMAGE_TAG: ${{ steps.prep.outputs.tag }}
+
+  #     - name: Install InSpec
+  #       uses: actionshub/chef-install@main
+  #       with:
+  #         channel: current
+  #         project: inspec
+  #         version: 4.3.2
+
+  #     - name: Test
+  #       working-directory: "./${{ matrix.flavour }}"
+  #       env:
+  #         CHEF_LICENSE: accept
+  #         REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+  #         IMAGE_TAG: ${{ steps.prep.outputs.tag }}
+  #       run: |
+  #         inspec exec --chef-license=accept tests -t "docker://${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}"
+
+  #     # - name: Test
+  #     #   working-directory: "./${{ matrix.flavour }}"
+  #     #   run: make test
+  #     #   env:
+  #     #     NETWORK: host
+  #     #     REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+  #     #     IMAGE_TAG: ${{ steps.prep.outputs.tag }}
+  #     # - name: Push image
+  #     #   working-directory: "./${{ matrix.flavour }}"
+  #     #   run: make push
+  #     #   env:
+  #     #     REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+  #     #     IMAGE_TAG: ${{ steps.prep.outputs.tag }}
+  #     # - name: Cleanup
+  #     #   if: ${{ always() }}
+  #     #   working-directory: "./${{ matrix.flavour }}"
+  #     #   run: make clean
+  #     #   env:
+  #     #     REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+  #     #     IMAGE_TAG: ${{ steps.prep.outputs.tag }}

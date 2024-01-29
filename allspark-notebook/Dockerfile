@@ -1,5 +1,7 @@
 # spark-3.5.0
-FROM quay.io/jupyter/all-spark-notebook@sha256:a5bf7857fdfb439c21152f58f54b7c1fc795dfe47685b4969a0558e6a6295603
+# FROM quay.io/jupyter/all-spark-notebook@sha256:a5bf7857fdfb439c21152f58f54b7c1fc795dfe47685b4969a0558e6a6295603
+
+FROM jupyter/all-spark-notebook:spark-3.1.1@sha256:b73dad39ad5c469a92764e38d7cc4321040d3fedddcad7fcebc4ddc7f9c15ff2
 
 LABEL maintainer=analytics-platform-tech@digital.justice.gov.uk
 
