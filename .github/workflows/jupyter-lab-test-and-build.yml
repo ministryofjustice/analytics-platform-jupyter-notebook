@@ -86,7 +86,7 @@ jobs:
         with:
           channel: current
           project: inspec
-          version: v5.22.40
+          version: 4.3.2
       - name: Test
         working-directory: "./${{ matrix.flavour }}"
         env:
