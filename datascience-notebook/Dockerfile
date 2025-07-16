@@ -1,5 +1,5 @@
-# lab-4.0.11
-FROM quay.io/jupyter/datascience-notebook@sha256:76148e403aa44017f59b1dd0861d91daae800c7f86e9f39138b9d2703b885082
+# lab-4.4.4
+FROM quay.io/jupyter/datascience-notebook@sha256:20be99bdec2d0ae0c17845e1805a152e3d6629a38aee5a6bf1348bfcf2c12231
 
 LABEL org.opencontainers.image.vendor="Ministry of Justice" \
       org.opencontainers.image.authors="Analytical Platform" \
