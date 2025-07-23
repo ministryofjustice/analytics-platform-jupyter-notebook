@@ -27,7 +27,7 @@ commandTests:
   - name: "juptyer-lab"
     command: "jupyter-lab"
     args: ["--version"]
-    expectedOutput: ["4.4.4"]
+    expectedOutput: ["4.1.0"]
 
   - name: "nano"
     command: "nano"
