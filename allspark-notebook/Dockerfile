@@ -1,5 +1,5 @@
-# lab-4.4.4
-FROM quay.io/jupyter/all-spark-notebook@sha256:1f1a52d3154254fe445d9c860195cd3f502f484b33078513907b003db307e43e
+# lab-4.0.7
+FROM quay.io/jupyter/all-spark-notebook@sha256:1bc3d7caf44c0c7ac2a4704fbe2d27e3f6c24918298921286e352a2e06cfa53e
 
 LABEL org.opencontainers.image.vendor="Ministry of Justice" \
       org.opencontainers.image.authors="Analytical Platform" \
