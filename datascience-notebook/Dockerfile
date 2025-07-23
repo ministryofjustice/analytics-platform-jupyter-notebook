@@ -32,3 +32,5 @@ RUN apt-get update --yes \
          nbstripout \
     && nbstripout --install --system \
     && update-alternatives --set editor /bin/nano-tiny
+
+USER $NB_UID
