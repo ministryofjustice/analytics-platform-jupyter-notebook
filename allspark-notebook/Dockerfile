@@ -31,5 +31,4 @@ RUN apt-get update --yes \
     && nbstripout --install --system \
     && update-alternatives --set editor /bin/nano-tiny
 
-COPY files/add-user-to-group.sh /usr/local/bin/before-notebook.d/add-user-to-group.sh
-COPY files/hdfs-site.xml /usr/local/spark/conf/hdfs-site.xml
+USER $NB_UID
