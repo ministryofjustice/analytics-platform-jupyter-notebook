@@ -16,7 +16,7 @@ scan: build
 	trivy image --platform linux/amd64 --severity HIGH,CRITICAL $(IMAGE_NAME):$(IMAGE_TAG)
 
 build:
-	@ARCH=`uname --machine`; \
+	@ARCH=`uname -m`; \
 	case $$ARCH in \
 	aarch64 | arm64) \
 		echo "Building on $$ARCH architecture"; \
