@@ -1,5 +1,5 @@
-# lab-4.0.11
-FROM quay.io/jupyter/all-spark-notebook@sha256:a63b0faed54bc21d17a4691d8fae177dd95236e0adddbd9d43ee448dc2d5ba1e
+# lab-4.4.5
+FROM quay.io/jupyter/all-spark-notebook@sha256:ce1206118af3e311d7770ae0a50f1d70445937c66867b7eacdac3d8a44ca6922
 
 LABEL org.opencontainers.image.vendor="Ministry of Justice" \
       org.opencontainers.image.authors="Analytical Platform" \
@@ -31,5 +31,4 @@ RUN apt-get update --yes \
     && nbstripout --install --system \
     && update-alternatives --set editor /bin/nano-tiny
 
-COPY files/add-user-to-group.sh /usr/local/bin/before-notebook.d/add-user-to-group.sh
-COPY files/hdfs-site.xml /usr/local/spark/conf/hdfs-site.xml
+USER $NB_UID

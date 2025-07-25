@@ -1,5 +1,5 @@
-# lab-4.0.11
-FROM quay.io/jupyter/datascience-notebook@sha256:76148e403aa44017f59b1dd0861d91daae800c7f86e9f39138b9d2703b885082
+# lab-4.4.5
+FROM quay.io/jupyter/datascience-notebook@sha256:c8a31a629cd58bc9d418df8057b41fa7f4e630edfbcb16f5adb2b0ed99271576
 
 LABEL org.opencontainers.image.vendor="Ministry of Justice" \
       org.opencontainers.image.authors="Analytical Platform" \
@@ -32,3 +32,5 @@ RUN apt-get update --yes \
          nbstripout \
     && nbstripout --install --system \
     && update-alternatives --set editor /bin/nano-tiny
+
+USER $NB_UID
