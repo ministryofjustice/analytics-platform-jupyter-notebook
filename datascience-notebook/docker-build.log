@@ -1,0 +1,1209 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 3.10kB 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for quay.io/jupyter/datascience-notebook@sha256:c8a31a629cd58bc9d418df8057b41fa7f4e630edfbcb16f5adb2b0ed99271576
+#2 DONE 0.4s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 DONE 0.0s
+
+#5 [1/5] FROM quay.io/jupyter/datascience-notebook@sha256:c8a31a629cd58bc9d418df8057b41fa7f4e630edfbcb16f5adb2b0ed99271576
+#5 resolve quay.io/jupyter/datascience-notebook@sha256:c8a31a629cd58bc9d418df8057b41fa7f4e630edfbcb16f5adb2b0ed99271576 0.1s done
+#5 CACHED
+
+#4 [internal] load build context
+#4 transferring context: 45B done
+#4 DONE 0.1s
+
+#6 [2/5] COPY zscaler_certificate.crt /usr/local/share/ca-certificates/zscaler.crt
+#6 DONE 0.1s
+
+#7 [3/5] RUN chmod 644 /usr/local/share/ca-certificates/zscaler.crt && update-ca-certificates
+#7 0.414 Updating certificates in /etc/ssl/certs...
+#7 1.659 rehash: warning: skipping ca-certificates.crt, it does not contain exactly one certificate or CRL
+#7 1.666 1 added, 0 removed; done.
+#7 1.666 Running hooks in /etc/ca-certificates/update.d...
+#7 1.669 done.
+#7 DONE 1.7s
+
+#8 [4/5] RUN apt-get update --yes     && DEBIAN_FRONTEND=noninteractive apt-get install --yes          ca-certificates-java          default-jre-headless          fonts-dejavu          g++          git          htop          less          libgsl0-dev          libsm6          libxext6          libxrender1          nano-tiny          netcat-openbsd          pandoc          python3-dev          software-properties-common          unzip          vim-tiny          libspatialindex-dev     && apt-get clean --yes     && rm -rf /var/lib/apt/lists/*
+#8 0.428 Get:1 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+#8 0.468 Get:2 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+#8 0.488 Get:3 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+#8 0.566 Get:4 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+#8 0.668 Get:5 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+#8 0.979 Get:6 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1680 kB]
+#8 1.419 Get:7 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [33.1 kB]
+#8 1.552 Get:8 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1174 kB]
+#8 1.747 Get:9 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2781 kB]
+#8 2.816 Get:10 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]
+#8 3.036 Get:11 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+#8 3.076 Get:12 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+#8 3.084 Get:13 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [35.9 kB]
+#8 3.087 Get:14 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2925 kB]
+#8 3.372 Get:15 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1942 kB]
+#8 3.551 Get:16 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [2050 kB]
+#8 3.734 Get:17 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [49.4 kB]
+#8 3.738 Get:18 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [33.9 kB]
+#8 4.758 Fetched 34.9 MB in 4s (8008 kB/s)
+#8 4.758 Reading package lists...
+#8 5.905 Reading package lists...
+#8 6.986 Building dependency tree...
+#8 7.222 Reading state information...
+#8 7.491 fonts-dejavu is already the newest version (2.37-8).
+#8 7.491 g++ is already the newest version (4:13.2.0-7ubuntu1).
+#8 7.491 g++ set to manually installed.
+#8 7.491 git is already the newest version (1:2.43.0-1ubuntu7.3).
+#8 7.491 less is already the newest version (590-2ubuntu2.1).
+#8 7.491 libsm6 is already the newest version (2:1.2.3-1build3).
+#8 7.491 libsm6 set to manually installed.
+#8 7.491 libxext6 is already the newest version (2:1.3.4-1build2).
+#8 7.491 libxext6 set to manually installed.
+#8 7.491 libxrender1 is already the newest version (1:0.9.10-1.1build1).
+#8 7.491 libxrender1 set to manually installed.
+#8 7.491 nano-tiny is already the newest version (7.2-2ubuntu0.1).
+#8 7.491 pandoc is already the newest version (3.1.3+ds-2).
+#8 7.491 unzip is already the newest version (6.0-28ubuntu4.1).
+#8 7.491 The following additional packages will be installed:
+#8 7.491   appstream dbus dbus-bin dbus-daemon dbus-session-bus-common
+#8 7.491   dbus-system-bus-common dbus-user-session dirmngr distro-info-data dmsetup
+#8 7.491   gir1.2-girepository-2.0 gir1.2-glib-2.0 gir1.2-packagekitglib-1.0 gpg
+#8 7.491   gpg-agent gpgconf iso-codes java-common javascript-common libappstream5
+#8 7.491   libargon2-1 libcap2-bin libcryptsetup12 libdevmapper1.02.1 libduktape207
+#8 7.491   libdw1t64 libexpat1-dev libfdisk1 libgirepository-1.0-1 libglib2.0-bin
+#8 7.491   libglib2.0-data libgsl27 libgslcblas0 libgstreamer1.0-0 libjs-jquery
+#8 7.491   libjs-sphinxdoc libjs-underscore libjson-c5 libkmod2 libksba8 libnl-3-200
+#8 7.492   libnl-genl-3-200 libnspr4 libnss-systemd libnss3 libpackagekit-glib2-18
+#8 7.492   libpam-cap libpam-systemd libpcsclite1 libpkgconf3 libpolkit-agent-1-0
+#8 7.492   libpolkit-gobject-1-0 libpython3-dev libpython3-stdlib libpython3.12-dev
+#8 7.493   libpython3.12-minimal libpython3.12-stdlib libpython3.12t64
+#8 7.493   libspatialindex-c6 libspatialindex6 libstemmer0d libsystemd-shared
+#8 7.493   libsystemd0 libudev1 libunwind8 libxmlb2 lsb-release networkd-dispatcher
+#8 7.494   openjdk-21-jre-headless packagekit packagekit-tools pinentry-curses
+#8 7.494   pkg-config pkgconf pkgconf-bin polkitd python-apt-common python3 python3-apt
+#8 7.494   python3-blinker python3-cffi-backend python3-cryptography python3-dbus
+#8 7.494   python3-distro python3-distro-info python3-gi python3-httplib2 python3-jwt
+#8 7.494   python3-launchpadlib python3-lazr.restfulclient python3-lazr.uri
+#8 7.494   python3-minimal python3-oauthlib python3-pkg-resources python3-pyparsing
+#8 7.494   python3-six python3-software-properties python3-wadllib python3.12
+#8 7.494   python3.12-dev python3.12-minimal sgml-base systemd systemd-dev
+#8 7.494   systemd-resolved systemd-sysv systemd-timesyncd unattended-upgrades
+#8 7.494   vim-common xml-core zlib1g-dev
+#8 7.497 Suggested packages:
+#8 7.497   apt-config-icons default-jre gnupg pinentry-gnome3 tor keyboxd scdaemon
+#8 7.497   lm-sensors lsof strace isoquery apache2 | lighttpd | httpd gsl-ref-psdoc
+#8 7.497   | gsl-doc-pdf | gsl-doc-info | gsl-ref-html gstreamer1.0-tools pcscd iw
+#8 7.497   | wireless-tools libnss-mdns fonts-ipafont-gothic fonts-ipafont-mincho
+#8 7.497   fonts-wqy-microhei | fonts-wqy-zenhei fonts-indic pinentry-doc polkitd-pkla
+#8 7.497   python3-doc python3-tk python3-venv python-apt-doc python-blinker-doc
+#8 7.497   python-cryptography-doc python3-cryptography-vectors python-dbus-doc
+#8 7.497   python3-crypto python3-keyring python3-testresources python3-setuptools
+#8 7.497   python-pyparsing-doc python3.12-venv python3.12-doc binfmt-support
+#8 7.497   sgml-base-doc systemd-container systemd-homed systemd-userdbd systemd-boot
+#8 7.497   libip4tc2 libqrencode4 libtss2-esys-3.0.2-0 libtss2-mu-4.0.1-0 libtss2-rc0
+#8 7.497   libtss2-tcti-device0 bsd-mailx default-mta | mail-transport-agent
+#8 7.497   needrestart powermgmt-base indent debhelper
+#8 7.497 Recommended packages:
+#8 7.497   xxd
+#8 7.730 The following NEW packages will be installed:
+#8 7.730   appstream ca-certificates-java dbus dbus-bin dbus-daemon
+#8 7.730   dbus-session-bus-common dbus-system-bus-common dbus-user-session
+#8 7.730   default-jre-headless dirmngr distro-info-data dmsetup
+#8 7.730   gir1.2-girepository-2.0 gir1.2-glib-2.0 gir1.2-packagekitglib-1.0 gpg
+#8 7.731   gpg-agent gpgconf htop iso-codes java-common javascript-common libappstream5
+#8 7.731   libargon2-1 libcap2-bin libcryptsetup12 libdevmapper1.02.1 libduktape207
+#8 7.731   libdw1t64 libexpat1-dev libfdisk1 libgirepository-1.0-1 libglib2.0-bin
+#8 7.731   libglib2.0-data libgsl-dev libgsl27 libgslcblas0 libgstreamer1.0-0
+#8 7.731   libjs-jquery libjs-sphinxdoc libjs-underscore libjson-c5 libkmod2 libksba8
+#8 7.732   libnl-3-200 libnl-genl-3-200 libnspr4 libnss-systemd libnss3
+#8 7.732   libpackagekit-glib2-18 libpam-cap libpam-systemd libpcsclite1 libpkgconf3
+#8 7.732   libpolkit-agent-1-0 libpolkit-gobject-1-0 libpython3-dev libpython3.12-dev
+#8 7.736   libpython3.12t64 libspatialindex-c6 libspatialindex-dev libspatialindex6
+#8 7.737   libstemmer0d libsystemd-shared libunwind8 libxmlb2 lsb-release
+#8 7.737   netcat-openbsd networkd-dispatcher openjdk-21-jre-headless packagekit
+#8 7.737   packagekit-tools pinentry-curses pkg-config pkgconf pkgconf-bin polkitd
+#8 7.737   python-apt-common python3-apt python3-blinker python3-cffi-backend
+#8 7.737   python3-cryptography python3-dbus python3-dev python3-distro
+#8 7.737   python3-distro-info python3-gi python3-httplib2 python3-jwt
+#8 7.737   python3-launchpadlib python3-lazr.restfulclient python3-lazr.uri
+#8 7.737   python3-oauthlib python3-pkg-resources python3-pyparsing python3-six
+#8 7.738   python3-software-properties python3-wadllib python3.12-dev sgml-base
+#8 7.738   software-properties-common systemd systemd-dev systemd-resolved systemd-sysv
+#8 7.738   systemd-timesyncd unattended-upgrades xml-core zlib1g-dev
+#8 7.740 The following packages will be upgraded:
+#8 7.741   libpython3-stdlib libpython3.12-minimal libpython3.12-stdlib libsystemd0
+#8 7.742   libudev1 python3 python3-minimal python3.12 python3.12-minimal vim-common
+#8 7.742   vim-tiny
+#8 7.805 11 upgraded, 109 newly installed, 0 to remove and 52 not upgraded.
+#8 7.805 Need to get 87.0 MB of archives.
+#8 7.805 After this operation, 335 MB of additional disk space will be used.
+#8 7.805 Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3-minimal amd64 3.12.3-0ubuntu2.1 [27.4 kB]
+#8 7.816 Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3 amd64 3.12.3-0ubuntu2.1 [23.0 kB]
+#8 7.822 Get:3 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3.12 amd64 3.12.3-1ubuntu0.9 [651 kB]
+#8 7.937 Get:4 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12-stdlib amd64 3.12.3-1ubuntu0.9 [2068 kB]
+#8 8.100 Get:5 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3.12-minimal amd64 3.12.3-1ubuntu0.9 [2332 kB]
+#8 8.305 Get:6 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12-minimal amd64 3.12.3-1ubuntu0.9 [836 kB]
+#8 8.368 Get:7 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3-stdlib amd64 3.12.3-0ubuntu2.1 [10.1 kB]
+#8 8.368 Get:8 http://archive.ubuntu.com/ubuntu noble/main amd64 libargon2-1 amd64 0~20190702+dfsg-4build1 [20.8 kB]
+#8 8.376 Get:9 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libudev1 amd64 255.4-1ubuntu8.11 [176 kB]
+#8 8.396 Get:10 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libdevmapper1.02.1 amd64 2:1.02.185-3ubuntu3.2 [139 kB]
+#8 8.406 Get:11 http://archive.ubuntu.com/ubuntu noble/main amd64 libjson-c5 amd64 0.17-1build1 [35.3 kB]
+#8 8.408 Get:12 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcryptsetup12 amd64 2:2.7.0-1ubuntu4.2 [266 kB]
+#8 8.468 Get:13 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libfdisk1 amd64 2.39.3-9ubuntu6.3 [146 kB]
+#8 8.478 Get:14 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libkmod2 amd64 31+20240202-2ubuntu7.1 [51.7 kB]
+#8 8.482 Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsystemd-shared amd64 255.4-1ubuntu8.11 [2076 kB]
+#8 8.657 Get:16 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsystemd0 amd64 255.4-1ubuntu8.11 [434 kB]
+#8 8.701 Get:17 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 systemd-dev all 255.4-1ubuntu8.11 [106 kB]
+#8 8.723 Get:18 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 systemd amd64 255.4-1ubuntu8.11 [3475 kB]
+#8 9.053 Get:19 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 systemd-sysv amd64 255.4-1ubuntu8.11 [11.9 kB]
+#8 9.056 Get:20 http://archive.ubuntu.com/ubuntu noble/main amd64 sgml-base all 1.31 [11.4 kB]
+#8 9.059 Get:21 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 dbus-bin amd64 1.14.10-4ubuntu4.1 [39.3 kB]
+#8 9.061 Get:22 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 dbus-session-bus-common all 1.14.10-4ubuntu4.1 [80.5 kB]
+#8 9.066 Get:23 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 dbus-daemon amd64 1.14.10-4ubuntu4.1 [118 kB]
+#8 9.080 Get:24 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 dbus-system-bus-common all 1.14.10-4ubuntu4.1 [81.6 kB]
+#8 9.091 Get:25 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 dbus amd64 1.14.10-4ubuntu4.1 [24.3 kB]
+#8 9.105 Get:26 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpam-systemd amd64 255.4-1ubuntu8.11 [235 kB]
+#8 9.136 Get:27 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 dbus-user-session amd64 1.14.10-4ubuntu4.1 [9968 B]
+#8 9.137 Get:28 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 distro-info-data all 0.60ubuntu0.5 [6934 B]
+#8 9.138 Get:29 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 dmsetup amd64 2:1.02.185-3ubuntu3.2 [79.2 kB]
+#8 9.142 Get:30 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gir1.2-glib-2.0 amd64 2.80.0-6ubuntu3.4 [183 kB]
+#8 9.153 Get:31 http://archive.ubuntu.com/ubuntu noble/main amd64 libgirepository-1.0-1 amd64 1.80.1-1 [81.9 kB]
+#8 9.158 Get:32 http://archive.ubuntu.com/ubuntu noble/main amd64 gir1.2-girepository-2.0 amd64 1.80.1-1 [24.5 kB]
+#8 9.161 Get:33 http://archive.ubuntu.com/ubuntu noble/main amd64 iso-codes all 4.16.0-1 [3492 kB]
+#8 9.511 Get:34 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcap2-bin amd64 1:2.66-5ubuntu2.2 [34.2 kB]
+#8 9.513 Get:35 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-data all 2.80.0-6ubuntu3.4 [48.7 kB]
+#8 9.522 Get:36 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libnss-systemd amd64 255.4-1ubuntu8.11 [159 kB]
+#8 9.541 Get:37 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpam-cap amd64 1:2.66-5ubuntu2.2 [12.5 kB]
+#8 9.541 Get:38 http://archive.ubuntu.com/ubuntu noble/main amd64 lsb-release all 12.0-2 [6564 B]
+#8 9.542 Get:39 http://archive.ubuntu.com/ubuntu noble/main amd64 netcat-openbsd amd64 1.226-1ubuntu2 [44.3 kB]
+#8 9.548 Get:40 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-dbus amd64 1.3.2-5build3 [100 kB]
+#8 9.572 Get:41 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-gi amd64 3.48.2-1 [232 kB]
+#8 9.614 Get:42 http://archive.ubuntu.com/ubuntu noble/main amd64 networkd-dispatcher all 2.2.4-1 [15.5 kB]
+#8 9.616 Get:43 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python-apt-common all 2.7.7ubuntu5 [20.7 kB]
+#8 9.617 Get:44 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3-apt amd64 2.7.7ubuntu5 [169 kB]
+#8 9.628 Get:45 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-cffi-backend amd64 1.16.0-2build1 [77.3 kB]
+#8 9.634 Get:46 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3-pkg-resources all 68.1.2-2ubuntu1.2 [168 kB]
+#8 9.662 Get:47 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 systemd-resolved amd64 255.4-1ubuntu8.11 [296 kB]
+#8 9.681 Get:48 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 systemd-timesyncd amd64 255.4-1ubuntu8.11 [35.3 kB]
+#8 9.685 Get:49 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 vim-tiny amd64 2:9.1.0016-1ubuntu7.9 [803 kB]
+#8 9.748 Get:50 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 vim-common all 2:9.1.0016-1ubuntu7.9 [386 kB]
+#8 9.780 Get:51 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libnl-3-200 amd64 3.7.0-0.3build1.1 [55.7 kB]
+#8 9.783 Get:52 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-distro-info all 1.7build1 [7076 B]
+#8 9.784 Get:53 http://archive.ubuntu.com/ubuntu noble/main amd64 libstemmer0d amd64 2.2.0-4build1 [161 kB]
+#8 9.813 Get:54 http://archive.ubuntu.com/ubuntu noble/main amd64 libxmlb2 amd64 0.3.18-1 [67.7 kB]
+#8 9.823 Get:55 http://archive.ubuntu.com/ubuntu noble/main amd64 libappstream5 amd64 1.0.2-1build6 [238 kB]
+#8 9.847 Get:56 http://archive.ubuntu.com/ubuntu noble/main amd64 appstream amd64 1.0.2-1build6 [69.4 kB]
+#8 9.851 Get:57 http://archive.ubuntu.com/ubuntu noble/main amd64 ca-certificates-java all 20240118 [11.6 kB]
+#8 9.852 Get:58 http://archive.ubuntu.com/ubuntu noble/main amd64 java-common all 0.75+exp1 [6798 B]
+#8 9.854 Get:59 http://archive.ubuntu.com/ubuntu noble/main amd64 libnspr4 amd64 2:4.35-1.1build1 [117 kB]
+#8 9.863 Get:60 http://archive.ubuntu.com/ubuntu noble/main amd64 libnss3 amd64 2:3.98-1build1 [1445 kB]
+#8 10.01 Get:61 http://archive.ubuntu.com/ubuntu noble/main amd64 libpcsclite1 amd64 2.0.3-1build1 [21.4 kB]
+#8 10.01 Get:62 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 openjdk-21-jre-headless amd64 21.0.9+10-1~24.04 [46.4 MB]
+#8 14.04 Get:63 http://archive.ubuntu.com/ubuntu noble/main amd64 default-jre-headless amd64 2:1.21-75+exp1 [3094 B]
+#8 14.04 Get:64 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gpgconf amd64 2.4.4-2ubuntu17.3 [104 kB]
+#8 14.04 Get:65 http://archive.ubuntu.com/ubuntu noble/main amd64 libksba8 amd64 1.6.6-1build1 [122 kB]
+#8 14.05 Get:66 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 dirmngr amd64 2.4.4-2ubuntu17.3 [323 kB]
+#8 14.08 Get:67 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpackagekit-glib2-18 amd64 1.2.8-2ubuntu1.4 [120 kB]
+#8 14.09 Get:68 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gir1.2-packagekitglib-1.0 amd64 1.2.8-2ubuntu1.4 [25.6 kB]
+#8 14.10 Get:69 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gpg amd64 2.4.4-2ubuntu17.3 [565 kB]
+#8 14.14 Get:70 http://archive.ubuntu.com/ubuntu noble/main amd64 pinentry-curses amd64 1.2.1-3ubuntu5 [35.2 kB]
+#8 14.15 Get:71 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gpg-agent amd64 2.4.4-2ubuntu17.3 [227 kB]
+#8 14.19 Get:72 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libnl-genl-3-200 amd64 3.7.0-0.3build1.1 [12.2 kB]
+#8 14.19 Get:73 http://archive.ubuntu.com/ubuntu noble/main amd64 htop amd64 3.3.0-4build1 [171 kB]
+#8 14.20 Get:74 http://archive.ubuntu.com/ubuntu noble/main amd64 javascript-common all 11+nmu1 [5936 B]
+#8 14.21 Get:75 http://archive.ubuntu.com/ubuntu noble/main amd64 libduktape207 amd64 2.7.0+tests-0ubuntu3 [143 kB]
+#8 14.24 Get:76 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libdw1t64 amd64 0.190-1.1ubuntu0.1 [261 kB]
+#8 14.27 Get:77 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libexpat1-dev amd64 2.6.1-2ubuntu0.3 [140 kB]
+#8 14.28 Get:78 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-bin amd64 2.80.0-6ubuntu3.4 [97.9 kB]
+#8 14.29 Get:79 http://archive.ubuntu.com/ubuntu noble/universe amd64 libgslcblas0 amd64 2.7.1+dfsg-6ubuntu2 [104 kB]
+#8 14.30 Get:80 http://archive.ubuntu.com/ubuntu noble/universe amd64 libgsl27 amd64 2.7.1+dfsg-6ubuntu2 [987 kB]
+#8 14.39 Get:81 http://archive.ubuntu.com/ubuntu noble/universe amd64 libgsl-dev amd64 2.7.1+dfsg-6ubuntu2 [1259 kB]
+#8 14.51 Get:82 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libunwind8 amd64 1.6.2-3build1.1 [55.3 kB]
+#8 14.52 Get:83 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgstreamer1.0-0 amd64 1.24.2-1ubuntu0.1 [1165 kB]
+#8 14.63 Get:84 http://archive.ubuntu.com/ubuntu noble/main amd64 libjs-jquery all 3.6.1+dfsg+~3.5.14-1 [328 kB]
+#8 14.65 Get:85 http://archive.ubuntu.com/ubuntu noble/main amd64 libjs-underscore all 1.13.4~dfsg+~1.11.4-3 [118 kB]
+#8 14.67 Get:86 http://archive.ubuntu.com/ubuntu noble/main amd64 libjs-sphinxdoc all 7.2.6-6 [149 kB]
+#8 14.68 Get:87 http://archive.ubuntu.com/ubuntu noble/main amd64 libpkgconf3 amd64 1.8.1-2build1 [30.7 kB]
+#8 14.68 Get:88 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpolkit-gobject-1-0 amd64 124-2ubuntu1.24.04.2 [49.1 kB]
+#8 14.69 Get:89 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpolkit-agent-1-0 amd64 124-2ubuntu1.24.04.2 [17.4 kB]
+#8 14.69 Get:90 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12t64 amd64 3.12.3-1ubuntu0.9 [2342 kB]
+#8 14.69 Ign:90 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12t64 amd64 3.12.3-1ubuntu0.9
+#8 14.71 Get:91 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 zlib1g-dev amd64 1:1.3.dfsg-3.1ubuntu2.1 [894 kB]
+#8 14.88 Get:92 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12-dev amd64 3.12.3-1ubuntu0.9 [5677 kB]
+#8 15.38 Get:93 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3-dev amd64 3.12.3-0ubuntu2.1 [10.3 kB]
+#8 15.38 Get:94 http://archive.ubuntu.com/ubuntu noble/universe amd64 libspatialindex6 amd64 1.9.3-3build1 [270 kB]
+#8 15.40 Get:95 http://archive.ubuntu.com/ubuntu noble/universe amd64 libspatialindex-c6 amd64 1.9.3-3build1 [56.9 kB]
+#8 15.40 Get:96 http://archive.ubuntu.com/ubuntu noble/main amd64 xml-core all 0.19 [20.3 kB]
+#8 15.40 Get:97 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 polkitd amd64 124-2ubuntu1.24.04.2 [95.2 kB]
+#8 15.42 Get:98 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 packagekit amd64 1.2.8-2ubuntu1.4 [434 kB]
+#8 15.48 Get:99 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 packagekit-tools amd64 1.2.8-2ubuntu1.4 [28.3 kB]
+#8 15.48 Get:100 http://archive.ubuntu.com/ubuntu noble/main amd64 pkgconf-bin amd64 1.8.1-2build1 [20.7 kB]
+#8 15.48 Get:101 http://archive.ubuntu.com/ubuntu noble/main amd64 pkgconf amd64 1.8.1-2build1 [16.8 kB]
+#8 15.48 Get:102 http://archive.ubuntu.com/ubuntu noble/main amd64 pkg-config amd64 1.8.1-2build1 [7264 B]
+#8 15.48 Get:103 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-blinker all 1.7.0-1 [14.3 kB]
+#8 15.49 Get:104 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3-cryptography amd64 41.0.7-4ubuntu0.1 [810 kB]
+#8 15.57 Get:105 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3.12-dev amd64 3.12.3-1ubuntu0.9 [498 kB]
+#8 15.61 Get:106 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3-dev amd64 3.12.3-0ubuntu2.1 [26.7 kB]
+#8 15.61 Get:107 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-pyparsing all 3.1.1-1 [86.2 kB]
+#8 15.62 Get:108 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-httplib2 all 0.20.4-3 [30.4 kB]
+#8 15.62 Get:109 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-jwt all 2.7.0-1 [20.9 kB]
+#8 15.63 Get:110 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-lazr.uri all 1.0.6-3 [13.5 kB]
+#8 15.63 Get:111 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-wadllib all 1.3.6-5 [35.9 kB]
+#8 15.63 Get:112 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-distro all 1.9.0-1 [19.0 kB]
+#8 15.64 Get:113 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-oauthlib all 3.2.2-1 [89.7 kB]
+#8 15.65 Get:114 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-lazr.restfulclient all 0.14.6-1 [50.8 kB]
+#8 15.65 Get:115 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-six all 1.16.0-4 [12.4 kB]
+#8 15.65 Get:116 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-launchpadlib all 1.11.0-6 [127 kB]
+#8 15.68 Get:117 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3-software-properties all 0.99.49.3 [29.9 kB]
+#8 15.68 Get:118 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 software-properties-common all 0.99.49.3 [14.4 kB]
+#8 15.69 Get:119 http://archive.ubuntu.com/ubuntu noble/main amd64 unattended-upgrades all 2.9.1+nmu4ubuntu1 [51.2 kB]
+#8 15.69 Get:120 http://archive.ubuntu.com/ubuntu noble/universe amd64 libspatialindex-dev amd64 1.9.3-3build1 [16.1 kB]
+#8 15.70 Get:90 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12t64 amd64 3.12.3-1ubuntu0.9 [2342 kB]
+#8 16.14 debconf: delaying package configuration, since apt-utils is not installed
+#8 16.21 Fetched 87.0 MB in 8s (10.7 MB/s)
+#8 16.27 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 52854 files and directories currently installed.)
+#8 16.33 Preparing to unpack .../python3-minimal_3.12.3-0ubuntu2.1_amd64.deb ...
+#8 16.38 Unpacking python3-minimal (3.12.3-0ubuntu2.1) over (3.12.3-0ubuntu2) ...
+#8 16.59 Setting up python3-minimal (3.12.3-0ubuntu2.1) ...
+#8 16.84 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 52854 files and directories currently installed.)
+#8 16.88 Preparing to unpack .../0-python3_3.12.3-0ubuntu2.1_amd64.deb ...
+#8 17.00 Unpacking python3 (3.12.3-0ubuntu2.1) over (3.12.3-0ubuntu2) ...
+#8 17.17 Preparing to unpack .../1-python3.12_3.12.3-1ubuntu0.9_amd64.deb ...
+#8 17.31 Unpacking python3.12 (3.12.3-1ubuntu0.9) over (3.12.3-1ubuntu0.7) ...
+#8 17.47 Preparing to unpack .../2-libpython3.12-stdlib_3.12.3-1ubuntu0.9_amd64.deb ...
+#8 17.56 Unpacking libpython3.12-stdlib:amd64 (3.12.3-1ubuntu0.9) over (3.12.3-1ubuntu0.7) ...
+#8 20.56 Preparing to unpack .../3-python3.12-minimal_3.12.3-1ubuntu0.9_amd64.deb ...
+#8 20.61 Unpacking python3.12-minimal (3.12.3-1ubuntu0.9) over (3.12.3-1ubuntu0.7) ...
+#8 20.90 Preparing to unpack .../4-libpython3.12-minimal_3.12.3-1ubuntu0.9_amd64.deb ...
+#8 21.03 Unpacking libpython3.12-minimal:amd64 (3.12.3-1ubuntu0.9) over (3.12.3-1ubuntu0.7) ...
+#8 23.38 Preparing to unpack .../5-libpython3-stdlib_3.12.3-0ubuntu2.1_amd64.deb ...
+#8 23.42 Unpacking libpython3-stdlib:amd64 (3.12.3-0ubuntu2.1) over (3.12.3-0ubuntu2) ...
+#8 23.56 Selecting previously unselected package libargon2-1:amd64.
+#8 23.56 Preparing to unpack .../6-libargon2-1_0~20190702+dfsg-4build1_amd64.deb ...
+#8 23.59 Unpacking libargon2-1:amd64 (0~20190702+dfsg-4build1) ...
+#8 23.70 Preparing to unpack .../7-libudev1_255.4-1ubuntu8.11_amd64.deb ...
+#8 23.75 Unpacking libudev1:amd64 (255.4-1ubuntu8.11) over (255.4-1ubuntu8.10) ...
+#8 23.91 Setting up libudev1:amd64 (255.4-1ubuntu8.11) ...
+#8 24.03 Selecting previously unselected package libdevmapper1.02.1:amd64.
+#8 24.03 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 52858 files and directories currently installed.)
+#8 24.07 Preparing to unpack .../0-libdevmapper1.02.1_2%3a1.02.185-3ubuntu3.2_amd64.deb ...
+#8 24.08 Unpacking libdevmapper1.02.1:amd64 (2:1.02.185-3ubuntu3.2) ...
+#8 24.18 Selecting previously unselected package libjson-c5:amd64.
+#8 24.19 Preparing to unpack .../1-libjson-c5_0.17-1build1_amd64.deb ...
+#8 24.20 Unpacking libjson-c5:amd64 (0.17-1build1) ...
+#8 24.30 Selecting previously unselected package libcryptsetup12:amd64.
+#8 24.31 Preparing to unpack .../2-libcryptsetup12_2%3a2.7.0-1ubuntu4.2_amd64.deb ...
+#8 24.32 Unpacking libcryptsetup12:amd64 (2:2.7.0-1ubuntu4.2) ...
+#8 24.43 Selecting previously unselected package libfdisk1:amd64.
+#8 24.44 Preparing to unpack .../3-libfdisk1_2.39.3-9ubuntu6.3_amd64.deb ...
+#8 24.45 Unpacking libfdisk1:amd64 (2.39.3-9ubuntu6.3) ...
+#8 24.55 Selecting previously unselected package libkmod2:amd64.
+#8 24.56 Preparing to unpack .../4-libkmod2_31+20240202-2ubuntu7.1_amd64.deb ...
+#8 24.57 Unpacking libkmod2:amd64 (31+20240202-2ubuntu7.1) ...
+#8 24.65 Selecting previously unselected package libsystemd-shared:amd64.
+#8 24.66 Preparing to unpack .../5-libsystemd-shared_255.4-1ubuntu8.11_amd64.deb ...
+#8 24.68 Unpacking libsystemd-shared:amd64 (255.4-1ubuntu8.11) ...
+#8 24.84 Preparing to unpack .../6-libsystemd0_255.4-1ubuntu8.11_amd64.deb ...
+#8 24.89 Unpacking libsystemd0:amd64 (255.4-1ubuntu8.11) over (255.4-1ubuntu8.10) ...
+#8 25.05 Setting up libsystemd0:amd64 (255.4-1ubuntu8.11) ...
+#8 25.15 Selecting previously unselected package systemd-dev.
+#8 25.15 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 52897 files and directories currently installed.)
+#8 25.18 Preparing to unpack .../systemd-dev_255.4-1ubuntu8.11_all.deb ...
+#8 25.20 Unpacking systemd-dev (255.4-1ubuntu8.11) ...
+#8 25.34 Selecting previously unselected package systemd.
+#8 25.34 Preparing to unpack .../systemd_255.4-1ubuntu8.11_amd64.deb ...
+#8 25.37 Unpacking systemd (255.4-1ubuntu8.11) ...
+#8 25.73 Setting up libargon2-1:amd64 (0~20190702+dfsg-4build1) ...
+#8 25.77 Setting up libdevmapper1.02.1:amd64 (2:1.02.185-3ubuntu3.2) ...
+#8 25.81 Setting up libjson-c5:amd64 (0.17-1build1) ...
+#8 25.85 Setting up libcryptsetup12:amd64 (2:2.7.0-1ubuntu4.2) ...
+#8 25.90 Setting up libfdisk1:amd64 (2.39.3-9ubuntu6.3) ...
+#8 25.93 Setting up libkmod2:amd64 (31+20240202-2ubuntu7.1) ...
+#8 25.97 Setting up libsystemd-shared:amd64 (255.4-1ubuntu8.11) ...
+#8 26.02 Setting up systemd-dev (255.4-1ubuntu8.11) ...
+#8 26.06 Setting up systemd (255.4-1ubuntu8.11) ...
+#8 26.19 Created symlink /etc/systemd/system/getty.target.wants/getty@tty1.service → /usr/lib/systemd/system/getty@.service.
+#8 26.20 Created symlink /etc/systemd/system/multi-user.target.wants/remote-fs.target → /usr/lib/systemd/system/remote-fs.target.
+#8 26.20 Created symlink /etc/systemd/system/sysinit.target.wants/systemd-pstore.service → /usr/lib/systemd/system/systemd-pstore.service.
+#8 26.21 Initializing machine ID from random generator.
+#8 26.24 /usr/lib/tmpfiles.d/systemd-network.conf:10: Failed to resolve user 'systemd-network': No such process
+#8 26.24 /usr/lib/tmpfiles.d/systemd-network.conf:11: Failed to resolve user 'systemd-network': No such process
+#8 26.24 /usr/lib/tmpfiles.d/systemd-network.conf:12: Failed to resolve user 'systemd-network': No such process
+#8 26.24 /usr/lib/tmpfiles.d/systemd-network.conf:13: Failed to resolve user 'systemd-network': No such process
+#8 26.24 /usr/lib/tmpfiles.d/systemd.conf:22: Failed to resolve group 'systemd-journal': No such process
+#8 26.24 /usr/lib/tmpfiles.d/systemd.conf:23: Failed to resolve group 'systemd-journal': No such process
+#8 26.24 /usr/lib/tmpfiles.d/systemd.conf:28: Failed to resolve group 'systemd-journal': No such process
+#8 26.24 /usr/lib/tmpfiles.d/systemd.conf:29: Failed to resolve group 'systemd-journal': No such process
+#8 26.24 /usr/lib/tmpfiles.d/systemd.conf:30: Failed to resolve group 'systemd-journal': No such process
+#8 26.26 Creating group 'systemd-journal' with GID 999.
+#8 26.26 Creating group 'systemd-network' with GID 998.
+#8 26.26 Creating user 'systemd-network' (systemd Network Management) with UID 998 and GID 998.
+#8 26.44 Selecting previously unselected package systemd-sysv.
+#8 26.44 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 53874 files and directories currently installed.)
+#8 26.48 Preparing to unpack .../000-systemd-sysv_255.4-1ubuntu8.11_amd64.deb ...
+#8 26.49 Unpacking systemd-sysv (255.4-1ubuntu8.11) ...
+#8 26.61 Selecting previously unselected package sgml-base.
+#8 26.62 Preparing to unpack .../001-sgml-base_1.31_all.deb ...
+#8 26.63 Unpacking sgml-base (1.31) ...
+#8 26.76 Selecting previously unselected package dbus-bin.
+#8 26.77 Preparing to unpack .../002-dbus-bin_1.14.10-4ubuntu4.1_amd64.deb ...
+#8 26.78 Unpacking dbus-bin (1.14.10-4ubuntu4.1) ...
+#8 26.87 Selecting previously unselected package dbus-session-bus-common.
+#8 26.87 Preparing to unpack .../003-dbus-session-bus-common_1.14.10-4ubuntu4.1_all.deb ...
+#8 26.89 Unpacking dbus-session-bus-common (1.14.10-4ubuntu4.1) ...
+#8 26.98 Selecting previously unselected package dbus-daemon.
+#8 26.99 Preparing to unpack .../004-dbus-daemon_1.14.10-4ubuntu4.1_amd64.deb ...
+#8 27.00 Unpacking dbus-daemon (1.14.10-4ubuntu4.1) ...
+#8 27.09 Selecting previously unselected package dbus-system-bus-common.
+#8 27.10 Preparing to unpack .../005-dbus-system-bus-common_1.14.10-4ubuntu4.1_all.deb ...
+#8 27.11 Unpacking dbus-system-bus-common (1.14.10-4ubuntu4.1) ...
+#8 27.24 Selecting previously unselected package dbus.
+#8 27.24 Preparing to unpack .../006-dbus_1.14.10-4ubuntu4.1_amd64.deb ...
+#8 27.26 Unpacking dbus (1.14.10-4ubuntu4.1) ...
+#8 27.38 Selecting previously unselected package libpam-systemd:amd64.
+#8 27.38 Preparing to unpack .../007-libpam-systemd_255.4-1ubuntu8.11_amd64.deb ...
+#8 27.40 Unpacking libpam-systemd:amd64 (255.4-1ubuntu8.11) ...
+#8 27.49 Selecting previously unselected package dbus-user-session.
+#8 27.50 Preparing to unpack .../008-dbus-user-session_1.14.10-4ubuntu4.1_amd64.deb ...
+#8 27.51 Unpacking dbus-user-session (1.14.10-4ubuntu4.1) ...
+#8 27.60 Selecting previously unselected package distro-info-data.
+#8 27.60 Preparing to unpack .../009-distro-info-data_0.60ubuntu0.5_all.deb ...
+#8 27.61 Unpacking distro-info-data (0.60ubuntu0.5) ...
+#8 27.71 Selecting previously unselected package dmsetup.
+#8 27.72 Preparing to unpack .../010-dmsetup_2%3a1.02.185-3ubuntu3.2_amd64.deb ...
+#8 27.73 Unpacking dmsetup (2:1.02.185-3ubuntu3.2) ...
+#8 27.82 Selecting previously unselected package gir1.2-glib-2.0:amd64.
+#8 27.83 Preparing to unpack .../011-gir1.2-glib-2.0_2.80.0-6ubuntu3.4_amd64.deb ...
+#8 27.84 Unpacking gir1.2-glib-2.0:amd64 (2.80.0-6ubuntu3.4) ...
+#8 27.97 Selecting previously unselected package libgirepository-1.0-1:amd64.
+#8 27.98 Preparing to unpack .../012-libgirepository-1.0-1_1.80.1-1_amd64.deb ...
+#8 28.00 Unpacking libgirepository-1.0-1:amd64 (1.80.1-1) ...
+#8 28.09 Selecting previously unselected package gir1.2-girepository-2.0:amd64.
+#8 28.10 Preparing to unpack .../013-gir1.2-girepository-2.0_1.80.1-1_amd64.deb ...
+#8 28.11 Unpacking gir1.2-girepository-2.0:amd64 (1.80.1-1) ...
+#8 28.20 Selecting previously unselected package iso-codes.
+#8 28.21 Preparing to unpack .../014-iso-codes_4.16.0-1_all.deb ...
+#8 28.22 Unpacking iso-codes (4.16.0-1) ...
+#8 28.57 Selecting previously unselected package libcap2-bin.
+#8 28.58 Preparing to unpack .../015-libcap2-bin_1%3a2.66-5ubuntu2.2_amd64.deb ...
+#8 28.59 Unpacking libcap2-bin (1:2.66-5ubuntu2.2) ...
+#8 28.67 Selecting previously unselected package libglib2.0-data.
+#8 28.68 Preparing to unpack .../016-libglib2.0-data_2.80.0-6ubuntu3.4_all.deb ...
+#8 28.69 Unpacking libglib2.0-data (2.80.0-6ubuntu3.4) ...
+#8 28.79 Selecting previously unselected package libnss-systemd:amd64.
+#8 28.80 Preparing to unpack .../017-libnss-systemd_255.4-1ubuntu8.11_amd64.deb ...
+#8 28.82 Unpacking libnss-systemd:amd64 (255.4-1ubuntu8.11) ...
+#8 28.91 Selecting previously unselected package libpam-cap:amd64.
+#8 28.92 Preparing to unpack .../018-libpam-cap_1%3a2.66-5ubuntu2.2_amd64.deb ...
+#8 28.93 Unpacking libpam-cap:amd64 (1:2.66-5ubuntu2.2) ...
+#8 29.01 Selecting previously unselected package lsb-release.
+#8 29.01 Preparing to unpack .../019-lsb-release_12.0-2_all.deb ...
+#8 29.02 Unpacking lsb-release (12.0-2) ...
+#8 29.12 Selecting previously unselected package netcat-openbsd.
+#8 29.12 Preparing to unpack .../020-netcat-openbsd_1.226-1ubuntu2_amd64.deb ...
+#8 29.14 Unpacking netcat-openbsd (1.226-1ubuntu2) ...
+#8 29.23 Selecting previously unselected package python3-dbus.
+#8 29.24 Preparing to unpack .../021-python3-dbus_1.3.2-5build3_amd64.deb ...
+#8 29.25 Unpacking python3-dbus (1.3.2-5build3) ...
+#8 29.35 Selecting previously unselected package python3-gi.
+#8 29.36 Preparing to unpack .../022-python3-gi_3.48.2-1_amd64.deb ...
+#8 29.37 Unpacking python3-gi (3.48.2-1) ...
+#8 29.48 Selecting previously unselected package networkd-dispatcher.
+#8 29.49 Preparing to unpack .../023-networkd-dispatcher_2.2.4-1_all.deb ...
+#8 29.50 Unpacking networkd-dispatcher (2.2.4-1) ...
+#8 29.58 Selecting previously unselected package python-apt-common.
+#8 29.59 Preparing to unpack .../024-python-apt-common_2.7.7ubuntu5_all.deb ...
+#8 29.60 Unpacking python-apt-common (2.7.7ubuntu5) ...
+#8 29.70 Selecting previously unselected package python3-apt.
+#8 29.70 Preparing to unpack .../025-python3-apt_2.7.7ubuntu5_amd64.deb ...
+#8 29.71 Unpacking python3-apt (2.7.7ubuntu5) ...
+#8 29.81 Selecting previously unselected package python3-cffi-backend:amd64.
+#8 29.81 Preparing to unpack .../026-python3-cffi-backend_1.16.0-2build1_amd64.deb ...
+#8 29.83 Unpacking python3-cffi-backend:amd64 (1.16.0-2build1) ...
+#8 29.93 Selecting previously unselected package python3-pkg-resources.
+#8 29.94 Preparing to unpack .../027-python3-pkg-resources_68.1.2-2ubuntu1.2_all.deb ...
+#8 29.96 Unpacking python3-pkg-resources (68.1.2-2ubuntu1.2) ...
+#8 30.08 Selecting previously unselected package systemd-resolved.
+#8 30.09 Preparing to unpack .../028-systemd-resolved_255.4-1ubuntu8.11_amd64.deb ...
+#8 30.10 Unpacking systemd-resolved (255.4-1ubuntu8.11) ...
+#8 30.21 Selecting previously unselected package systemd-timesyncd.
+#8 30.22 Preparing to unpack .../029-systemd-timesyncd_255.4-1ubuntu8.11_amd64.deb ...
+#8 30.23 Unpacking systemd-timesyncd (255.4-1ubuntu8.11) ...
+#8 30.35 Preparing to unpack .../030-vim-tiny_2%3a9.1.0016-1ubuntu7.9_amd64.deb ...
+#8 30.41 Unpacking vim-tiny (2:9.1.0016-1ubuntu7.9) over (2:9.1.0016-1ubuntu7.8) ...
+#8 30.63 Preparing to unpack .../031-vim-common_2%3a9.1.0016-1ubuntu7.9_all.deb ...
+#8 30.68 Unpacking vim-common (2:9.1.0016-1ubuntu7.9) over (2:9.1.0016-1ubuntu7.8) ...
+#8 30.94 Selecting previously unselected package libnl-3-200:amd64.
+#8 30.95 Preparing to unpack .../032-libnl-3-200_3.7.0-0.3build1.1_amd64.deb ...
+#8 30.96 Unpacking libnl-3-200:amd64 (3.7.0-0.3build1.1) ...
+#8 31.06 Selecting previously unselected package python3-distro-info.
+#8 31.06 Preparing to unpack .../033-python3-distro-info_1.7build1_all.deb ...
+#8 31.07 Unpacking python3-distro-info (1.7build1) ...
+#8 31.17 Selecting previously unselected package libstemmer0d:amd64.
+#8 31.17 Preparing to unpack .../034-libstemmer0d_2.2.0-4build1_amd64.deb ...
+#8 31.18 Unpacking libstemmer0d:amd64 (2.2.0-4build1) ...
+#8 31.29 Selecting previously unselected package libxmlb2:amd64.
+#8 31.29 Preparing to unpack .../035-libxmlb2_0.3.18-1_amd64.deb ...
+#8 31.31 Unpacking libxmlb2:amd64 (0.3.18-1) ...
+#8 31.40 Selecting previously unselected package libappstream5:amd64.
+#8 31.41 Preparing to unpack .../036-libappstream5_1.0.2-1build6_amd64.deb ...
+#8 31.43 Unpacking libappstream5:amd64 (1.0.2-1build6) ...
+#8 31.54 Selecting previously unselected package appstream.
+#8 31.55 Preparing to unpack .../037-appstream_1.0.2-1build6_amd64.deb ...
+#8 31.57 Unpacking appstream (1.0.2-1build6) ...
+#8 31.69 Selecting previously unselected package ca-certificates-java.
+#8 31.70 Preparing to unpack .../038-ca-certificates-java_20240118_all.deb ...
+#8 31.71 Unpacking ca-certificates-java (20240118) ...
+#8 31.85 Selecting previously unselected package java-common.
+#8 31.85 Preparing to unpack .../039-java-common_0.75+exp1_all.deb ...
+#8 31.86 Unpacking java-common (0.75+exp1) ...
+#8 31.97 Selecting previously unselected package libnspr4:amd64.
+#8 31.98 Preparing to unpack .../040-libnspr4_2%3a4.35-1.1build1_amd64.deb ...
+#8 31.99 Unpacking libnspr4:amd64 (2:4.35-1.1build1) ...
+#8 32.11 Selecting previously unselected package libnss3:amd64.
+#8 32.11 Preparing to unpack .../041-libnss3_2%3a3.98-1build1_amd64.deb ...
+#8 32.13 Unpacking libnss3:amd64 (2:3.98-1build1) ...
+#8 32.27 Selecting previously unselected package libpcsclite1:amd64.
+#8 32.28 Preparing to unpack .../042-libpcsclite1_2.0.3-1build1_amd64.deb ...
+#8 32.30 Unpacking libpcsclite1:amd64 (2.0.3-1build1) ...
+#8 32.45 Selecting previously unselected package openjdk-21-jre-headless:amd64.
+#8 32.45 Preparing to unpack .../043-openjdk-21-jre-headless_21.0.9+10-1~24.04_amd64.deb ...
+#8 32.47 Unpacking openjdk-21-jre-headless:amd64 (21.0.9+10-1~24.04) ...
+#8 34.14 Selecting previously unselected package default-jre-headless.
+#8 34.15 Preparing to unpack .../044-default-jre-headless_2%3a1.21-75+exp1_amd64.deb ...
+#8 34.16 Unpacking default-jre-headless (2:1.21-75+exp1) ...
+#8 34.25 Selecting previously unselected package gpgconf.
+#8 34.26 Preparing to unpack .../045-gpgconf_2.4.4-2ubuntu17.3_amd64.deb ...
+#8 34.28 Unpacking gpgconf (2.4.4-2ubuntu17.3) ...
+#8 34.38 Selecting previously unselected package libksba8:amd64.
+#8 34.39 Preparing to unpack .../046-libksba8_1.6.6-1build1_amd64.deb ...
+#8 34.40 Unpacking libksba8:amd64 (1.6.6-1build1) ...
+#8 34.51 Selecting previously unselected package dirmngr.
+#8 34.52 Preparing to unpack .../047-dirmngr_2.4.4-2ubuntu17.3_amd64.deb ...
+#8 34.56 Unpacking dirmngr (2.4.4-2ubuntu17.3) ...
+#8 34.70 Selecting previously unselected package libpackagekit-glib2-18:amd64.
+#8 34.70 Preparing to unpack .../048-libpackagekit-glib2-18_1.2.8-2ubuntu1.4_amd64.deb ...
+#8 34.72 Unpacking libpackagekit-glib2-18:amd64 (1.2.8-2ubuntu1.4) ...
+#8 34.82 Selecting previously unselected package gir1.2-packagekitglib-1.0.
+#8 34.82 Preparing to unpack .../049-gir1.2-packagekitglib-1.0_1.2.8-2ubuntu1.4_amd64.deb ...
+#8 34.83 Unpacking gir1.2-packagekitglib-1.0 (1.2.8-2ubuntu1.4) ...
+#8 34.92 Selecting previously unselected package gpg.
+#8 34.93 Preparing to unpack .../050-gpg_2.4.4-2ubuntu17.3_amd64.deb ...
+#8 34.94 Unpacking gpg (2.4.4-2ubuntu17.3) ...
+#8 35.05 Selecting previously unselected package pinentry-curses.
+#8 35.05 Preparing to unpack .../051-pinentry-curses_1.2.1-3ubuntu5_amd64.deb ...
+#8 35.07 Unpacking pinentry-curses (1.2.1-3ubuntu5) ...
+#8 35.17 Selecting previously unselected package gpg-agent.
+#8 35.17 Preparing to unpack .../052-gpg-agent_2.4.4-2ubuntu17.3_amd64.deb ...
+#8 35.19 Unpacking gpg-agent (2.4.4-2ubuntu17.3) ...
+#8 35.29 Selecting previously unselected package libnl-genl-3-200:amd64.
+#8 35.29 Preparing to unpack .../053-libnl-genl-3-200_3.7.0-0.3build1.1_amd64.deb ...
+#8 35.30 Unpacking libnl-genl-3-200:amd64 (3.7.0-0.3build1.1) ...
+#8 35.38 Selecting previously unselected package htop.
+#8 35.39 Preparing to unpack .../054-htop_3.3.0-4build1_amd64.deb ...
+#8 35.40 Unpacking htop (3.3.0-4build1) ...
+#8 35.52 Selecting previously unselected package javascript-common.
+#8 35.53 Preparing to unpack .../055-javascript-common_11+nmu1_all.deb ...
+#8 35.56 Unpacking javascript-common (11+nmu1) ...
+#8 35.67 Selecting previously unselected package libduktape207:amd64.
+#8 35.68 Preparing to unpack .../056-libduktape207_2.7.0+tests-0ubuntu3_amd64.deb ...
+#8 35.69 Unpacking libduktape207:amd64 (2.7.0+tests-0ubuntu3) ...
+#8 35.81 Selecting previously unselected package libdw1t64:amd64.
+#8 35.81 Preparing to unpack .../057-libdw1t64_0.190-1.1ubuntu0.1_amd64.deb ...
+#8 35.83 Unpacking libdw1t64:amd64 (0.190-1.1ubuntu0.1) ...
+#8 35.93 Selecting previously unselected package libexpat1-dev:amd64.
+#8 35.93 Preparing to unpack .../058-libexpat1-dev_2.6.1-2ubuntu0.3_amd64.deb ...
+#8 35.94 Unpacking libexpat1-dev:amd64 (2.6.1-2ubuntu0.3) ...
+#8 36.04 Selecting previously unselected package libglib2.0-bin.
+#8 36.05 Preparing to unpack .../059-libglib2.0-bin_2.80.0-6ubuntu3.4_amd64.deb ...
+#8 36.06 Unpacking libglib2.0-bin (2.80.0-6ubuntu3.4) ...
+#8 36.18 Selecting previously unselected package libgslcblas0:amd64.
+#8 36.18 Preparing to unpack .../060-libgslcblas0_2.7.1+dfsg-6ubuntu2_amd64.deb ...
+#8 36.20 Unpacking libgslcblas0:amd64 (2.7.1+dfsg-6ubuntu2) ...
+#8 36.30 Selecting previously unselected package libgsl27:amd64.
+#8 36.31 Preparing to unpack .../061-libgsl27_2.7.1+dfsg-6ubuntu2_amd64.deb ...
+#8 36.32 Unpacking libgsl27:amd64 (2.7.1+dfsg-6ubuntu2) ...
+#8 36.43 Selecting previously unselected package libgsl-dev.
+#8 36.44 Preparing to unpack .../062-libgsl-dev_2.7.1+dfsg-6ubuntu2_amd64.deb ...
+#8 36.45 Unpacking libgsl-dev (2.7.1+dfsg-6ubuntu2) ...
+#8 36.69 Selecting previously unselected package libunwind8:amd64.
+#8 36.70 Preparing to unpack .../063-libunwind8_1.6.2-3build1.1_amd64.deb ...
+#8 36.71 Unpacking libunwind8:amd64 (1.6.2-3build1.1) ...
+#8 36.83 Selecting previously unselected package libgstreamer1.0-0:amd64.
+#8 36.84 Preparing to unpack .../064-libgstreamer1.0-0_1.24.2-1ubuntu0.1_amd64.deb ...
+#8 36.85 Unpacking libgstreamer1.0-0:amd64 (1.24.2-1ubuntu0.1) ...
+#8 36.99 Selecting previously unselected package libjs-jquery.
+#8 37.00 Preparing to unpack .../065-libjs-jquery_3.6.1+dfsg+~3.5.14-1_all.deb ...
+#8 37.02 Unpacking libjs-jquery (3.6.1+dfsg+~3.5.14-1) ...
+#8 37.10 Selecting previously unselected package libjs-underscore.
+#8 37.11 Preparing to unpack .../066-libjs-underscore_1.13.4~dfsg+~1.11.4-3_all.deb ...
+#8 37.12 Unpacking libjs-underscore (1.13.4~dfsg+~1.11.4-3) ...
+#8 37.23 Selecting previously unselected package libjs-sphinxdoc.
+#8 37.24 Preparing to unpack .../067-libjs-sphinxdoc_7.2.6-6_all.deb ...
+#8 37.25 Unpacking libjs-sphinxdoc (7.2.6-6) ...
+#8 37.35 Selecting previously unselected package libpkgconf3:amd64.
+#8 37.36 Preparing to unpack .../068-libpkgconf3_1.8.1-2build1_amd64.deb ...
+#8 37.37 Unpacking libpkgconf3:amd64 (1.8.1-2build1) ...
+#8 37.47 Selecting previously unselected package libpolkit-gobject-1-0:amd64.
+#8 37.48 Preparing to unpack .../069-libpolkit-gobject-1-0_124-2ubuntu1.24.04.2_amd64.deb ...
+#8 37.49 Unpacking libpolkit-gobject-1-0:amd64 (124-2ubuntu1.24.04.2) ...
+#8 37.60 Selecting previously unselected package libpolkit-agent-1-0:amd64.
+#8 37.60 Preparing to unpack .../070-libpolkit-agent-1-0_124-2ubuntu1.24.04.2_amd64.deb ...
+#8 37.62 Unpacking libpolkit-agent-1-0:amd64 (124-2ubuntu1.24.04.2) ...
+#8 37.73 Selecting previously unselected package libpython3.12t64:amd64.
+#8 37.73 Preparing to unpack .../071-libpython3.12t64_3.12.3-1ubuntu0.9_amd64.deb ...
+#8 37.75 Unpacking libpython3.12t64:amd64 (3.12.3-1ubuntu0.9) ...
+#8 37.92 Selecting previously unselected package zlib1g-dev:amd64.
+#8 37.93 Preparing to unpack .../072-zlib1g-dev_1%3a1.3.dfsg-3.1ubuntu2.1_amd64.deb ...
+#8 37.94 Unpacking zlib1g-dev:amd64 (1:1.3.dfsg-3.1ubuntu2.1) ...
+#8 38.04 Selecting previously unselected package libpython3.12-dev:amd64.
+#8 38.05 Preparing to unpack .../073-libpython3.12-dev_3.12.3-1ubuntu0.9_amd64.deb ...
+#8 38.06 Unpacking libpython3.12-dev:amd64 (3.12.3-1ubuntu0.9) ...
+#8 38.41 Selecting previously unselected package libpython3-dev:amd64.
+#8 38.42 Preparing to unpack .../074-libpython3-dev_3.12.3-0ubuntu2.1_amd64.deb ...
+#8 38.43 Unpacking libpython3-dev:amd64 (3.12.3-0ubuntu2.1) ...
+#8 38.53 Selecting previously unselected package libspatialindex6:amd64.
+#8 38.54 Preparing to unpack .../075-libspatialindex6_1.9.3-3build1_amd64.deb ...
+#8 38.55 Unpacking libspatialindex6:amd64 (1.9.3-3build1) ...
+#8 38.68 Selecting previously unselected package libspatialindex-c6:amd64.
+#8 38.69 Preparing to unpack .../076-libspatialindex-c6_1.9.3-3build1_amd64.deb ...
+#8 38.70 Unpacking libspatialindex-c6:amd64 (1.9.3-3build1) ...
+#8 38.83 Selecting previously unselected package xml-core.
+#8 38.83 Preparing to unpack .../077-xml-core_0.19_all.deb ...
+#8 38.85 Unpacking xml-core (0.19) ...
+#8 38.99 Selecting previously unselected package polkitd.
+#8 38.99 Preparing to unpack .../078-polkitd_124-2ubuntu1.24.04.2_amd64.deb ...
+#8 39.05 Unpacking polkitd (124-2ubuntu1.24.04.2) ...
+#8 39.17 Selecting previously unselected package packagekit.
+#8 39.18 Preparing to unpack .../079-packagekit_1.2.8-2ubuntu1.4_amd64.deb ...
+#8 39.19 Unpacking packagekit (1.2.8-2ubuntu1.4) ...
+#8 39.31 Selecting previously unselected package packagekit-tools.
+#8 39.31 Preparing to unpack .../080-packagekit-tools_1.2.8-2ubuntu1.4_amd64.deb ...
+#8 39.33 Unpacking packagekit-tools (1.2.8-2ubuntu1.4) ...
+#8 39.45 Selecting previously unselected package pkgconf-bin.
+#8 39.46 Preparing to unpack .../081-pkgconf-bin_1.8.1-2build1_amd64.deb ...
+#8 39.47 Unpacking pkgconf-bin (1.8.1-2build1) ...
+#8 39.61 Selecting previously unselected package pkgconf:amd64.
+#8 39.62 Preparing to unpack .../082-pkgconf_1.8.1-2build1_amd64.deb ...
+#8 39.63 Unpacking pkgconf:amd64 (1.8.1-2build1) ...
+#8 39.73 Selecting previously unselected package pkg-config:amd64.
+#8 39.74 Preparing to unpack .../083-pkg-config_1.8.1-2build1_amd64.deb ...
+#8 39.75 Unpacking pkg-config:amd64 (1.8.1-2build1) ...
+#8 39.85 Selecting previously unselected package python3-blinker.
+#8 39.86 Preparing to unpack .../084-python3-blinker_1.7.0-1_all.deb ...
+#8 39.88 Unpacking python3-blinker (1.7.0-1) ...
+#8 39.98 Selecting previously unselected package python3-cryptography.
+#8 39.98 Preparing to unpack .../085-python3-cryptography_41.0.7-4ubuntu0.1_amd64.deb ...
+#8 40.00 Unpacking python3-cryptography (41.0.7-4ubuntu0.1) ...
+#8 40.15 Selecting previously unselected package python3.12-dev.
+#8 40.15 Preparing to unpack .../086-python3.12-dev_3.12.3-1ubuntu0.9_amd64.deb ...
+#8 40.17 Unpacking python3.12-dev (3.12.3-1ubuntu0.9) ...
+#8 40.25 Selecting previously unselected package python3-dev.
+#8 40.25 Preparing to unpack .../087-python3-dev_3.12.3-0ubuntu2.1_amd64.deb ...
+#8 40.26 Unpacking python3-dev (3.12.3-0ubuntu2.1) ...
+#8 40.36 Selecting previously unselected package python3-pyparsing.
+#8 40.37 Preparing to unpack .../088-python3-pyparsing_3.1.1-1_all.deb ...
+#8 40.38 Unpacking python3-pyparsing (3.1.1-1) ...
+#8 40.49 Selecting previously unselected package python3-httplib2.
+#8 40.50 Preparing to unpack .../089-python3-httplib2_0.20.4-3_all.deb ...
+#8 40.51 Unpacking python3-httplib2 (0.20.4-3) ...
+#8 40.62 Selecting previously unselected package python3-jwt.
+#8 40.62 Preparing to unpack .../090-python3-jwt_2.7.0-1_all.deb ...
+#8 40.64 Unpacking python3-jwt (2.7.0-1) ...
+#8 40.75 Selecting previously unselected package python3-lazr.uri.
+#8 40.75 Preparing to unpack .../091-python3-lazr.uri_1.0.6-3_all.deb ...
+#8 40.77 Unpacking python3-lazr.uri (1.0.6-3) ...
+#8 40.88 Selecting previously unselected package python3-wadllib.
+#8 40.89 Preparing to unpack .../092-python3-wadllib_1.3.6-5_all.deb ...
+#8 40.90 Unpacking python3-wadllib (1.3.6-5) ...
+#8 41.02 Selecting previously unselected package python3-distro.
+#8 41.03 Preparing to unpack .../093-python3-distro_1.9.0-1_all.deb ...
+#8 41.04 Unpacking python3-distro (1.9.0-1) ...
+#8 41.15 Selecting previously unselected package python3-oauthlib.
+#8 41.15 Preparing to unpack .../094-python3-oauthlib_3.2.2-1_all.deb ...
+#8 41.17 Unpacking python3-oauthlib (3.2.2-1) ...
+#8 41.30 Selecting previously unselected package python3-lazr.restfulclient.
+#8 41.31 Preparing to unpack .../095-python3-lazr.restfulclient_0.14.6-1_all.deb ...
+#8 41.32 Unpacking python3-lazr.restfulclient (0.14.6-1) ...
+#8 41.43 Selecting previously unselected package python3-six.
+#8 41.43 Preparing to unpack .../096-python3-six_1.16.0-4_all.deb ...
+#8 41.45 Unpacking python3-six (1.16.0-4) ...
+#8 41.58 Selecting previously unselected package python3-launchpadlib.
+#8 41.58 Preparing to unpack .../097-python3-launchpadlib_1.11.0-6_all.deb ...
+#8 41.60 Unpacking python3-launchpadlib (1.11.0-6) ...
+#8 41.72 Selecting previously unselected package python3-software-properties.
+#8 41.73 Preparing to unpack .../098-python3-software-properties_0.99.49.3_all.deb ...
+#8 41.74 Unpacking python3-software-properties (0.99.49.3) ...
+#8 41.85 Selecting previously unselected package software-properties-common.
+#8 41.86 Preparing to unpack .../099-software-properties-common_0.99.49.3_all.deb ...
+#8 41.87 Unpacking software-properties-common (0.99.49.3) ...
+#8 42.01 Selecting previously unselected package unattended-upgrades.
+#8 42.01 Preparing to unpack .../100-unattended-upgrades_2.9.1+nmu4ubuntu1_all.deb ...
+#8 42.03 Unpacking unattended-upgrades (2.9.1+nmu4ubuntu1) ...
+#8 42.13 Selecting previously unselected package libspatialindex-dev:amd64.
+#8 42.13 Preparing to unpack .../101-libspatialindex-dev_1.9.3-3build1_amd64.deb ...
+#8 42.15 Unpacking libspatialindex-dev:amd64 (1.9.3-3build1) ...
+#8 42.26 Setting up libksba8:amd64 (1.6.6-1build1) ...
+#8 42.31 Setting up pinentry-curses (1.2.1-3ubuntu5) ...
+#8 42.37 Setting up javascript-common (11+nmu1) ...
+#8 42.45 Setting up systemd-sysv (255.4-1ubuntu8.11) ...
+#8 42.52 Setting up java-common (0.75+exp1) ...
+#8 42.57 Setting up libgslcblas0:amd64 (2.7.1+dfsg-6ubuntu2) ...
+#8 42.63 Setting up distro-info-data (0.60ubuntu0.5) ...
+#8 42.66 Setting up libxmlb2:amd64 (0.3.18-1) ...
+#8 42.70 Setting up netcat-openbsd (1.226-1ubuntu2) ...
+#8 42.73 update-alternatives: using /bin/nc.openbsd to provide /bin/nc (nc) in auto mode
+#8 42.73 update-alternatives: warning: skip creation of /usr/share/man/man1/nc.1.gz because associated file /usr/share/man/man1/nc_openbsd.1.gz (of link group nc) doesn't exist
+#8 42.73 update-alternatives: warning: skip creation of /usr/share/man/man1/netcat.1.gz because associated file /usr/share/man/man1/nc_openbsd.1.gz (of link group nc) doesn't exist
+#8 42.76 Setting up libpython3.12-minimal:amd64 (3.12.3-1ubuntu0.9) ...
+#8 42.82 Setting up libgsl27:amd64 (2.7.1+dfsg-6ubuntu2) ...
+#8 42.88 Setting up libpackagekit-glib2-18:amd64 (1.2.8-2ubuntu1.4) ...
+#8 42.92 Setting up libnss-systemd:amd64 (255.4-1ubuntu8.11) ...
+#8 42.97 Setting up libspatialindex6:amd64 (1.9.3-3build1) ...
+#8 43.02 Setting up libunwind8:amd64 (1.6.2-3build1.1) ...
+#8 43.05 Setting up libdw1t64:amd64 (0.190-1.1ubuntu0.1) ...
+#8 43.10 Setting up libcap2-bin (1:2.66-5ubuntu2.2) ...
+#8 43.14 Setting up libglib2.0-data (2.80.0-6ubuntu3.4) ...
+#8 43.19 Setting up libpkgconf3:amd64 (1.8.1-2build1) ...
+#8 43.22 Setting up vim-common (2:9.1.0016-1ubuntu7.9) ...
+#8 43.27 Setting up libexpat1-dev:amd64 (2.6.1-2ubuntu0.3) ...
+#8 43.31 Setting up libnspr4:amd64 (2:4.35-1.1build1) ...
+#8 43.35 Setting up systemd-timesyncd (255.4-1ubuntu8.11) ...
+#8 43.41 Creating group 'systemd-timesync' with GID 997.
+#8 43.41 Creating user 'systemd-timesync' (systemd Time Synchronization) with UID 997 and GID 997.
+#8 43.61 Created symlink /etc/systemd/system/dbus-org.freedesktop.timesync1.service → /usr/lib/systemd/system/systemd-timesyncd.service.
+#8 43.61 Created symlink /etc/systemd/system/sysinit.target.wants/systemd-timesyncd.service → /usr/lib/systemd/system/systemd-timesyncd.service.
+#8 43.63 Setting up libpcsclite1:amd64 (2.0.3-1build1) ...
+#8 43.67 Setting up pkgconf-bin (1.8.1-2build1) ...
+#8 43.71 Setting up gir1.2-glib-2.0:amd64 (2.80.0-6ubuntu3.4) ...
+#8 43.75 Setting up zlib1g-dev:amd64 (1:1.3.dfsg-3.1ubuntu2.1) ...
+#8 43.79 Setting up python-apt-common (2.7.7ubuntu5) ...
+#8 43.83 Setting up dmsetup (2:1.02.185-3ubuntu3.2) ...
+#8 43.89 Setting up libduktape207:amd64 (2.7.0+tests-0ubuntu3) ...
+#8 43.93 Setting up dbus-session-bus-common (1.14.10-4ubuntu4.1) ...
+#8 43.97 Setting up libnl-3-200:amd64 (3.7.0-0.3build1.1) ...
+#8 44.05 Setting up gpgconf (2.4.4-2ubuntu17.3) ...
+#8 44.10 Setting up libgirepository-1.0-1:amd64 (1.80.1-1) ...
+#8 44.14 Setting up sgml-base (1.31) ...
+#8 44.21 Setting up libstemmer0d:amd64 (2.2.0-4build1) ...
+#8 44.25 Setting up libjs-jquery (3.6.1+dfsg+~3.5.14-1) ...
+#8 44.31 Setting up ca-certificates-java (20240118) ...
+#8 44.38 No JRE found. Skipping Java certificates setup.
+#8 44.39 Setting up lsb-release (12.0-2) ...
+#8 44.43 Setting up dbus-system-bus-common (1.14.10-4ubuntu4.1) ...
+#8 44.65 Setting up libpam-cap:amd64 (1:2.66-5ubuntu2.2) ...
+#8 44.85 Setting up iso-codes (4.16.0-1) ...
+#8 44.89 Setting up dbus-bin (1.14.10-4ubuntu4.1) ...
+#8 44.92 Setting up gpg (2.4.4-2ubuntu17.3) ...
+#8 44.96 Setting up libpolkit-gobject-1-0:amd64 (124-2ubuntu1.24.04.2) ...
+#8 45.00 Setting up libgstreamer1.0-0:amd64 (1.24.2-1ubuntu0.1) ...
+#8 45.03 Setcap worked! gst-ptp-helper is not suid!
+#8 45.05 Setting up libjs-underscore (1.13.4~dfsg+~1.11.4-3) ...
+#8 45.09 Setting up python3.12-minimal (3.12.3-1ubuntu0.9) ...
+#8 46.28 Setting up libgsl-dev (2.7.1+dfsg-6ubuntu2) ...
+#8 46.32 Setting up libspatialindex-c6:amd64 (1.9.3-3build1) ...
+#8 46.37 Setting up gpg-agent (2.4.4-2ubuntu17.3) ...
+#8 46.55 Created symlink /etc/systemd/user/sockets.target.wants/gpg-agent.socket → /usr/lib/systemd/user/gpg-agent.socket.
+#8 46.68 Created symlink /etc/systemd/user/sockets.target.wants/gpg-agent-ssh.socket → /usr/lib/systemd/user/gpg-agent-ssh.socket.
+#8 46.81 Created symlink /etc/systemd/user/sockets.target.wants/gpg-agent-extra.socket → /usr/lib/systemd/user/gpg-agent-extra.socket.
+#8 46.94 Created symlink /etc/systemd/user/sockets.target.wants/gpg-agent-browser.socket → /usr/lib/systemd/user/gpg-agent-browser.socket.
+#8 46.95 Setting up libpython3.12-stdlib:amd64 (3.12.3-1ubuntu0.9) ...
+#8 46.99 Setting up python3.12 (3.12.3-1ubuntu0.9) ...
+#8 48.04 Setting up libglib2.0-bin (2.80.0-6ubuntu3.4) ...
+#8 48.09 Setting up libappstream5:amd64 (1.0.2-1build6) ...
+#8 48.14 Setting up libnss3:amd64 (2:3.98-1build1) ...
+#8 48.18 Setting up dbus-daemon (1.14.10-4ubuntu4.1) ...
+#8 48.23 Setting up vim-tiny (2:9.1.0016-1ubuntu7.9) ...
+#8 48.35 Setting up libspatialindex-dev:amd64 (1.9.3-3build1) ...
+#8 48.39 Setting up pkgconf:amd64 (1.8.1-2build1) ...
+#8 48.42 Setting up libpython3.12t64:amd64 (3.12.3-1ubuntu0.9) ...
+#8 48.46 Setting up dirmngr (2.4.4-2ubuntu17.3) ...
+#8 48.63 Created symlink /etc/systemd/user/sockets.target.wants/dirmngr.socket → /usr/lib/systemd/user/dirmngr.socket.
+#8 48.66 Setting up gir1.2-packagekitglib-1.0 (1.2.8-2ubuntu1.4) ...
+#8 48.70 Setting up appstream (1.0.2-1build6) ...
+#8 48.76 ✔ Metadata cache was updated successfully.
+#8 48.78 Setting up gir1.2-girepository-2.0:amd64 (1.80.1-1) ...
+#8 48.82 Setting up dbus (1.14.10-4ubuntu4.1) ...
+#8 48.94 Setting up pkg-config:amd64 (1.8.1-2build1) ...
+#8 48.98 Setting up libjs-sphinxdoc (7.2.6-6) ...
+#8 49.02 Setting up xml-core (0.19) ...
+#8 49.31 Setting up libnl-genl-3-200:amd64 (3.7.0-0.3build1.1) ...
+#8 49.35 Setting up libpam-systemd:amd64 (255.4-1ubuntu8.11) ...
+#8 49.52 Setting up libpolkit-agent-1-0:amd64 (124-2ubuntu1.24.04.2) ...
+#8 49.56 Setting up libpython3-stdlib:amd64 (3.12.3-0ubuntu2.1) ...
+#8 49.61 Setting up systemd-resolved (255.4-1ubuntu8.11) ...
+#8 49.67 Converting /etc/resolv.conf to a symlink to /run/systemd/resolve/stub-resolv.conf...
+#8 49.67 mv: cannot move '/etc/resolv.conf' to '/etc/.resolv.conf.systemd-resolved.bak': Device or resource busy
+#8 49.67 Cannot take a backup of /etc/resolv.conf.
+#8 49.68 ln: failed to create symbolic link '/etc/resolv.conf': Device or resource busy
+#8 49.68 Cannot install symlink from /etc/resolv.conf to ../run/systemd/resolve/stub-resolv.conf
+#8 49.68 Creating group 'systemd-resolve' with GID 996.
+#8 49.68 Creating user 'systemd-resolve' (systemd Resolver) with UID 996 and GID 996.
+#8 49.87 Created symlink /etc/systemd/system/dbus-org.freedesktop.resolve1.service → /usr/lib/systemd/system/systemd-resolved.service.
+#8 49.87 Created symlink /etc/systemd/system/sysinit.target.wants/systemd-resolved.service → /usr/lib/systemd/system/systemd-resolved.service.
+#8 49.89 Setting up openjdk-21-jre-headless:amd64 (21.0.9+10-1~24.04) ...
+#8 50.30 update-alternatives: using /usr/lib/jvm/java-21-openjdk-amd64/bin/java to provide /usr/bin/java (java) in auto mode
+#8 50.31 update-alternatives: using /usr/lib/jvm/java-21-openjdk-amd64/bin/jpackage to provide /usr/bin/jpackage (jpackage) in auto mode
+#8 50.33 update-alternatives: using /usr/lib/jvm/java-21-openjdk-amd64/bin/keytool to provide /usr/bin/keytool (keytool) in auto mode
+#8 50.34 update-alternatives: using /usr/lib/jvm/java-21-openjdk-amd64/bin/rmiregistry to provide /usr/bin/rmiregistry (rmiregistry) in auto mode
+#8 50.35 update-alternatives: using /usr/lib/jvm/java-21-openjdk-amd64/lib/jexec to provide /usr/bin/jexec (jexec) in auto mode
+#8 50.42 Setting up htop (3.3.0-4build1) ...
+#8 50.47 Setting up python3 (3.12.3-0ubuntu2.1) ...
+#8 50.62 Setting up libpython3.12-dev:amd64 (3.12.3-1ubuntu0.9) ...
+#8 50.67 Setting up python3-six (1.16.0-4) ...
+#8 50.83 Setting up dbus-user-session (1.14.10-4ubuntu4.1) ...
+#8 50.90 Setting up python3-pyparsing (3.1.1-1) ...
+#8 51.14 Setting up python3-gi (3.48.2-1) ...
+#8 51.36 Setting up python3.12-dev (3.12.3-1ubuntu0.9) ...
+#8 51.40 Setting up python3-httplib2 (0.20.4-3) ...
+#8 51.58 Setting up python3-distro-info (1.7build1) ...
+#8 51.76 Setting up python3-cffi-backend:amd64 (1.16.0-2build1) ...
+#8 51.80 Setting up python3-blinker (1.7.0-1) ...
+#8 51.97 Setting up python3-pkg-resources (68.1.2-2ubuntu1.2) ...
+#8 52.23 Setting up python3-dbus (1.3.2-5build3) ...
+#8 52.42 Setting up libpython3-dev:amd64 (3.12.3-0ubuntu2.1) ...
+#8 52.46 Setting up python3-distro (1.9.0-1) ...
+#8 52.62 Setting up python3-jwt (2.7.0-1) ...
+#8 52.79 Setting up python3-apt (2.7.7ubuntu5) ...
+#8 53.00 Setting up python3-lazr.uri (1.0.6-3) ...
+#8 53.16 Setting up unattended-upgrades (2.9.1+nmu4ubuntu1) ...
+#8 53.37 
+#8 53.37 Creating config file /etc/apt/apt.conf.d/20auto-upgrades with new version
+#8 53.50 
+#8 53.50 Creating config file /etc/apt/apt.conf.d/50unattended-upgrades with new version
+#8 53.71 Created symlink /etc/systemd/system/multi-user.target.wants/unattended-upgrades.service → /usr/lib/systemd/system/unattended-upgrades.service.
+#8 53.80 Setting up python3-cryptography (41.0.7-4ubuntu0.1) ...
+#8 54.09 Setting up python3-wadllib (1.3.6-5) ...
+#8 54.27 Setting up python3-dev (3.12.3-0ubuntu2.1) ...
+#8 54.31 Setting up networkd-dispatcher (2.2.4-1) ...
+#8 54.48 Created symlink /etc/systemd/system/multi-user.target.wants/networkd-dispatcher.service → /usr/lib/systemd/system/networkd-dispatcher.service.
+#8 54.49 Setting up python3-oauthlib (3.2.2-1) ...
+#8 54.72 Setting up python3-lazr.restfulclient (0.14.6-1) ...
+#8 54.92 Setting up python3-launchpadlib (1.11.0-6) ...
+#8 55.29 Created symlink /etc/systemd/user/timers.target.wants/launchpadlib-cache-clean.timer → /usr/lib/systemd/user/launchpadlib-cache-clean.timer.
+#8 55.31 Setting up python3-software-properties (0.99.49.3) ...
+#8 55.49 Processing triggers for libc-bin (2.39-0ubuntu8.5) ...
+#8 55.58 Processing triggers for ca-certificates-java (20240118) ...
+#8 56.05 Adding debian:ACCVRAIZ1.pem
+#8 56.06 Adding debian:AC_RAIZ_FNMT-RCM.pem
+#8 56.08 Adding debian:AC_RAIZ_FNMT-RCM_SERVIDORES_SEGUROS.pem
+#8 56.08 Adding debian:ANF_Secure_Server_Root_CA.pem
+#8 56.09 Adding debian:Actalis_Authentication_Root_CA.pem
+#8 56.09 Adding debian:AffirmTrust_Commercial.pem
+#8 56.09 Adding debian:AffirmTrust_Networking.pem
+#8 56.09 Adding debian:AffirmTrust_Premium.pem
+#8 56.10 Adding debian:AffirmTrust_Premium_ECC.pem
+#8 56.10 Adding debian:Amazon_Root_CA_1.pem
+#8 56.10 Adding debian:Amazon_Root_CA_2.pem
+#8 56.10 Adding debian:Amazon_Root_CA_3.pem
+#8 56.11 Adding debian:Amazon_Root_CA_4.pem
+#8 56.11 Adding debian:Atos_TrustedRoot_2011.pem
+#8 56.11 Adding debian:Atos_TrustedRoot_Root_CA_ECC_TLS_2021.pem
+#8 56.11 Adding debian:Atos_TrustedRoot_Root_CA_RSA_TLS_2021.pem
+#8 56.12 Adding debian:Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.pem
+#8 56.12 Adding debian:BJCA_Global_Root_CA1.pem
+#8 56.12 Adding debian:BJCA_Global_Root_CA2.pem
+#8 56.12 Adding debian:Baltimore_CyberTrust_Root.pem
+#8 56.13 Adding debian:Buypass_Class_2_Root_CA.pem
+#8 56.13 Adding debian:Buypass_Class_3_Root_CA.pem
+#8 56.13 Adding debian:CA_Disig_Root_R2.pem
+#8 56.14 Adding debian:CFCA_EV_ROOT.pem
+#8 56.14 Adding debian:COMODO_Certification_Authority.pem
+#8 56.14 Adding debian:COMODO_ECC_Certification_Authority.pem
+#8 56.15 Adding debian:COMODO_RSA_Certification_Authority.pem
+#8 56.15 Adding debian:Certainly_Root_E1.pem
+#8 56.15 Adding debian:Certainly_Root_R1.pem
+#8 56.16 Adding debian:Certigna.pem
+#8 56.16 Adding debian:Certigna_Root_CA.pem
+#8 56.16 Adding debian:Certum_EC-384_CA.pem
+#8 56.16 Adding debian:Certum_Trusted_Network_CA.pem
+#8 56.17 Adding debian:Certum_Trusted_Network_CA_2.pem
+#8 56.17 Adding debian:Certum_Trusted_Root_CA.pem
+#8 56.17 Adding debian:CommScope_Public_Trust_ECC_Root-01.pem
+#8 56.18 Adding debian:CommScope_Public_Trust_ECC_Root-02.pem
+#8 56.18 Adding debian:CommScope_Public_Trust_RSA_Root-01.pem
+#8 56.18 Adding debian:CommScope_Public_Trust_RSA_Root-02.pem
+#8 56.18 Adding debian:Comodo_AAA_Services_root.pem
+#8 56.19 Adding debian:D-TRUST_BR_Root_CA_1_2020.pem
+#8 56.19 Adding debian:D-TRUST_EV_Root_CA_1_2020.pem
+#8 56.19 Adding debian:D-TRUST_Root_Class_3_CA_2_2009.pem
+#8 56.20 Adding debian:D-TRUST_Root_Class_3_CA_2_EV_2009.pem
+#8 56.20 Adding debian:DigiCert_Assured_ID_Root_CA.pem
+#8 56.20 Adding debian:DigiCert_Assured_ID_Root_G2.pem
+#8 56.20 Adding debian:DigiCert_Assured_ID_Root_G3.pem
+#8 56.20 Adding debian:DigiCert_Global_Root_CA.pem
+#8 56.21 Adding debian:DigiCert_Global_Root_G2.pem
+#8 56.21 Adding debian:DigiCert_Global_Root_G3.pem
+#8 56.21 Adding debian:DigiCert_High_Assurance_EV_Root_CA.pem
+#8 56.21 Adding debian:DigiCert_TLS_ECC_P384_Root_G5.pem
+#8 56.22 Adding debian:DigiCert_TLS_RSA4096_Root_G5.pem
+#8 56.22 Adding debian:DigiCert_Trusted_Root_G4.pem
+#8 56.22 Adding debian:Entrust.net_Premium_2048_Secure_Server_CA.pem
+#8 56.22 Adding debian:Entrust_Root_Certification_Authority.pem
+#8 56.23 Adding debian:Entrust_Root_Certification_Authority_-_EC1.pem
+#8 56.23 Adding debian:Entrust_Root_Certification_Authority_-_G2.pem
+#8 56.23 Adding debian:Entrust_Root_Certification_Authority_-_G4.pem
+#8 56.24 Adding debian:GDCA_TrustAUTH_R5_ROOT.pem
+#8 56.24 Adding debian:GLOBALTRUST_2020.pem
+#8 56.24 Adding debian:GTS_Root_R1.pem
+#8 56.24 Adding debian:GTS_Root_R2.pem
+#8 56.25 Adding debian:GTS_Root_R3.pem
+#8 56.25 Adding debian:GTS_Root_R4.pem
+#8 56.25 Adding debian:GlobalSign_ECC_Root_CA_-_R4.pem
+#8 56.25 Adding debian:GlobalSign_ECC_Root_CA_-_R5.pem
+#8 56.25 Adding debian:GlobalSign_Root_CA.pem
+#8 56.26 Adding debian:GlobalSign_Root_CA_-_R3.pem
+#8 56.26 Adding debian:GlobalSign_Root_CA_-_R6.pem
+#8 56.26 Adding debian:GlobalSign_Root_E46.pem
+#8 56.27 Adding debian:GlobalSign_Root_R46.pem
+#8 56.27 Adding debian:Go_Daddy_Class_2_CA.pem
+#8 56.27 Adding debian:Go_Daddy_Root_Certificate_Authority_-_G2.pem
+#8 56.27 Adding debian:HARICA_TLS_ECC_Root_CA_2021.pem
+#8 56.28 Adding debian:HARICA_TLS_RSA_Root_CA_2021.pem
+#8 56.28 Adding debian:Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.pem
+#8 56.28 Adding debian:Hellenic_Academic_and_Research_Institutions_RootCA_2015.pem
+#8 56.29 Adding debian:HiPKI_Root_CA_-_G1.pem
+#8 56.29 Adding debian:Hongkong_Post_Root_CA_3.pem
+#8 56.29 Adding debian:ISRG_Root_X1.pem
+#8 56.29 Adding debian:ISRG_Root_X2.pem
+#8 56.30 Adding debian:IdenTrust_Commercial_Root_CA_1.pem
+#8 56.30 Adding debian:IdenTrust_Public_Sector_Root_CA_1.pem
+#8 56.30 Adding debian:Izenpe.com.pem
+#8 56.31 Adding debian:Microsec_e-Szigno_Root_CA_2009.pem
+#8 56.31 Adding debian:Microsoft_ECC_Root_Certificate_Authority_2017.pem
+#8 56.31 Adding debian:Microsoft_RSA_Root_Certificate_Authority_2017.pem
+#8 56.32 Adding debian:NAVER_Global_Root_Certification_Authority.pem
+#8 56.32 Adding debian:NetLock_Arany_=Class_Gold=_Főtanúsítvány.pem
+#8 56.32 Adding debian:OISTE_WISeKey_Global_Root_GB_CA.pem
+#8 56.32 Adding debian:OISTE_WISeKey_Global_Root_GC_CA.pem
+#8 56.33 Adding debian:QuoVadis_Root_CA_1_G3.pem
+#8 56.33 Adding debian:QuoVadis_Root_CA_2.pem
+#8 56.33 Adding debian:QuoVadis_Root_CA_2_G3.pem
+#8 56.34 Adding debian:QuoVadis_Root_CA_3.pem
+#8 56.34 Adding debian:QuoVadis_Root_CA_3_G3.pem
+#8 56.34 Adding debian:SSL.com_EV_Root_Certification_Authority_ECC.pem
+#8 56.35 Adding debian:SSL.com_EV_Root_Certification_Authority_RSA_R2.pem
+#8 56.35 Adding debian:SSL.com_Root_Certification_Authority_ECC.pem
+#8 56.35 Adding debian:SSL.com_Root_Certification_Authority_RSA.pem
+#8 56.35 Adding debian:SSL.com_TLS_ECC_Root_CA_2022.pem
+#8 56.36 Adding debian:SSL.com_TLS_RSA_Root_CA_2022.pem
+#8 56.36 Adding debian:SZAFIR_ROOT_CA2.pem
+#8 56.36 Adding debian:Sectigo_Public_Server_Authentication_Root_E46.pem
+#8 56.36 Adding debian:Sectigo_Public_Server_Authentication_Root_R46.pem
+#8 56.37 Adding debian:SecureSign_RootCA11.pem
+#8 56.37 Adding debian:SecureTrust_CA.pem
+#8 56.37 Adding debian:Secure_Global_CA.pem
+#8 56.37 Adding debian:Security_Communication_ECC_RootCA1.pem
+#8 56.37 Adding debian:Security_Communication_RootCA2.pem
+#8 56.38 Adding debian:Security_Communication_RootCA3.pem
+#8 56.38 Adding debian:Security_Communication_Root_CA.pem
+#8 56.38 Adding debian:Starfield_Class_2_CA.pem
+#8 56.38 Adding debian:Starfield_Root_Certificate_Authority_-_G2.pem
+#8 56.39 Adding debian:Starfield_Services_Root_Certificate_Authority_-_G2.pem
+#8 56.39 Adding debian:SwissSign_Gold_CA_-_G2.pem
+#8 56.39 Adding debian:SwissSign_Silver_CA_-_G2.pem
+#8 56.40 Adding debian:T-TeleSec_GlobalRoot_Class_2.pem
+#8 56.40 Adding debian:T-TeleSec_GlobalRoot_Class_3.pem
+#8 56.40 Adding debian:TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem
+#8 56.40 Adding debian:TWCA_Global_Root_CA.pem
+#8 56.40 Adding debian:TWCA_Root_Certification_Authority.pem
+#8 56.41 Adding debian:TeliaSonera_Root_CA_v1.pem
+#8 56.41 Adding debian:Telia_Root_CA_v2.pem
+#8 56.41 Adding debian:TrustAsia_Global_Root_CA_G3.pem
+#8 56.42 Adding debian:TrustAsia_Global_Root_CA_G4.pem
+#8 56.42 Adding debian:Trustwave_Global_Certification_Authority.pem
+#8 56.42 Adding debian:Trustwave_Global_ECC_P256_Certification_Authority.pem
+#8 56.43 Adding debian:Trustwave_Global_ECC_P384_Certification_Authority.pem
+#8 56.43 Adding debian:TunTrust_Root_CA.pem
+#8 56.43 Adding debian:UCA_Extended_Validation_Root.pem
+#8 56.43 Adding debian:UCA_Global_G2_Root.pem
+#8 56.44 Adding debian:USERTrust_ECC_Certification_Authority.pem
+#8 56.44 Adding debian:USERTrust_RSA_Certification_Authority.pem
+#8 56.44 Adding debian:XRamp_Global_CA_Root.pem
+#8 56.44 Adding debian:certSIGN_ROOT_CA.pem
+#8 56.45 Adding debian:certSIGN_Root_CA_G2.pem
+#8 56.45 Adding debian:e-Szigno_Root_CA_2017.pem
+#8 56.45 Adding debian:ePKI_Root_Certification_Authority.pem
+#8 56.45 Adding debian:emSign_ECC_Root_CA_-_C3.pem
+#8 56.45 Adding debian:emSign_ECC_Root_CA_-_G3.pem
+#8 56.45 Adding debian:emSign_Root_CA_-_C1.pem
+#8 56.46 Adding debian:emSign_Root_CA_-_G1.pem
+#8 56.46 Adding debian:vTrus_ECC_Root_CA.pem
+#8 56.46 Adding debian:vTrus_Root_CA.pem
+#8 56.46 Adding debian:zscaler.pem
+#8 56.50 done.
+#8 56.52 Setting up default-jre-headless (2:1.21-75+exp1) ...
+#8 56.56 Processing triggers for sgml-base (1.31) ...
+#8 56.62 Setting up polkitd (124-2ubuntu1.24.04.2) ...
+#8 56.66 Creating group 'polkitd' with GID 995.
+#8 56.66 Creating user 'polkitd' (User for polkitd) with UID 995 and GID 995.
+#8 56.75 invoke-rc.d: could not determine current runlevel
+#8 56.76 invoke-rc.d: policy-rc.d denied execution of reload.
+#8 56.90 start-stop-daemon: unable to stat /usr/libexec/polkitd (No such file or directory)
+#8 56.91 Setting up packagekit (1.2.8-2ubuntu1.4) ...
+#8 56.99 invoke-rc.d: could not determine current runlevel
+#8 56.99 invoke-rc.d: policy-rc.d denied execution of force-reload.
+#8 57.00 Failed to open connection to "system" message bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+#8 57.12 Created symlink /etc/systemd/user/sockets.target.wants/pk-debconf-helper.socket → /usr/lib/systemd/user/pk-debconf-helper.socket.
+#8 57.14 Setting up packagekit-tools (1.2.8-2ubuntu1.4) ...
+#8 57.18 Setting up software-properties-common (0.99.49.3) ...
+#8 57.36 Processing triggers for dbus (1.14.10-4ubuntu4.1) ...
+#8 DONE 59.8s
+
+#9 [5/5] RUN pip install --no-cache-dir --upgrade          boto3          black          nbstripout          rtree          s3fs==2023.12.2          jupyterlab-git     && conda install --yes          nbstripout     && nbstripout --install --system     && update-alternatives --set editor /bin/nano-tiny
+#9 1.456 Collecting boto3
+#9 1.565   Downloading boto3-1.41.4-py3-none-any.whl.metadata (6.8 kB)
+#9 1.622 Collecting black
+#9 1.635   Downloading black-25.11.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (85 kB)
+#9 1.666 Collecting nbstripout
+#9 1.674   Downloading nbstripout-0.8.2-py2.py3-none-any.whl.metadata (21 kB)
+#9 1.703 Collecting rtree
+#9 1.712   Downloading rtree-1.4.1-py3-none-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (2.1 kB)
+#9 1.737 Collecting s3fs==2023.12.2
+#9 1.746   Downloading s3fs-2023.12.2-py3-none-any.whl.metadata (1.6 kB)
+#9 1.749 Requirement already satisfied: jupyterlab-git in /opt/conda/lib/python3.12/site-packages (0.51.2)
+#9 1.895 Collecting aiobotocore<3.0.0,>=2.5.4 (from s3fs==2023.12.2)
+#9 1.907   Downloading aiobotocore-2.25.2-py3-none-any.whl.metadata (25 kB)
+#9 1.935 Collecting fsspec==2023.12.2 (from s3fs==2023.12.2)
+#9 1.944   Downloading fsspec-2023.12.2-py3-none-any.whl.metadata (6.8 kB)
+#9 1.955 Requirement already satisfied: aiohttp!=4.0.0a0,!=4.0.0a1 in /opt/conda/lib/python3.12/site-packages (from s3fs==2023.12.2) (3.12.14)
+#9 1.970 Collecting aioitertools<1.0.0,>=0.5.1 (from aiobotocore<3.0.0,>=2.5.4->s3fs==2023.12.2)
+#9 1.978   Downloading aioitertools-0.13.0-py3-none-any.whl.metadata (3.3 kB)
+#9 2.412 Collecting botocore<1.40.71,>=1.40.46 (from aiobotocore<3.0.0,>=2.5.4->s3fs==2023.12.2)
+#9 2.422   Downloading botocore-1.40.70-py3-none-any.whl.metadata (5.7 kB)
+#9 2.426 Requirement already satisfied: python-dateutil<3.0.0,>=2.1 in /opt/conda/lib/python3.12/site-packages (from aiobotocore<3.0.0,>=2.5.4->s3fs==2023.12.2) (2.9.0.post0)
+#9 2.438 Collecting jmespath<2.0.0,>=0.7.1 (from aiobotocore<3.0.0,>=2.5.4->s3fs==2023.12.2)
+#9 2.447   Downloading jmespath-1.0.1-py3-none-any.whl.metadata (7.6 kB)
+#9 2.451 Requirement already satisfied: multidict<7.0.0,>=6.0.0 in /opt/conda/lib/python3.12/site-packages (from aiobotocore<3.0.0,>=2.5.4->s3fs==2023.12.2) (6.6.3)
+#9 2.813 Collecting wrapt<2.0.0,>=1.10.10 (from aiobotocore<3.0.0,>=2.5.4->s3fs==2023.12.2)
+#9 2.822   Downloading wrapt-1.17.3-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.4 kB)
+#9 2.827 Requirement already satisfied: aiohappyeyeballs>=2.5.0 in /opt/conda/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->s3fs==2023.12.2) (2.6.1)
+#9 2.827 Requirement already satisfied: aiosignal>=1.4.0 in /opt/conda/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->s3fs==2023.12.2) (1.4.0)
+#9 2.828 Requirement already satisfied: attrs>=17.3.0 in /opt/conda/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->s3fs==2023.12.2) (25.3.0)
+#9 2.831 Requirement already satisfied: frozenlist>=1.1.1 in /opt/conda/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->s3fs==2023.12.2) (1.7.0)
+#9 2.833 Requirement already satisfied: propcache>=0.2.0 in /opt/conda/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->s3fs==2023.12.2) (0.3.1)
+#9 2.834 Requirement already satisfied: yarl<2.0,>=1.17.0 in /opt/conda/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->s3fs==2023.12.2) (1.20.1)
+#9 2.838 Requirement already satisfied: urllib3!=2.2.0,<3,>=1.25.4 in /opt/conda/lib/python3.12/site-packages (from botocore<1.40.71,>=1.40.46->aiobotocore<3.0.0,>=2.5.4->s3fs==2023.12.2) (2.5.0)
+#9 2.841 Requirement already satisfied: six>=1.5 in /opt/conda/lib/python3.12/site-packages (from python-dateutil<3.0.0,>=2.1->aiobotocore<3.0.0,>=2.5.4->s3fs==2023.12.2) (1.17.0)
+#9 2.847 Requirement already satisfied: idna>=2.0 in /opt/conda/lib/python3.12/site-packages (from yarl<2.0,>=1.17.0->aiohttp!=4.0.0a0,!=4.0.0a1->s3fs==2023.12.2) (3.10)
+#9 2.945 INFO: pip is looking at multiple versions of boto3 to determine which version is compatible with other requirements. This could take a while.
+#9 2.946 Collecting boto3
+#9 2.957   Downloading boto3-1.41.3-py3-none-any.whl.metadata (6.8 kB)
+#9 3.064   Downloading boto3-1.41.2-py3-none-any.whl.metadata (6.8 kB)
+#9 3.172   Downloading boto3-1.41.1-py3-none-any.whl.metadata (6.8 kB)
+#9 3.282   Downloading boto3-1.41.0-py3-none-any.whl.metadata (6.8 kB)
+#9 3.394   Downloading boto3-1.40.76-py3-none-any.whl.metadata (6.8 kB)
+#9 3.501   Downloading boto3-1.40.75-py3-none-any.whl.metadata (6.8 kB)
+#9 3.613   Downloading boto3-1.40.74-py3-none-any.whl.metadata (6.8 kB)
+#9 3.715 INFO: pip is still looking at multiple versions of boto3 to determine which version is compatible with other requirements. This could take a while.
+#9 3.726   Downloading boto3-1.40.73-py3-none-any.whl.metadata (6.8 kB)
+#9 3.838   Downloading boto3-1.40.72-py3-none-any.whl.metadata (6.8 kB)
+#9 3.946   Downloading boto3-1.40.71-py3-none-any.whl.metadata (6.8 kB)
+#9 4.061   Downloading boto3-1.40.70-py3-none-any.whl.metadata (6.8 kB)
+#9 4.180 Collecting s3transfer<0.15.0,>=0.14.0 (from boto3)
+#9 4.188   Downloading s3transfer-0.14.0-py3-none-any.whl.metadata (1.7 kB)
+#9 4.419 Requirement already satisfied: click>=8.0.0 in /opt/conda/lib/python3.12/site-packages (from black) (8.2.1)
+#9 4.430 Collecting mypy-extensions>=0.4.3 (from black)
+#9 4.438   Downloading mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
+#9 4.442 Requirement already satisfied: packaging>=22.0 in /opt/conda/lib/python3.12/site-packages (from black) (25.0)
+#9 4.454 Collecting pathspec>=0.9.0 (from black)
+#9 4.465   Downloading pathspec-0.12.1-py3-none-any.whl.metadata (21 kB)
+#9 4.472 Requirement already satisfied: platformdirs>=2 in /opt/conda/lib/python3.12/site-packages (from black) (4.3.8)
+#9 4.485 Collecting pytokens>=0.3.0 (from black)
+#9 4.500   Downloading pytokens-0.3.0-py3-none-any.whl.metadata (2.0 kB)
+#9 4.506 Requirement already satisfied: nbformat in /opt/conda/lib/python3.12/site-packages (from nbstripout) (5.10.4)
+#9 4.511 Requirement already satisfied: jupyter-server<3,>=2.0.1 in /opt/conda/lib/python3.12/site-packages (from jupyterlab-git) (2.16.0)
+#9 4.512 Requirement already satisfied: nbdime~=4.0.1 in /opt/conda/lib/python3.12/site-packages (from jupyterlab-git) (4.0.2)
+#9 4.513 Requirement already satisfied: pexpect in /opt/conda/lib/python3.12/site-packages (from jupyterlab-git) (4.9.0)
+#9 4.515 Requirement already satisfied: traitlets~=5.0 in /opt/conda/lib/python3.12/site-packages (from jupyterlab-git) (5.14.3)
+#9 4.518 Requirement already satisfied: anyio>=3.1.0 in /opt/conda/lib/python3.12/site-packages (from jupyter-server<3,>=2.0.1->jupyterlab-git) (4.9.0)
+#9 4.519 Requirement already satisfied: argon2-cffi>=21.1 in /opt/conda/lib/python3.12/site-packages (from jupyter-server<3,>=2.0.1->jupyterlab-git) (25.1.0)
+#9 4.520 Requirement already satisfied: jinja2>=3.0.3 in /opt/conda/lib/python3.12/site-packages (from jupyter-server<3,>=2.0.1->jupyterlab-git) (3.1.6)
+#9 4.521 Requirement already satisfied: jupyter-client>=7.4.4 in /opt/conda/lib/python3.12/site-packages (from jupyter-server<3,>=2.0.1->jupyterlab-git) (8.6.3)
+#9 4.522 Requirement already satisfied: jupyter-core!=5.0.*,>=4.12 in /opt/conda/lib/python3.12/site-packages (from jupyter-server<3,>=2.0.1->jupyterlab-git) (5.8.1)
+#9 4.523 Requirement already satisfied: jupyter-events>=0.11.0 in /opt/conda/lib/python3.12/site-packages (from jupyter-server<3,>=2.0.1->jupyterlab-git) (0.12.0)
+#9 4.524 Requirement already satisfied: jupyter-server-terminals>=0.4.4 in /opt/conda/lib/python3.12/site-packages (from jupyter-server<3,>=2.0.1->jupyterlab-git) (0.5.3)
+#9 4.525 Requirement already satisfied: nbconvert>=6.4.4 in /opt/conda/lib/python3.12/site-packages (from jupyter-server<3,>=2.0.1->jupyterlab-git) (7.16.6)
+#9 4.526 Requirement already satisfied: overrides>=5.0 in /opt/conda/lib/python3.12/site-packages (from jupyter-server<3,>=2.0.1->jupyterlab-git) (7.7.0)
+#9 4.527 Requirement already satisfied: prometheus-client>=0.9 in /opt/conda/lib/python3.12/site-packages (from jupyter-server<3,>=2.0.1->jupyterlab-git) (0.22.1)
+#9 4.528 Requirement already satisfied: pyzmq>=24 in /opt/conda/lib/python3.12/site-packages (from jupyter-server<3,>=2.0.1->jupyterlab-git) (27.0.0)
+#9 4.529 Requirement already satisfied: send2trash>=1.8.2 in /opt/conda/lib/python3.12/site-packages (from jupyter-server<3,>=2.0.1->jupyterlab-git) (1.8.3)
+#9 4.530 Requirement already satisfied: terminado>=0.8.3 in /opt/conda/lib/python3.12/site-packages (from jupyter-server<3,>=2.0.1->jupyterlab-git) (0.18.1)
+#9 4.531 Requirement already satisfied: tornado>=6.2.0 in /opt/conda/lib/python3.12/site-packages (from jupyter-server<3,>=2.0.1->jupyterlab-git) (6.5.1)
+#9 4.533 Requirement already satisfied: websocket-client>=1.7 in /opt/conda/lib/python3.12/site-packages (from jupyter-server<3,>=2.0.1->jupyterlab-git) (1.8.0)
+#9 4.537 Requirement already satisfied: colorama in /opt/conda/lib/python3.12/site-packages (from nbdime~=4.0.1->jupyterlab-git) (0.4.6)
+#9 4.538 Requirement already satisfied: gitpython!=2.1.4,!=2.1.5,!=2.1.6 in /opt/conda/lib/python3.12/site-packages (from nbdime~=4.0.1->jupyterlab-git) (3.1.44)
+#9 4.540 Requirement already satisfied: jupyter-server-mathjax>=0.2.2 in /opt/conda/lib/python3.12/site-packages (from nbdime~=4.0.1->jupyterlab-git) (0.2.6)
+#9 4.541 Requirement already satisfied: pygments in /opt/conda/lib/python3.12/site-packages (from nbdime~=4.0.1->jupyterlab-git) (2.19.2)
+#9 4.541 Requirement already satisfied: requests in /opt/conda/lib/python3.12/site-packages (from nbdime~=4.0.1->jupyterlab-git) (2.32.4)
+#9 4.548 Requirement already satisfied: typing-extensions>=4.2 in /opt/conda/lib/python3.12/site-packages (from aiosignal>=1.4.0->aiohttp!=4.0.0a0,!=4.0.0a1->s3fs==2023.12.2) (4.14.1)
+#9 4.551 Requirement already satisfied: sniffio>=1.1 in /opt/conda/lib/python3.12/site-packages (from anyio>=3.1.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (1.3.1)
+#9 4.555 Requirement already satisfied: argon2-cffi-bindings in /opt/conda/lib/python3.12/site-packages (from argon2-cffi>=21.1->jupyter-server<3,>=2.0.1->jupyterlab-git) (21.2.0)
+#9 4.566 Requirement already satisfied: gitdb<5,>=4.0.1 in /opt/conda/lib/python3.12/site-packages (from gitpython!=2.1.4,!=2.1.5,!=2.1.6->nbdime~=4.0.1->jupyterlab-git) (4.0.12)
+#9 4.570 Requirement already satisfied: smmap<6,>=3.0.1 in /opt/conda/lib/python3.12/site-packages (from gitdb<5,>=4.0.1->gitpython!=2.1.4,!=2.1.5,!=2.1.6->nbdime~=4.0.1->jupyterlab-git) (5.0.2)
+#9 4.575 Requirement already satisfied: MarkupSafe>=2.0 in /opt/conda/lib/python3.12/site-packages (from jinja2>=3.0.3->jupyter-server<3,>=2.0.1->jupyterlab-git) (3.0.2)
+#9 4.584 Requirement already satisfied: jsonschema>=4.18.0 in /opt/conda/lib/python3.12/site-packages (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (4.25.0)
+#9 4.585 Requirement already satisfied: python-json-logger>=2.0.4 in /opt/conda/lib/python3.12/site-packages (from jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (2.0.7)
+#9 4.586 Requirement already satisfied: pyyaml>=5.3 in /opt/conda/lib/python3.12/site-packages (from jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (6.0.2)
+#9 4.587 Requirement already satisfied: referencing in /opt/conda/lib/python3.12/site-packages (from jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (0.36.2)
+#9 4.589 Requirement already satisfied: rfc3339-validator in /opt/conda/lib/python3.12/site-packages (from jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (0.1.4)
+#9 4.591 Requirement already satisfied: rfc3986-validator>=0.1.1 in /opt/conda/lib/python3.12/site-packages (from jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (0.1.1)
+#9 4.595 Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /opt/conda/lib/python3.12/site-packages (from jsonschema>=4.18.0->jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (2025.4.1)
+#9 4.596 Requirement already satisfied: rpds-py>=0.7.1 in /opt/conda/lib/python3.12/site-packages (from jsonschema>=4.18.0->jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (0.26.0)
+#9 4.602 Requirement already satisfied: fqdn in /opt/conda/lib/python3.12/site-packages (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (1.5.1)
+#9 4.603 Requirement already satisfied: isoduration in /opt/conda/lib/python3.12/site-packages (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (20.11.0)
+#9 4.604 Requirement already satisfied: jsonpointer>1.13 in /opt/conda/lib/python3.12/site-packages (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (3.0.0)
+#9 4.607 Requirement already satisfied: rfc3987-syntax>=1.1.0 in /opt/conda/lib/python3.12/site-packages (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (1.1.0)
+#9 4.608 Requirement already satisfied: uri-template in /opt/conda/lib/python3.12/site-packages (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (1.3.0)
+#9 4.610 Requirement already satisfied: webcolors>=24.6.0 in /opt/conda/lib/python3.12/site-packages (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (24.11.1)
+#9 4.623 Requirement already satisfied: beautifulsoup4 in /opt/conda/lib/python3.12/site-packages (from nbconvert>=6.4.4->jupyter-server<3,>=2.0.1->jupyterlab-git) (4.13.4)
+#9 4.624 Requirement already satisfied: bleach!=5.0.0 in /opt/conda/lib/python3.12/site-packages (from bleach[css]!=5.0.0->nbconvert>=6.4.4->jupyter-server<3,>=2.0.1->jupyterlab-git) (6.2.0)
+#9 4.627 Requirement already satisfied: defusedxml in /opt/conda/lib/python3.12/site-packages (from nbconvert>=6.4.4->jupyter-server<3,>=2.0.1->jupyterlab-git) (0.7.1)
+#9 4.629 Requirement already satisfied: jupyterlab-pygments in /opt/conda/lib/python3.12/site-packages (from nbconvert>=6.4.4->jupyter-server<3,>=2.0.1->jupyterlab-git) (0.3.0)
+#9 4.631 Requirement already satisfied: mistune<4,>=2.0.3 in /opt/conda/lib/python3.12/site-packages (from nbconvert>=6.4.4->jupyter-server<3,>=2.0.1->jupyterlab-git) (3.1.3)
+#9 4.632 Requirement already satisfied: nbclient>=0.5.0 in /opt/conda/lib/python3.12/site-packages (from nbconvert>=6.4.4->jupyter-server<3,>=2.0.1->jupyterlab-git) (0.10.2)
+#9 4.633 Requirement already satisfied: pandocfilters>=1.4.1 in /opt/conda/lib/python3.12/site-packages (from nbconvert>=6.4.4->jupyter-server<3,>=2.0.1->jupyterlab-git) (1.5.0)
+#9 4.641 Requirement already satisfied: webencodings in /opt/conda/lib/python3.12/site-packages (from bleach!=5.0.0->bleach[css]!=5.0.0->nbconvert>=6.4.4->jupyter-server<3,>=2.0.1->jupyterlab-git) (0.5.1)
+#9 4.644 Requirement already satisfied: tinycss2<1.5,>=1.1.0 in /opt/conda/lib/python3.12/site-packages (from bleach[css]!=5.0.0->nbconvert>=6.4.4->jupyter-server<3,>=2.0.1->jupyterlab-git) (1.4.0)
+#9 4.655 Requirement already satisfied: fastjsonschema>=2.15 in /opt/conda/lib/python3.12/site-packages (from nbformat->nbstripout) (2.21.1)
+#9 4.687 Requirement already satisfied: lark>=1.2.2 in /opt/conda/lib/python3.12/site-packages (from rfc3987-syntax>=1.1.0->jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (1.2.2)
+#9 4.699 Requirement already satisfied: ptyprocess in /opt/conda/lib/python3.12/site-packages (from terminado>=0.8.3->jupyter-server<3,>=2.0.1->jupyterlab-git) (0.7.0)
+#9 4.713 Requirement already satisfied: cffi>=1.0.1 in /opt/conda/lib/python3.12/site-packages (from argon2-cffi-bindings->argon2-cffi>=21.1->jupyter-server<3,>=2.0.1->jupyterlab-git) (1.17.1)
+#9 4.717 Requirement already satisfied: pycparser in /opt/conda/lib/python3.12/site-packages (from cffi>=1.0.1->argon2-cffi-bindings->argon2-cffi>=21.1->jupyter-server<3,>=2.0.1->jupyterlab-git) (2.22)
+#9 4.721 Requirement already satisfied: soupsieve>1.2 in /opt/conda/lib/python3.12/site-packages (from beautifulsoup4->nbconvert>=6.4.4->jupyter-server<3,>=2.0.1->jupyterlab-git) (2.7)
+#9 4.734 Requirement already satisfied: arrow>=0.15.0 in /opt/conda/lib/python3.12/site-packages (from isoduration->jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (1.3.0)
+#9 4.739 Requirement already satisfied: types-python-dateutil>=2.8.10 in /opt/conda/lib/python3.12/site-packages (from arrow>=0.15.0->isoduration->jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.0.1->jupyterlab-git) (2.9.0.20250708)
+#9 4.754 Requirement already satisfied: charset_normalizer<4,>=2 in /opt/conda/lib/python3.12/site-packages (from requests->nbdime~=4.0.1->jupyterlab-git) (3.4.2)
+#9 4.755 Requirement already satisfied: certifi>=2017.4.17 in /opt/conda/lib/python3.12/site-packages (from requests->nbdime~=4.0.1->jupyterlab-git) (2025.7.14)
+#9 4.783 Downloading s3fs-2023.12.2-py3-none-any.whl (28 kB)
+#9 4.794 Downloading fsspec-2023.12.2-py3-none-any.whl (168 kB)
+#9 4.855 Downloading aiobotocore-2.25.2-py3-none-any.whl (86 kB)
+#9 4.871 Downloading aioitertools-0.13.0-py3-none-any.whl (24 kB)
+#9 4.881 Downloading botocore-1.40.70-py3-none-any.whl (14.1 MB)
+#9 6.189    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.1/14.1 MB 11.1 MB/s eta 0:00:00
+#9 6.199 Downloading jmespath-1.0.1-py3-none-any.whl (20 kB)
+#9 6.209 Downloading wrapt-1.17.3-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (88 kB)
+#9 6.226 Downloading boto3-1.40.70-py3-none-any.whl (139 kB)
+#9 6.247 Downloading s3transfer-0.14.0-py3-none-any.whl (85 kB)
+#9 6.272 Downloading black-25.11.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.7 MB)
+#9 6.421    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 16.2 MB/s eta 0:00:00
+#9 6.431 Downloading nbstripout-0.8.2-py2.py3-none-any.whl (17 kB)
+#9 6.443 Downloading rtree-1.4.1-py3-none-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (507 kB)
+#9 6.508 Downloading mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+#9 6.519 Downloading pathspec-0.12.1-py3-none-any.whl (31 kB)
+#9 6.528 Downloading pytokens-0.3.0-py3-none-any.whl (12 kB)
+#9 6.937 Installing collected packages: wrapt, rtree, pytokens, pathspec, mypy-extensions, jmespath, fsspec, aioitertools, botocore, black, s3transfer, aiobotocore, s3fs, boto3, nbstripout
+#9 7.184   Attempting uninstall: fsspec
+#9 7.193     Found existing installation: fsspec 2025.7.0
+#9 7.205     Uninstalling fsspec-2025.7.0:
+#9 7.247       Successfully uninstalled fsspec-2025.7.0
+#9 8.971 
+#9 8.993 Successfully installed aiobotocore-2.25.2 aioitertools-0.13.0 black-25.11.0 boto3-1.40.70 botocore-1.40.70 fsspec-2023.12.2 jmespath-1.0.1 mypy-extensions-1.1.0 nbstripout-0.8.2 pathspec-0.12.1 pytokens-0.3.0 rtree-1.4.1 s3fs-2023.12.2 s3transfer-0.14.0 wrapt-1.17.3
+#9 8.994 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#9 11.47 Channels:
+#9 11.47  - conda-forge
+#9 11.47 Platform: linux-64
+#9 11.47 Collecting package metadata (repodata.json): - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | done
+#9 34.17 Solving environment: - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ done
+#9 58.69 
+#9 58.69 
+#9 58.69 ==> WARNING: A newer version of conda exists. <==
+#9 58.69     current version: 25.5.1
+#9 58.69     latest version: 25.11.0
+#9 58.69 
+#9 58.69 Please update conda by running
+#9 58.69 
+#9 58.69     $ conda update -n base -c conda-forge conda
+#9 58.69 
+#9 58.69 
+#9 61.40 
+#9 61.40 ## Package Plan ##
+#9 61.40 
+#9 61.40   environment location: /opt/conda
+#9 61.40 
+#9 61.40   added / updated specs:
+#9 61.40     - nbstripout
+#9 61.40 
+#9 61.40 
+#9 61.40 The following packages will be downloaded:
+#9 61.40 
+#9 61.40     package                    |            build
+#9 61.40     ---------------------------|-----------------
+#9 61.40     ca-certificates-2025.11.12 |       hbd8a1cb_0         149 KB  conda-forge
+#9 61.40     certifi-2025.11.12         |     pyhd8ed1ab_0         153 KB  conda-forge
+#9 61.40     nbstripout-0.8.2           |     pyhd8ed1ab_0          22 KB  conda-forge
+#9 61.40     openssl-3.6.0              |       h26f9b46_0         3.0 MB  conda-forge
+#9 61.40     ------------------------------------------------------------
+#9 61.40                                            Total:         3.3 MB
+#9 61.40 
+#9 61.40 The following NEW packages will be INSTALLED:
+#9 61.40 
+#9 61.40   nbstripout         conda-forge/noarch::nbstripout-0.8.2-pyhd8ed1ab_0 
+#9 61.40 
+#9 61.40 The following packages will be UPDATED:
+#9 61.40 
+#9 61.40   ca-certificates                      2025.7.14-hbd8a1cb_0 --> 2025.11.12-hbd8a1cb_0 
+#9 61.40   certifi                            2025.7.14-pyhd8ed1ab_0 --> 2025.11.12-pyhd8ed1ab_0 
+#9 61.40   openssl                                  3.5.1-h7b32b05_0 --> 3.6.0-h26f9b46_0 
+#9 61.40 
+#9 61.40 
+#9 61.40 
+#9 61.40 Downloading and Extracting Packages: ...working...openssl-3.6.0        | 3.0 MB    |            |   0% 
+#9 61.40 certifi-2025.11.12   | 153 KB    |            |   0% [A
+#9 61.40 
+#9 61.40 ca-certificates-2025 | 149 KB    |            |   0% [A[A
+#9 61.41 
+#9 61.41 
+#9 61.41 nbstripout-0.8.2     | 22 KB     |            |   0% [A[A[Aopenssl-3.6.0        | 3.0 MB    |            |   1% 
+#9 61.58 
+#9 61.58 
+#9 61.58 nbstripout-0.8.2     | 22 KB     | #######3   |  74% [A[A[A
+#9 61.59 
+#9 61.59 
+#9 61.59 nbstripout-0.8.2     | 22 KB     | ########## | 100% [A[A[A
+#9 61.64 
+#9 61.64 
+#9 61.64 nbstripout-0.8.2     | 22 KB     | ########## | 100% [A[A[A
+#9 61.65 certifi-2025.11.12   | 153 KB    | #          |  10% [Aopenssl-3.6.0        | 3.0 MB    | #5         |  15% 
+#9 61.68 certifi-2025.11.12   | 153 KB    | ########## | 100% [A
+#9 61.70 
+#9 61.71 ca-certificates-2025 | 149 KB    | #          |  11% [A[A
+#9 61.74 
+#9 61.74 ca-certificates-2025 | 149 KB    | ########## | 100% [A[A
+#9 61.76 certifi-2025.11.12   | 153 KB    | ########## | 100% [A
+#9 61.76 certifi-2025.11.12   | 153 KB    | ########## | 100% [Aopenssl-3.6.0        | 3.0 MB    | ###4       |  34% 
+#9 61.78 
+#9 61.78 ca-certificates-2025 | 149 KB    | ########## | 100% [A[Aopenssl-3.6.0        | 3.0 MB    | ######7    |  67% openssl-3.6.0        | 3.0 MB    | ########## | 100% openssl-3.6.0        | 3.0 MB    | ########## | 100% openssl-3.6.0        | 3.0 MB    | ########## | 100%                                                      
+#9 62.13                                                      [A
+#9 62.13 
+#9 62.13                                                      [A[A
+#9 62.13 
+#9 62.13 
+#9 62.13                                                      [A[A[A done
+#9 62.13 Preparing transaction: / done
+#9 62.23 Verifying transaction: \ | / - done
+#9 62.63 Executing transaction: | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / done
+#9 69.15 update-alternatives: using /bin/nano-tiny to provide /usr/bin/editor (editor) in manual mode
+#9 69.15 update-alternatives: warning: skip creation of /usr/share/man/man1/editor.1.gz because associated file /usr/share/man/man1/nano-tiny.1.gz (of link group editor) doesn't exist
+#9 DONE 69.3s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 25.5s done
+#10 exporting manifest sha256:0a2e7504ad2f011974c39f8aef4e4e59d7ee733edccfcf8d97b45756042d6f85 0.0s done
+#10 exporting config sha256:b9103eea8058a536dac1acde04196268a338ab26ebe3dea4e91d71b86aee567a 0.0s done
+#10 exporting attestation manifest sha256:0a0550dfe3385e2e191625826d8c9662360281521ffd641b1816698de92992eb
+#10 exporting attestation manifest sha256:0a0550dfe3385e2e191625826d8c9662360281521ffd641b1816698de92992eb 0.1s done
+#10 exporting manifest list sha256:49bab9f4ae715d9e915f22fc6df836cadef02685a964f0502c0466397c65e1a0 0.0s done
+#10 naming to docker.io/library/jupyter-datascience:lab-4.4.5-mivo-1
+#10 naming to docker.io/library/jupyter-datascience:lab-4.4.5-mivo-1 0.0s done
+#10 unpacking to docker.io/library/jupyter-datascience:lab-4.4.5-mivo-1
+#10 unpacking to docker.io/library/jupyter-datascience:lab-4.4.5-mivo-1 14.1s done
+#10 DONE 40.0s

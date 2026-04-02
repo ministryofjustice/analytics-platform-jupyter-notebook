@@ -1,5 +1,4 @@
-# analytics-platform-jupyter-notebook
-
+# analytics-platform-jupyter-notebook ........
 JupyterLab Docker images for Analytical Platform.
 
 CI/CD:
@@ -83,3 +82,4 @@ These images work, but with questions to resolve:
 * The image creates a 'jovyan' user with UID 1000, we'll need to figure it
   out how this will work with the NFS home (rename/change user UID?)
 * anaconda/jupyter dashboard are installed as this user, this may need to change
+

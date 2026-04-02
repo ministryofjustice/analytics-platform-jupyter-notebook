@@ -1,0 +1,4 @@
+# Helm configuration - OCI mode uses ECR as private registry
+HELM_USE_OCI: true  # Use OCI registry (ECR) instead of HTTP-based helm repo
+HELM_REPO: 'oci://427835582171.dkr.ecr.eu-west-2.amazonaws.com/helm-charts'
+ECR_REGISTRY: '427835582171.dkr.ecr.eu-west-2.amazonaws.com'

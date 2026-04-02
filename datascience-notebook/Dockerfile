@@ -11,17 +11,41 @@ ENV PATH="${PATH}:${HOME}/.local/bin" \
 
 USER root
 
+# 1. Trust Zscaler corporate proxy certificate
+COPY zscaler_certificate.crt /usr/local/share/ca-certificates/zscaler.crt
+RUN chmod 644 /usr/local/share/ca-certificates/zscaler.crt && update-ca-certificates
+
+# 2. Make sure all tools see the CA bundle
+ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt \
+    REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+
+# 3. System packages and Python/conda tooling
 RUN apt-get update --yes \
-    && apt-get install --yes \
+    && DEBIAN_FRONTEND=noninteractive apt-get install --yes \
          ca-certificates-java \
-         openjdk-8-jdk \
-         openssh-client \
+         default-jre-headless \
+         fonts-dejavu \
+         g++ \
+         git \
+         htop \
+         less \
+         libgsl0-dev \
+         libsm6 \
+         libxext6 \
+         libxrender1 \
+         nano-tiny \
+         netcat-openbsd \
+         pandoc \
+         python3-dev \
          software-properties-common \
-         gdal-bin \
+         unzip \
+         vim-tiny \
          libspatialindex-dev \
     && apt-get clean --yes \
-    && rm -rf /var/lib/apt/lists/* \
-    && pip install --no-cache-dir --upgrade \
+    && rm -rf /var/lib/apt/lists/*
+
+# 4. Python/conda packages
+RUN pip install --no-cache-dir --upgrade \
          boto3 \
          black \
          nbstripout \
